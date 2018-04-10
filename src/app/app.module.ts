@@ -10,9 +10,10 @@ import { AlertComponent } from './_directives/index';
 import { RequireAnonGuard, RequireUserGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
-import { HomeComponent } from './home/index';
-import { LoginComponent } from './login/index';
-import { RegisterComponent } from './register/index';
+import { HomeComponent } from './pages/home/index';
+import { LoginComponent } from './pages/login/index';
+import { RegisterComponent } from './pages/register/index';
+import { ProfileComponent } from './pages/profile/index';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { RegisterComponent } from './register/index';
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        ProfileComponent
     ],
     providers: [
         RequireAnonGuard,
