@@ -14,6 +14,9 @@ import { HomeComponent } from './pages/home/index';
 import { LoginComponent } from './pages/login/index';
 import { RegisterComponent } from './pages/register/index';
 import { ProfileComponent } from './pages/profile/index';
+import { QuizComponent } from './pages/quiz/quiz.component';
+import { QuizService } from './services/quiz.service';
+
 
 @NgModule({
     imports: [
@@ -28,7 +31,8 @@ import { ProfileComponent } from './pages/profile/index';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        ProfileComponent
+        ProfileComponent,
+        QuizComponent
     ],
     providers: [
         RequireAnonGuard,
@@ -41,6 +45,7 @@ import { ProfileComponent } from './pages/profile/index';
             useClass: JwtInterceptor,
             multi: true
         },
+        QuizService
     ],
     bootstrap: [AppComponent]
 })
