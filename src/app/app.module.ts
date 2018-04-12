@@ -16,6 +16,7 @@ import { RegisterComponent } from './pages/register/index';
 import { ProfileComponent } from './pages/profile/index';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { QuizService } from './services/quiz.service';
+import { NavbarComponent } from './_components/navbar/navbar.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { QuizService } from './services/quiz.service';
         LoginComponent,
         RegisterComponent,
         ProfileComponent,
-        QuizComponent
+        QuizComponent,
+        NavbarComponent
     ],
     providers: [
         RequireAnonGuard,

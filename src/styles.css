@@ -6,3 +6,12 @@ a {
 .help-block {
     font-size: 12px;
 }
+
+.jumbotron {
+    background: -webkit-linear-gradient(bottom left, rgb(115, 97, 194) 0%, rgb(240, 179, 67) 100%);
+}
+
+body {
+  font-family: 'avenir', Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}

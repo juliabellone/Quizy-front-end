@@ -7,7 +7,8 @@ export class RequireUserGuard implements CanActivate {
     constructor(private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (localStorage.getItem('currentUser')) {
+        const currentUser = localStorage.getItem('currentUser')
+        if (currentUser) {
             // logged in so return true
             return true;
         } else {
