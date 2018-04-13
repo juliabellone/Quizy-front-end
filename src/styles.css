@@ -7,8 +7,9 @@ a {
     font-size: 12px;
 }
 
-.jumbotron {
-    background: -webkit-linear-gradient(bottom left, rgb(115, 97, 194) 0%, rgb(240, 179, 67) 100%);
+.app-container {
+    background: rgb(72, 161, 37); 
+    min-height: 800px;
 }
 
 body {

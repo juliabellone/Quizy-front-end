@@ -1,3 +1,11 @@
-<p>
-  navbar works!
-</p>
+<div class="topnav" id="myTopnav">
+  <div class="right">
+    <a [routerLink]="['']" class="active">Quizy</a>
+  </div>
+  <div class="left">
+    <a [routerLink]="['login']">Login</a>
+    <a [routerLink]="['register']">Register</a>
+    <a [routerLink]="['selectquiz']">Quiz</a>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+  </div>
+</div>
