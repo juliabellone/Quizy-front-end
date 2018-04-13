@@ -17,6 +17,7 @@ import { ProfileComponent } from './pages/profile/index';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { SelectQuizComponent } from './pages/selectquiz/selectquiz.component';
 import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
+import { NavbarComponent } from './_components/navBar/navbar.component';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
         QuizComponent,
         SelectQuizComponent,
         CreateQuizComponent,
-
+        NavbarComponent
     ],
     providers: [
         RequireAnonGuard,
