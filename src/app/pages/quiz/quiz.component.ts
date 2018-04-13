@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService } from '../../services/quiz.service';
+import { QuizService } from '../../_services/';
 import {Observable} from 'rxjs/Observable';
 import { isType } from '@angular/core/src/type';
 import 'rxjs/Rx'; 
 import { Promise } from 'q';
 import { decode } from '@angular/router/src/url_tree';
+import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -13,6 +15,7 @@ import { decode } from '@angular/router/src/url_tree';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
+  public categoryId:number;
   public allQuestions:any = {};
   public currentIndex:number = 0;
   public question:any = {};
@@ -25,15 +28,17 @@ export class QuizComponent implements OnInit {
 
   constructor(
     private quizApi: QuizService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.getQuestions();
+    this.route.params.subscribe((params) => this.categoryId = Number(params['category']));
+    this.getQuestions(this.categoryId);
   }
 
-  getQuestions() {
-    console.log('llamada a la api');
-    this.quizApi.getQuestion()
+  getQuestions(categoryId) {
+    console.log(this.categoryId);
+    this.quizApi.getQuestions(categoryId)
     .subscribe((response) => {
       this.allQuestions = response;
       this.decodeJSON()

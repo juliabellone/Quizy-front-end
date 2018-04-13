@@ -6,14 +6,18 @@ import { RegisterComponent } from './pages/register/index';
 import { ProfileComponent } from './pages/profile/index';
 import { RequireAnonGuard, RequireUserGuard } from './_guards/index';
 import { QuizComponent } from './pages/quiz/quiz.component';
+import { SelectQuizComponent } from './pages/selectquiz/selectquiz.component';
+import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
+
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [RequireUserGuard] },
     { path: 'login', component: LoginComponent, canActivate: [RequireAnonGuard] },
     { path: 'register', component: RegisterComponent, canActivate: [RequireAnonGuard] },
     { path: 'profile/:id', component: ProfileComponent, canActivate: [RequireUserGuard] },
-    { path: 'quiz', component: QuizComponent, canActivate: [RequireUserGuard] },
-
+    { path: 'selectquiz', component: SelectQuizComponent, canActivate: [RequireUserGuard] },
+    { path: 'quiz/new', component: CreateQuizComponent, canActivate: [RequireUserGuard] },
+    { path: 'quiz/:category', component: QuizComponent, canActivate: [RequireUserGuard] },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

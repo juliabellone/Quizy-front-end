@@ -1,0 +1,11 @@
+<h1>Select a Quiz</h1>
+<div class="quiz-grid">
+
+  
+  <div class="quiz-selector" *ngFor="let category of categories">
+      <!-- <a routerLink="/quiz"><h2>Nature Quiz</h2></a> -->
+    <a [routerLink]="['/quiz',category.id]"><h3>{{category.name}}{{category.id}}</h3></a>
+  </div>
+</div>
+
+

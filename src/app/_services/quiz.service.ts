@@ -6,16 +6,19 @@ import { Subject } from "rxjs/Subject";
 import "rxjs/add/operator/map";
 
 
-
-
 @Injectable()
 export class QuizService {
 
   constructor(
     private http:HttpClient) { }
 
-  getQuestion() {
-      return this.http.get(`https://opentdb.com/api.php?amount=10&type=multiple&encode=base64`)
-      .map((res:any) => res.results);
+  getCategories() {
+    return this.http.get(`https://opentdb.com/api_category.php`)
+    .map((res:any) => res.trivia_categories);
+  }  
+  
+  getQuestions(categoryId) {
+    return this.http.get(`https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=easy&encode=base64`)
+    .map((res:any) => res.results);
   }
 }

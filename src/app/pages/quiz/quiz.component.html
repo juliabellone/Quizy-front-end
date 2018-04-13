@@ -4,7 +4,6 @@
 
 <div *ngIf="currentIndex < allQuestions.length-1" class="question">
   <p>{{title}}</p>
-  <div>correct: {{correctAnswer}}</div>
   <div class="all-answers">
     <button *ngFor="let answer of allAnswers" (click)="getResponse(answer)">{{answer}}</button>  
   </div>
