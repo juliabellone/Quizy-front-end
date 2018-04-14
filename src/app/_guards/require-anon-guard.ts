@@ -17,7 +17,6 @@ export class RequireAnonGuard implements CanActivate {
         return this.authService.isLoggedIn
             .take(1)
             .map((isLoggedIn) => {
-                console.log(isLoggedIn);
                 if (!isLoggedIn.auth) {
                     return true;
                 } else {

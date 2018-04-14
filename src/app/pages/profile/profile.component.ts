@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlertService, UserService } from '../../_services';
+import { AlertService, UserService, AuthenticationService } from '../../_services';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'profile',
@@ -12,6 +13,7 @@ export class ProfileComponent implements OnInit {
     firstName: string,
     lastName: string,
     username: string,
+    email: string,
   };
 
   constructor(
@@ -20,6 +22,7 @@ export class ProfileComponent implements OnInit {
     private alertService: AlertService,
   ){
     this.user = {
+      email: '',
       firstName: '',
       lastName: '',
       username: ''
@@ -29,7 +32,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.getUserProfile(params['id'])
-    })
+    });
   }
 
   getUserProfile(id) {
@@ -37,9 +40,11 @@ export class ProfileComponent implements OnInit {
       .subscribe(
         data => {
           this.user.username = data.username;
+          this.user.firstName = data.firstName;
+          this.user.lastName = data.lastName;
         },
         error => {
-          this.alertService.error(error);
+          this.alertService.error(error.error);
         });
   }
 

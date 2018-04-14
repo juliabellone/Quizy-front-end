@@ -1,10 +1,9 @@
-<div class="topnav" id="myTopnav">
-
-    <a [routerLink]="['']" class="active">Quizy</a>
-
-    <a [routerLink]="['login']">Login</a>
-    <a [routerLink]="['register']">Register</a>
-    <a [routerLink]="['selectquiz']">Quiz</a>
+<div class="topnav" id="myTopnav" *ngIf="isLoggedIn$ | async as isLoggedIn">
+    <a [routerLinkActive]="['active']" [routerLink]="['']">Quizy</a>
+    <a [routerLinkActive]="['active']" [routerLink]="['profile', isLoggedIn.ui]" *ngIf="isLoggedIn.auth">Profile</a>
+    <a (click)="onLogout()" *ngIf="isLoggedIn.auth">Logout</a>
+    <a [routerLinkActive]="['active']" [routerLink]="['login']" *ngIf="!isLoggedIn.auth">Login</a>
+    <a [routerLinkActive]="['active']" [routerLink]="['register']" *ngIf="!isLoggedIn.auth">Register</a>
+    <a [routerLinkActive]="['active']" [routerLink]="['selectquiz']" *ngIf="isLoggedIn.auth">Quiz</a>
     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-
 </div>

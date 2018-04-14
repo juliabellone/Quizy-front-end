@@ -25,8 +25,8 @@ export class RegisterComponent {
                     this.alertService.success('Registration successful', true);
                     this.router.navigate(['/']);
                 },
-                error => {
-                    this.alertService.error(error);
+                err => {
+                    this.alertService.error(err.error.message);
                     this.loading = false;
                 });
     }
