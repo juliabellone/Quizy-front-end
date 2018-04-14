@@ -1,5 +1,4 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
-
 import { HomeComponent } from './pages/home/index';
 import { LoginComponent } from './pages/login/index';
 import { RegisterComponent } from './pages/register/index';
@@ -8,6 +7,7 @@ import { RequireAnonGuard, RequireUserGuard } from './_guards/index';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { SelectQuizComponent } from './pages/selectquiz/selectquiz.component';
 import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
+import { CreateQuestionComponent } from './pages/create-question/create-question.component';
 
 
 const appRoutes: Routes = [
@@ -17,7 +17,7 @@ const appRoutes: Routes = [
     { path: 'profile/:id', component: ProfileComponent, canActivate: [RequireUserGuard] },
     { path: 'selectquiz', component: SelectQuizComponent, canActivate: [RequireUserGuard] },
     { path: 'quiz/new', component: CreateQuizComponent, canActivate: [RequireUserGuard] },
-    { path: 'quiz/new/question', component: CreateQuizComponent, canActivate: [RequireUserGuard] },
+    { path: 'quiz/new/question', component: CreateQuestionComponent, canActivate: [RequireUserGuard] },
     { path: 'quiz/:category', component: QuizComponent, canActivate: [RequireUserGuard] },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

@@ -38,7 +38,6 @@ export class CreateQuizComponent implements OnInit {
 
   submitQuiz() {
     console.log(this.quiz);
-    this.quiz = JSON.stringify(this.quiz);
     this.createQuizApi.createQuiz(this.quiz)
     .subscribe(
       data => {
@@ -50,3 +49,4 @@ export class CreateQuizComponent implements OnInit {
     ) 
   }
 }
+

@@ -16,8 +16,9 @@ import { RegisterComponent } from './pages/register/index';
 import { ProfileComponent } from './pages/profile/index';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { SelectQuizComponent } from './pages/selectquiz/selectquiz.component';
-import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
 import { NavbarComponent } from './_components/navBar/navbar.component';
+import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
+import { CreateQuestionComponent } from './pages/create-question/create-question.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { NavbarComponent } from './_components/navBar/navbar.component';
         QuizComponent,
         SelectQuizComponent,
         CreateQuizComponent,
-        NavbarComponent
+        NavbarComponent,
+        CreateQuestionComponent
     ],
     providers: [
         RequireAnonGuard,
