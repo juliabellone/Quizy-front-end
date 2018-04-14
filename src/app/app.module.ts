@@ -18,7 +18,8 @@ import { QuizComponent } from './pages/quiz/quiz.component';
 import { SelectQuizComponent } from './pages/selectquiz/selectquiz.component';
 import { NavbarComponent } from './_components/navBar/navbar.component';
 import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
-import { CreateQuestionComponent } from './pages/create-question/create-question.component';
+import { CreateQuizFormComponent } from './_components/create-quiz-form/create-quiz-form.component';
+import { CreateQuestionFormComponent } from './_components/create-question-form/create-question-form.component';
 
 
 @NgModule({
@@ -37,9 +38,10 @@ import { CreateQuestionComponent } from './pages/create-question/create-question
         ProfileComponent,
         QuizComponent,
         SelectQuizComponent,
-        CreateQuizComponent,
         NavbarComponent,
-        CreateQuestionComponent
+        CreateQuizComponent,
+        CreateQuizFormComponent,
+        CreateQuestionFormComponent,
     ],
     providers: [
         RequireAnonGuard,
@@ -48,12 +50,12 @@ import { CreateQuestionComponent } from './pages/create-question/create-question
         AuthenticationService,
         UserService,
         CreateQuizService,
+        QuizService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
             multi: true
         },
-        QuizService
     ],
     bootstrap: [AppComponent]
 })

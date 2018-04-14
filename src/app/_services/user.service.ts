@@ -13,7 +13,7 @@ export class UserService {
         return this.http.get('/api/user');
     }
 
-    getUserById(id) {s
+    getUserById(id) {
         return this.http.get(`${this.BASE_URL}/user/${id}`)
             .map((user: any) => {
                 return user;
