@@ -12,7 +12,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CreateQuestionFormComponent implements OnInit {
 
   @Input() theQuiz: any;
-  private question: any;
+  private question: any = {
+    incorrect_answers: [],
+  }
 
   constructor(
     private createQuizApi: CreateQuizService, 
@@ -25,13 +27,24 @@ export class CreateQuestionFormComponent implements OnInit {
     console.log('esto es thequiz', this.theQuiz)
   }
 
-  formatQuestion() {
-    //crear objeto question a partir del form
-  }
 
   //peticion al endpoint
-  createQuestion(question) {
-    this.createQuizApi.createQuestion
+  createQuestion() {
+    console.log('esto que es', this.question)
+    this.createQuizApi.createQuestion(this.question, this.theQuiz._id)
+    .subscribe(
+      data => {
+        console.log(data);
+        // Reinicia this.question para la proxima pregunta
+        this.question = {
+          incorrect_answers: [],
+        }
+      },
+      error => {
+        // Por ahora no hay error en el servidor
+        this.alertService.error(error.error.m);
+      }
+    )
   }
 
 }

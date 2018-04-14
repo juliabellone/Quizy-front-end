@@ -1,8 +1,18 @@
 <p>
     COMPONENTE DE CREACION DE PREGUNTAS
 </p>
-<form>
-  
-</form>
-<!-- formulario de pregunta + respuesta buena + repsuestas falsas -->
+<button [routerLink]="['']">Finish Quiz</button>
 
+<form>
+    <label>Text of Question</label>
+    <input type="text" name="question" [(ngModel)]="question.question" required />
+    <label>Correct Answer</label>
+    <input type="text" name="correct_answer" [(ngModel)]="question.correct_answer" required />
+    <label>Incorrect Answer 1</label>
+    <input type="text" name="incorrect_answer" [(ngModel)]="question.incorrect_answers[0]" required />
+    <label>Incorrect Answer 2</label>
+    <input type="text" name="incorrect_answer" [(ngModel)]="question.incorrect_answers[1]" required />
+    <label>Incorrect Answer 3</label>
+    <input type="text" name="incorrect_answer" [(ngModel)]="question.incorrect_answers[2]" required />
+    <button type="submit" (click)="createQuestion()">Add Question</button>    
+</form>

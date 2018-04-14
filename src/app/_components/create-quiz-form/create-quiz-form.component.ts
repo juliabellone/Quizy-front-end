@@ -45,6 +45,7 @@ export class CreateQuizFormComponent implements OnInit {
         this.onCreate.emit(data);
       }, 
       error => {
+        //por ahora no hay error en el servidor
         this.alertService.error(error.error.m);
       }
     ) 

@@ -13,8 +13,8 @@ export class CreateQuizService {
     return this.http.post(`${this.BASE_URL}/quiz`, quiz);
   }
 
-  createQuestion(question) {
-   return this.http.put(`${this.BASE_URL}/quiz/:quizId`, question);
+  createQuestion(question, quizId) {
+   return this.http.put(`${this.BASE_URL}/quiz/${quizId}`, question);
   }
 
 }
