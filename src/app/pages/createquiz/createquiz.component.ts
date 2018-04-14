@@ -19,5 +19,7 @@ export class CreateQuizComponent implements OnInit {
     console.log('prueba', quiz);
     this.quizCreated = quiz;
   }
+
+  
 }
 

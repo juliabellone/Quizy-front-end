@@ -4,5 +4,5 @@
     <app-create-quiz-form (onCreate)="changeStatus($event)"></app-create-quiz-form>
 </div>
 <div *ngIf="quizCreated">
-    <create-question-form></create-question-form>
+    <create-question-form [theQuiz]="quizCreated"></create-question-form>
 </div>

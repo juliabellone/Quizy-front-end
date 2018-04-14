@@ -14,8 +14,7 @@ export class CreateQuizService {
   }
 
   createQuestion(question) {
-   // return this.http
-
+   return this.http.put(`${this.BASE_URL}/quiz/:quizId`, question);
   }
 
 }
