@@ -2,9 +2,12 @@
 
 First, provide basic info about your quiz
 <form>
-<label>Quiz's Name: </label>
-<input type="text" name="name">
-<label>Category: </label>
+    <label>Quiz's Name: </label>
+    <input type="text" name="name" [(ngModel)]="name">
+    <label>Category: </label>
 
-<select></select>
-</form>>
+    <select>
+    <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+    </select>
+    <button></button>
+</form>

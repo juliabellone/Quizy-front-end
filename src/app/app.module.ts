@@ -9,7 +9,7 @@ import { routing }        from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { RequireAnonGuard, RequireUserGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService, QuizService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, QuizService, CreateQuizService } from './_services/index';
 import { HomeComponent } from './pages/home/index';
 import { LoginComponent } from './pages/login/index';
 import { RegisterComponent } from './pages/register/index';
@@ -45,6 +45,7 @@ import { NavbarComponent } from './_components/navBar/navbar.component';
         AlertService,
         AuthenticationService,
         UserService,
+        CreateQuizService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
