@@ -3,17 +3,31 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from "../_models/user";
 import 'rxjs/add/operator/map'
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AuthenticationService {
     BASE_URL: string = 'http://localhost:3000/api'
 
-    constructor(private http: HttpClient) { }
+    private loggedIn = new BehaviorSubject<{ auth: boolean, ui: string }>({ auth: false, ui: "" });
+    
+    get isLoggedIn() {
+        return this.loggedIn.asObservable(); 
+    }
+
+    constructor(private http: HttpClient) { 
+        const currentUser: any = JSON.parse(localStorage.getItem('currentUser')); 
+        if(currentUser && currentUser.auth)
+        {
+            this.loggedIn.next({ auth: true, ui: currentUser.ui });
+        }
+    }
 
     signup(newUser: User) {
         return this.http.post<any>(`${this.BASE_URL}/signup`, newUser)
             .map(user => {
                 if (user && user.token) {
+                    this.loggedIn.next({ auth: true, ui: user.ui });
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
             })
@@ -23,6 +37,7 @@ export class AuthenticationService {
         return this.http.post<any>(`${this.BASE_URL}/login`, { username: username, password: password })
             .map(user => {
                 if (user && user.token) {
+                    this.loggedIn.next({ auth: true, ui: user.ui });
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
                 return user;
@@ -30,6 +45,7 @@ export class AuthenticationService {
     }
 
     logout() {
+        this.loggedIn.next({ auth: false, ui: "" });
         localStorage.removeItem('currentUser');
     }
 }
