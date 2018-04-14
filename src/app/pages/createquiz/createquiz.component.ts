@@ -7,13 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateQuizComponent implements OnInit {
   
-  quizIsCreated:boolean = false;
+  quizCreated = null;
+
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.quizIsCreated)
   }
 
+  changeStatus(quiz) {
+    console.log('prueba', quiz);
+    this.quizCreated = quiz;
+  }
 }
 

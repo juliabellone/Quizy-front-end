@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { QuizService, CreateQuizService } from '../../_services';
 import { Observable } from 'rxjs/Observable';
 import { AlertService } from '../../_services/index';
 import { Router, ActivatedRoute } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-create-quiz-form',
@@ -12,6 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./create-quiz-form.component.css']
 })
 export class CreateQuizFormComponent implements OnInit {
+
+  @Output() onCreate = new EventEmitter();
 
   public categories:any[];
   public quiz:any = {};
@@ -42,6 +42,7 @@ export class CreateQuizFormComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data);
+        this.onCreate.emit(data);
       }, 
       error => {
         this.alertService.error(error.error.m);
