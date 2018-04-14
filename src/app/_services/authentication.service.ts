@@ -15,7 +15,13 @@ export class AuthenticationService {
         return this.loggedIn.asObservable(); 
     }
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { 
+        const currentUser: any = JSON.parse(localStorage.getItem('currentUser')); 
+        if(currentUser && currentUser.auth)
+        {
+            this.loggedIn.next({ auth: true, ui: currentUser.ui });
+        }
+    }
 
     signup(newUser: User) {
         return this.http.post<any>(`${this.BASE_URL}/signup`, newUser)
