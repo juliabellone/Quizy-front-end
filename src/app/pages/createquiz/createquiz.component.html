@@ -1,13 +1,13 @@
 <h1>Create your own quiz!</h1>
 
-First, provide basic info about your quiz
+<p>First, provide basic info about your quiz!</p>
+
 <form>
     <label>Quiz's Name: </label>
-    <input type="text" name="name" [(ngModel)]="name">
+    <input type="text" name="name" [(ngModel)]="quiz.name">
     <label>Category: </label>
-
-    <select>
-    <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+    <select name="category" [(ngModel)]="quiz.category" placeholder="Select a category" >
+    <option *ngFor="let category of categories" value="{{category.name}}" [ngValue]="category.name" >{{category.name}}</option>
     </select>
-    <button></button>
+    <button (click)="submitQuiz()">Create New Quiz!</button>
 </form>

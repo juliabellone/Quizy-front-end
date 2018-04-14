@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService } from '../../_services';
+import { QuizService, CreateQuizService } from '../../_services';
 import { Observable } from 'rxjs/Observable';
+import { AlertService } from '../../_services/index';
+import { Router, ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-createquiz',
@@ -14,11 +18,14 @@ export class CreateQuizComponent implements OnInit {
 
   constructor(
     private quizApi: QuizService,
+    private createQuizApi: CreateQuizService, 
+    private alertService: AlertService,
+    private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
     this.getCategories();
-    console.log(this.categories)
   }
 
   getCategories() {
@@ -28,15 +35,18 @@ export class CreateQuizComponent implements OnInit {
       console.log(this.categories)
     })
   }
-/*   // sendQuiz(myForm) {
-  //   console.log(myForm)
 
-  // } */
-
-  // {
-  //   name: req.body.name,
-  //   category: req.body.category,
-  //   questions: [],
-  //   user: req.decoded.id,
-  // }
+  submitQuiz() {
+    console.log(this.quiz);
+    this.quiz = JSON.stringify(this.quiz);
+    this.createQuizApi.createQuiz(this.quiz)
+    .subscribe(
+      data => {
+        this.router.navigate([`/quiz/new/question`]);
+      }, 
+      error => {
+        this.alertService.error(error.error.m);
+      }
+    ) 
+  }
 }

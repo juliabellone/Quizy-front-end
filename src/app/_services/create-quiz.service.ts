@@ -10,11 +10,11 @@ export class CreateQuizService {
   constructor(private http: HttpClient) { }
 
   createQuiz(quiz) {
-    return this.http.post('/api/quiz', quiz);
+    return this.http.post(`${this.BASE_URL}/quiz`, quiz);
   }
 
-  createQuestion() {
-    return this.http
+  createQuestion(question) {
+   // return this.http
 
   }
 

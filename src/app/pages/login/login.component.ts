@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate([`/profile/${data.ui}`]);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error(error.error.m);
                     this.loading = false;
             });
     }
