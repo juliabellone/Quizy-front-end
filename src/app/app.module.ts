@@ -3,13 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { ngfModule } from "angular-file"
+
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
 import { AlertComponent } from './_directives/index';
 import { RequireAnonGuard, RequireUserGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService, QuizService } from './_services/index';
+import { 
+    AlertService, 
+    AuthenticationService, 
+    UserService, 
+    QuizService,
+    FileService
+} from './_services/index';
 import { HomeComponent } from './pages/home/index';
 import { LoginComponent } from './pages/login/index';
 import { RegisterComponent } from './pages/register/index';
@@ -26,7 +34,8 @@ import { FileUploaderComponent } from './_components/file-uploader/file-uploader
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        routing
+        routing,
+        ngfModule
     ],
     declarations: [
         AppComponent,
@@ -47,6 +56,7 @@ import { FileUploaderComponent } from './_components/file-uploader/file-uploader
         AlertService,
         AuthenticationService,
         UserService,
+        FileService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,

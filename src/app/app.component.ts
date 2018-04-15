@@ -6,4 +6,6 @@
     templateUrl: 'app.component.html'
 })
 
-export class AppComponent{ }
+export class AppComponent{ 
+    
+}
