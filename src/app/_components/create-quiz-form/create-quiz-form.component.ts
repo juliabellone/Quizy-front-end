@@ -32,16 +32,14 @@ export class CreateQuizFormComponent implements OnInit {
     this.quizApi.getCategories()
     .subscribe((response) => {
       this.categories = response;
-      console.log(this.categories)
     })
   }
 
   submitQuiz() {
-    console.log(this.quiz);
     this.createQuizApi.createQuiz(this.quiz)
     .subscribe(
       data => {
-        console.log(data);
+
         this.onCreate.emit(data);
       }, 
       error => {

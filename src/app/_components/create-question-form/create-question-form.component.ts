@@ -30,17 +30,21 @@ export class CreateQuestionFormComponent implements OnInit {
 
   //peticion al endpoint
   createQuestion() {
-    console.log('esto que es', this.question)
+    console.log('prueba',this.question)
+    console.log('prueba',this.theQuiz._id, this.theQuiz.id)
+
     this.createQuizApi.createQuestion(this.question, this.theQuiz._id)
     .subscribe(
       data => {
-        console.log(data);
+        // console.log(this.question)
         // Reinicia this.question para la proxima pregunta
         this.question = {
           incorrect_answers: [],
         }
+        console.log(data);
       },
       error => {
+        console.log('ha habido un error')
         // Por ahora no hay error en el servidor
         this.alertService.error(error.error.m);
       }
