@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService, UserService} from '../../_services';
+import { QuizService, UserService, CreateQuizService } from '../../_services';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -15,11 +15,12 @@ export class SelectQuizComponent implements OnInit {
 
   constructor(
     private quizApi: QuizService,
+    private createQuizService: CreateQuizService, 
   ) { }
 
   ngOnInit() {
-    this.isActive = 'all';
-    this.getQuizes('all');
+    this.isActive = 'topics';
+    this.getQuizes('topics');
   }
 
   getQuizes(source) {
@@ -27,10 +28,14 @@ export class SelectQuizComponent implements OnInit {
       this.quizApi.getCategories()
       .subscribe((response) => {
         this.quizes = response;
+        this.createQuizService.getAllQuizes()
+        .subscribe((response) => {
+          console.log('respuest',response)
+          this.quizes.push(response);
+        })
       })
-      
       //peticion a nuestra api a la base de datos de quizes.       
-        //Push a quizes con el resultado
+        //Push a quizes con el resultado    
     }
     if (source == 'topics') {
       this.quizApi.getCategories()
