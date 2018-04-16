@@ -1,8 +1,8 @@
 <h1>Select a Quiz</h1>
 <div class="selector">
-    <button (click)="getQuizes(all)" [ngClass]="{active: isActive == 'all'}">All Quizes</button>
-    <button (click)="getQuizes(topics)" [ngClass]="{active: isActive == 'topics'}">Quizes by topics</button>
-    <button (click)="getQuizes(users)" [ngClass]="{active: isActive =='users'}">Quizes from users</button>    
+    <button (click)="getQuizes('all')" [ngClass]="{active: isActive == 'all'}">All Quizes</button>
+    <button (click)="getQuizes('topics')" [ngClass]="{active: isActive == 'topics'}">Quizes by topics</button>
+    <button (click)="getQuizes('users')" [ngClass]="{active: isActive =='users'}">Quizes from users</button>    
 </div>
 <div class="quiz-grid">
   <div class="quiz-selector" *ngFor="let quiz of quizes">
