@@ -1,25 +1,48 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { QuizService, UserService} from '../../_services';
+import { Observable } from 'rxjs/Observable';
 
-import { SelectQuizComponent } from './selectquiz.component';
 
-describe('SelectquizComponent', () => {
-  let component: SelectQuizComponent;
-  let fixture: ComponentFixture<SelectQuizComponent>;
+@Component({
+  selector: 'app-selectquiz',
+  templateUrl: './selectquiz.component.html',
+  styleUrls: ['./selectquiz.component.scss']
+})
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SelectQuizComponent ]
-    })
-    .compileComponents();
-  }));
+export class SelectQuizComponent implements OnInit {
+  public isActive:string;
+  public quizes:any[];
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SelectQuizComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  constructor(
+    private quizApi: QuizService,
+  ) { }
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit() {
+    this.isActive = 'all';
+    this.getQuizes('all');
+  }
+
+  getQuizes(source) {
+    if (source == 'all') {
+      this.quizApi.getCategories()
+      .subscribe((response) => {
+        this.quizes = response;
+      })
+      
+      //peticion a nuestra api a la base de datos de quizes.       
+        //Push a quizes con el resultado
+    }
+    if (source == 'topics') {
+      this.quizApi.getCategories()
+      .subscribe((response) => {
+        this.quizes = response;
+      })
+    }
+    if (source == 'users') {
+      //peticion a nuestra api a la base de datos de quizes.       
+    }
+  }
+}
+
+
+

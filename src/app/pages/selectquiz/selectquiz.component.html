@@ -1,11 +1,12 @@
 <h1>Select a Quiz</h1>
+<div class="selector">
+    <button (click)="getQuizes(all)" [ngClass]="{active: isActive == 'all'}">All Quizes</button>
+    <button (click)="getQuizes(topics)" [ngClass]="{active: isActive == 'topics'}">Quizes by topics</button>
+    <button (click)="getQuizes(users)" [ngClass]="{active: isActive =='users'}">Quizes from users</button>    
+</div>
 <div class="quiz-grid">
-
-  
-  <div class="quiz-selector" *ngFor="let category of categories">
+  <div class="quiz-selector" *ngFor="let quiz of quizes">
       <!-- <a routerLink="/quiz"><h2>Nature Quiz</h2></a> -->
-    <a [routerLink]="['/quiz',category.id]"><h3>{{category.name}}{{category.id}}</h3></a>
+    <a [routerLink]="['/quiz',quiz.id]"><p>{{quiz.name}}{{quiz.id}}</p></a>
   </div>
 </div>
-
-
