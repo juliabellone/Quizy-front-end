@@ -21,4 +21,8 @@ export class CreateQuizService {
     return this.http.get(`${this.BASE_URL}/quiz/`);
   }
 
+  getQuiz(id) {
+    return this.http.get(`${this.BASE_URL}/quiz/${id}`);
+  }
+  
 }
