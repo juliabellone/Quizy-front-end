@@ -1,25 +1,53 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { QuizService, UserService, CreateQuizService } from '../../_services';
+import { Observable } from 'rxjs/Observable';
 
-import { SelectQuizComponent } from './selectquiz.component';
 
-describe('SelectquizComponent', () => {
-  let component: SelectQuizComponent;
-  let fixture: ComponentFixture<SelectQuizComponent>;
+@Component({
+  selector: 'app-selectquiz',
+  templateUrl: './selectquiz.component.html',
+  styleUrls: ['./selectquiz.component.scss']
+})
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SelectQuizComponent ]
-    })
-    .compileComponents();
-  }));
+export class SelectQuizComponent implements OnInit {
+  public isActive:string;
+  public quizes:any[];
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SelectQuizComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  constructor(
+    private quizApi: QuizService,
+    private createQuizService: CreateQuizService, 
+  ) { }
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit() {
+    this.isActive = 'topics';
+    this.getQuizes('topics');
+  }
+
+  getQuizes(source) {
+    if (source == 'all') {
+      this.quizApi.getCategories()
+      .subscribe((response) => {
+        this.quizes = response;
+        this.createQuizService.getAllQuizes()
+        .subscribe((response) => {
+          console.log('respuest',response)
+          this.quizes.push(response);
+        })
+      })
+      //peticion a nuestra api a la base de datos de quizes.       
+        //Push a quizes con el resultado    
+    }
+    if (source == 'topics') {
+      this.quizApi.getCategories()
+      .subscribe((response) => {
+        this.quizes = response;
+      })
+    }
+    if (source == 'users') {
+      //peticion a nuestra api a la base de datos de quizes.       
+    }
+  }
+}
+
+
+

@@ -21,7 +21,9 @@
     "@angular/router": "^5.0.0",
     "angular-file": "^0.5.1",
     "core-js": "^2.4.1",
+    "node-sass": "^4.8.3",
     "rxjs": "^5.2.0",
+    "sass": "^1.2.0",
     "systemjs": "^0.20.19",
     "zone.js": "^0.8.5"
   },
