@@ -16,7 +16,8 @@ import {
     AuthenticationService, 
     UserService, 
     QuizService,
-    FileService
+    FileService,
+    CreateQuizService
 } from './_services/index';
 import { HomeComponent } from './pages/home/index';
 import { LoginComponent } from './pages/login/index';
@@ -24,9 +25,11 @@ import { RegisterComponent } from './pages/register/index';
 import { ProfileComponent } from './pages/profile/index';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { SelectQuizComponent } from './pages/selectquiz/selectquiz.component';
-import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
 import { NavbarComponent } from './_components/navBar/navbar.component';
 import { FileUploaderComponent } from './_components/file-uploader/file-uploader.component';
+import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
+import { CreateQuizFormComponent } from './_components/create-quiz-form/create-quiz-form.component';
+import { CreateQuestionFormComponent } from './_components/create-question-form/create-question-form.component';
 
 
 @NgModule({
@@ -46,9 +49,12 @@ import { FileUploaderComponent } from './_components/file-uploader/file-uploader
         ProfileComponent,
         QuizComponent,
         SelectQuizComponent,
+        NavbarComponent,
         CreateQuizComponent,
         NavbarComponent,
-        FileUploaderComponent
+        FileUploaderComponent,
+        CreateQuizFormComponent,
+        CreateQuestionFormComponent,
     ],
     providers: [
         RequireAnonGuard,
@@ -57,12 +63,13 @@ import { FileUploaderComponent } from './_components/file-uploader/file-uploader
         AuthenticationService,
         UserService,
         FileService,
+        CreateQuizService,
+        QuizService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
             multi: true
         },
-        QuizService
     ],
     bootstrap: [AppComponent]
 })
