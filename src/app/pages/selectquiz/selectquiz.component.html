@@ -5,7 +5,7 @@
     <button (click)="getQuizes('users')" [ngClass]="{active: isActive =='users'}">Quizes from users</button>    
 </div>
 <div class="quiz-grid" *ngFor="let quizarray of quizes">
-    <div class="quiz-selector" *ngFor="let quiz of quizarray"></div>
-      <!-- <a routerLink="/quiz"><h2>Nature Quiz</h2></a> -->
-    <!-- <a [routerLink]="['/quiz',quiz.id]"><p>{{quiz.name}}{{quiz.id}}</p></a> -->
+    <div class="quiz-selector" *ngFor="let quiz of quizarray">
+        <a [routerLink]="['/quiz',quiz.id]"><p>{{quiz.name}}</p></a>
+    </div>
 </div>
