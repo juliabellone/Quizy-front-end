@@ -52,8 +52,8 @@
 
 <div>
   <div class="inline-block">
-    <div ngfDrop multiple="1" selectable="1" [(validDrag)]="validComboDrag" [(files)]="files" accept="image/*" [maxSize]="maxSize"
-      [(lastInvalids)]="lastInvalids" [(dragFiles)]="dragFiles" class="well my-drop-zone" [class.invalid-drag]="validComboDrag===false"
+    <div ngfDrop selectable="1" [(validDrag)]="validComboDrag" [(files)]="files" accept="image/*"
+      [(dragFiles)]="dragFiles" class="well my-drop-zone" [class.invalid-drag]="validComboDrag===false"
       [class.valid-drag]="validComboDrag">
       Combo drop/select
       <strong>image</strong> only zone

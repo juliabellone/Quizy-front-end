@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import { FileService, AuthenticationService } from '../../_services';
+import { AuthenticationService } from '../../_services';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,26 +9,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./file-uploader.component.css']
 })
 export class FileUploaderComponent implements OnInit {
-  isLoggedIn: any;
+  @Output() onUpload = new EventEmitter<File>();
+  
+  constructor() { }
 
-  constructor(
-    private authService: AuthenticationService,
-    private fileService: FileService
-  ) { }
-
-  ngOnInit() {
-    this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
-
-  }
+  ngOnInit() { }
 
   uploadFiles(files: File) {
-    this.fileService.uploadFile(files[0], this.isLoggedIn.ui)
-      .subscribe(
-        data => {
-          console.log(data);
-        },
-        err => {
-          console.log(err);
-        });
+    this.onUpload.emit(files);
   }
 }

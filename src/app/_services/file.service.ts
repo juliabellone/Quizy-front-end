@@ -7,7 +7,7 @@ export class FileService {
 
   constructor(private http: HttpClient) { }
 
-  uploadFile(newFile: File, userId) {
+  uploadAvatar(newFile: File, userId) {
     const formData: FormData = new FormData();
 
     formData.append('file', newFile, newFile.name);
