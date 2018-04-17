@@ -11,7 +11,7 @@ import { resetFakeAsyncZone } from '@angular/core/testing';
 
 export class SelectQuizComponent implements OnInit {
   public isActive:string;
-  public quizes;
+  public quizes:any[];
 
   constructor(
     private quizApi: QuizService,
@@ -26,31 +26,35 @@ export class SelectQuizComponent implements OnInit {
   //no mostrar todos los quizes. Hacer ngIf para mostrar los temticos o los dellos users
 
   getQuizes(source) {
-    console.log(source)
-    if (source == 'all') {
+    this.quizes = [];
+      if (source == 'all') {
+      this.isActive = 'all';
       this.quizApi.getCategories()
       .subscribe((response) => {
-        this.quizes = response;
+        this.quizes.push(response);
+        console.log("1",this.quizes);
         this.userQuizesApi.getAllQuizes()
         .subscribe((response) => {
-          console.log(response);
-          response.forEach(element => {
-            this.quizes.push(element);            
+          this.quizes.push(response);            
+          console.log("2", this.quizes);
           });
-          console.log(this.quizes)
         })
-      })
-      //peticion a nuestra api a la base de datos de quizes.       
-        //Push a quizes con el resultado
+      }
+      else if (source == 'topics') {
+        this.isActive = 'topics';
+        this.quizApi.getCategories()
+        .subscribe((response) => {
+          this.quizes.push(response);            
+        })
+      }
+      else if (source == 'users') {
+        this.isActive = 'users';
+        this.userQuizesApi.getAllQuizes()
+        .subscribe((response) => {
+          this.quizes.push(response);            
+          console.log("2", this.quizes);
+          });
+      }
     }
-    if (source == 'topics') {
-      this.quizApi.getCategories()
-      .subscribe((response) => {
-        this.quizes = response;
-      })
-    }
-    if (source == 'users') {
-      //peticion a nuestra api a la base de datos de quizes.       
-    }
-  }
+    
 }
