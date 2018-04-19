@@ -2,9 +2,10 @@
       <div class="profile-header-img">
         <img class="avatar" src="{{user.avatar.pic_path}}" />
       </div>
-        <!-- badge -->
-      <div class="rank-label-container">
-        <span class="label label-default rank-label">{{user.username}}</span>
+      <div class="user-label-container">
+        <i class="pencil fas fa-pencil-alt fa-lg"></i>
+        <span class="user-label">{{user.username}}</span>
+        <i class="edit fas fa-pencil-alt fa-lg"></i>
       </div>
       <file-uploader (onUpload)="uploadAvatar($event)"></file-uploader>
 </div>

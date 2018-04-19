@@ -5,7 +5,6 @@ import { AuthenticationService } from '../_services';
 
 @Injectable()
 export class RequireAnonGuard implements CanActivate {
-
     constructor(
         private router: Router,
         private authService: AuthenticationService,

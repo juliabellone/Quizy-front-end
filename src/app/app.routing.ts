@@ -10,7 +10,7 @@ import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
 
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [RequireUserGuard] },
+    { path: '', component: HomeComponent, canActivate: [RequireAnonGuard] },
     { path: 'login', component: LoginComponent, canActivate: [RequireAnonGuard] },
     { path: 'register', component: RegisterComponent, canActivate: [RequireAnonGuard] },
     { path: 'profile/:id', component: ProfileComponent, canActivate: [RequireUserGuard] },
