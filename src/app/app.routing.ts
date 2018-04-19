@@ -16,7 +16,7 @@ const appRoutes: Routes = [
     { path: 'profile/:id', component: ProfileComponent, canActivate: [RequireUserGuard] },
     { path: 'selectquiz', component: SelectQuizComponent, canActivate: [RequireUserGuard] },
     { path: 'quiz/new', component: CreateQuizComponent, canActivate: [RequireUserGuard] },
-    { path: 'quiz/:category', component: QuizComponent, canActivate: [RequireUserGuard] },
+    { path: 'quiz/:source/:id', component: QuizComponent, canActivate: [RequireUserGuard] },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService, UserService, CreateQuizService } from '../../_services';
 import { Observable } from 'rxjs/Observable';
 import { resetFakeAsyncZone } from '@angular/core/testing';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-selectquiz',
@@ -16,6 +17,7 @@ export class SelectQuizComponent implements OnInit {
   constructor(
     private quizApi: QuizService,
     private userQuizesApi: CreateQuizService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -54,6 +56,14 @@ export class SelectQuizComponent implements OnInit {
           this.quizes.push(response);            
           console.log("2", this.quizes);
           });
+      }
+    }
+    retrieveQuiz(quiz) {
+      console.log(quiz)
+      if(quiz.user) {
+        this.router.navigate([`/quiz/users/${quiz._id}`]);
+      } else {
+        this.router.navigate([`quiz/categories/${quiz.id}`]);  
       }
     }
     

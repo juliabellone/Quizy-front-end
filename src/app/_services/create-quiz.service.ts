@@ -14,15 +14,15 @@ export class CreateQuizService {
   }
 
   createQuestion(question, quizId) {
-   return this.http.put(`${this.BASE_URL}/quiz/${quizId}`, question);
+    return this.http.put(`${this.BASE_URL}/quiz/${quizId}`, question);
+  }
+  
+  getQuiz(id) {
+    return this.http.get(`${this.BASE_URL}/quiz/${id}`);
   }
 
   getAllQuizes() {
     return this.http.get(`${this.BASE_URL}/quiz/`);
-  }
-
-  getQuiz(id) {
-    return this.http.get(`${this.BASE_URL}/quiz/${id}`);
   }
   
 }

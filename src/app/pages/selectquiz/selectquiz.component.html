@@ -6,6 +6,7 @@
 </div>
 <div class="quiz-grid" *ngFor="let quizarray of quizes">
     <div class="quiz-selector" *ngFor="let quiz of quizarray">
-        <a [routerLink]="['/quiz',quiz.id]"><p>{{quiz.name}}</p></a>
+        <p>{{quiz.name}}</p>
+        <button (click)="retrieveQuiz(quiz)">Play</button>
     </div>
 </div>

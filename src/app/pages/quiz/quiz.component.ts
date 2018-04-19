@@ -16,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class QuizComponent implements OnInit {
   public id;
+  public source;
   public allQuestions:any = {};
   public currentIndex:number = 0;
   public question:any = {};
@@ -33,18 +34,28 @@ export class QuizComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => this.id = Number(params['category']));
-    this.getQuestions(this.id);
+    this.route.params.subscribe((params) => this.id = (params['id']));
+    this.route.params.subscribe((params) => this.source = String(params['source']));
+    this.getQuestions(this.source, this.id);
   }
 
-  getQuestions(id) {
+  getQuestions(source, id) {
+    console.log(source, id)
+    if (source == 'users') {
+      this.userQuizesApi.getQuiz(id)
+      .subscribe((response) => {
+        console.log(response);
+      })
+      //llama a nuestra api
+    } else if (source == 'categories') {
       this.quizApi.getQuestions(id)
-        .subscribe((response) => {
-        this.allQuestions = response;
-        this.decodeJSON()
-        this.prepareQuestion();
-      });  
-  }
+      .subscribe((response) => {
+      this.allQuestions = response;
+      this.decodeJSON()
+      this.prepareQuestion();
+    });
+    }
+  }  
   
 
   decodeJSON() {
