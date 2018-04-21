@@ -79,16 +79,16 @@ export class QuizComponent implements OnInit {
 
   prepareQuestion() {
     console.log(this.endQuiz())
-    if (!this.endQuiz()) {
+    if (this.endQuiz()) {
+      this.playing = false;
+      console.log('game has ended');
+    } else {
       this.question = (this.allQuestions[this.currentIndex]);
       this.title = this.question.question;
       this.correctAnswer = this.question.correct_answer;
       this.allAnswers = this.question.incorrect_answers;
       this.allAnswers.push(this.correctAnswer);
       this.allAnswers.sort();
-    } else {
-      this.playing = false;
-      console.log('game has ended');
     }
   }
 
@@ -104,8 +104,8 @@ export class QuizComponent implements OnInit {
   }
 
   endQuiz() {
-    if(this.currentIndex < this.allQuestions.length){
-      return false;
+    if(this.currentIndex <= this.allQuestions.length-1){
+      return false; //sigues jugando
     } else {
       console.log('end of game');
       return true; //acaba el juego
