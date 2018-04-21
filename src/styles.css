@@ -17,7 +17,7 @@ a {
 }
 
 .app-container {
-    background-image: url('./assets/images/background.png'); 
+    background: #F5F3F5; 
     min-height: 800px;
 }
 
