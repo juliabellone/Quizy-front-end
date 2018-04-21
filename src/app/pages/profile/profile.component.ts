@@ -6,14 +6,15 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
   user: {
-    firstName: string,
-    lastName: string,
     username: string,
+    name: string,
     email: string,
+    friends: string[],
+    age: number,
     avatar: {
       pic_path: string,
     }
@@ -30,15 +31,15 @@ export class ProfileComponent implements OnInit {
   ){
     this.user = {
       email: '',
-      firstName: '',
-      lastName: '',
+      name: '',
       username: '',
+      friends: [],
+      age: 0,
       avatar: {
         pic_path: ''
       }
     }
   }
-
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -52,8 +53,10 @@ export class ProfileComponent implements OnInit {
       .subscribe(
         data => {
           this.user.username = data.username;
-          this.user.firstName = data.firstName;
-          this.user.lastName = data.lastName;
+          this.user.name = data.firstName && data.lastName ? `${data.firstName} ${data.lastName}` : '';
+          this.user.age = data.age;
+          this.user.email = data.email;
+          this.user.friends = data.friends;
           this.user.avatar.pic_path = data.avatar.pic_path;
         },
         error => {
@@ -64,6 +67,22 @@ export class ProfileComponent implements OnInit {
     this.fileService.uploadAvatar(files[0], this.isLoggedIn.ui)
       .subscribe(
         data => {
+          this.user.avatar.pic_path = data.avatar.pic_path;
+        },
+        err => {
+          console.log(err);
+        });
+  }
+  editUser(user) {
+    console.log("hola",user)
+    this.userService.updateUser(this.isLoggedIn.ui, user)
+      .subscribe(
+        data => {
+          this.user.username = data.username;
+          this.user.name = data.firstName && data.lastName ? `${data.firstName} ${data.lastName}` : '';
+          this.user.age = data.age;
+          this.user.email = data.email;
+          this.user.friends = data.friends;
           this.user.avatar.pic_path = data.avatar.pic_path;
         },
         err => {

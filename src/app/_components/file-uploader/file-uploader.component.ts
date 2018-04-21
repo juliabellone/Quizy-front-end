@@ -1,6 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
-import { AuthenticationService } from '../../_services';
 import { Observable } from 'rxjs';
 
 @Component({

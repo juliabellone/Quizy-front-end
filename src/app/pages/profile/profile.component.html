@@ -1,10 +1,30 @@
-<div class="profile-container">
-      <div class="profile-header-img">
-        <img class="avatar" src="{{user.avatar.pic_path}}" />
+<div class="profile-component-container">
+  <div class="profile-container">
+    <div class="profile-header-img">
+      <img class="avatar" src="{{user.avatar.pic_path}}" />
+    </div>
+    <div class="user-info-container">
+      <div class="user-label-container">
+        <i class="pencil fas fa-pencil-alt fa-lg"></i>
+        <span class="user-label">{{user.username}}</span>
+        <i class="edit fas fa-pencil-alt fa-lg" (click)="editAvatar = true"></i>
       </div>
-        <!-- badge -->
-      <div class="rank-label-container">
-        <span class="label label-default rank-label">{{user.username}}</span>
+      <div class="user-name">
+        {{user.name}}
       </div>
-      <file-uploader (onUpload)="uploadAvatar($event)"></file-uploader>
+      <div class="friends">
+        <div class="friends-value">{{user.friends.length}}</div>
+        <label class="friends-label">Friends</label>
+      </div>
+    </div>
+  </div>
+  <div class="profile-stats"> 
+    Aquí debería haber estadisticas molonas
+  </div>
 </div>
+<div *ngIf="editAvatar">
+  <i class="fas fa-times fa-lg" (click)="editAvatar = false"></i>
+  <file-uploader (onUpload)="uploadAvatar($event)"></file-uploader>
+  <edit-user (onUpdateUser)="editUser($event)"></edit-user>
+</div>
+

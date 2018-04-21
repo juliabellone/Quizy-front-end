@@ -1,0 +1,48 @@
+.profile-component-container{
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .profile-container {
+        background: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;        
+        .profile-header-img {
+            width: 300px;
+            max-height: 300px;
+            overflow: hidden;
+        }
+        .profile-header-img > img {
+            width: 300px;
+            height: auto;
+        }
+        .user-info-container {
+            .user-label-container {
+                margin: 20px;
+                text-align: center;
+                .user-label {
+                    font-size: 20px;
+                    line-height: 30px;
+                    font-weight: bold;
+                    background: -webkit-linear-gradient(bottom left, crimson 0%, #f90 100%);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+                .pencil {
+                    visibility: hidden;
+                }
+                .edit {
+                    visibility: hidden;
+                }
+                &:hover .edit{
+                    visibility: visible;
+                }
+            }
+        }    
+    }
+    .profile-stats {
+    }
+}

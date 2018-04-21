@@ -1,9 +1,9 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { User } from "../_models/user";
-import 'rxjs/add/operator/map'
 import { BehaviorSubject } from 'rxjs';
+import 'rxjs/add/operator/map';
+import { User } from "../_models/user";
 
 @Injectable()
 export class AuthenticationService {
@@ -16,8 +16,9 @@ export class AuthenticationService {
     }
 
     constructor(private http: HttpClient) { 
-        const currentUser: any = JSON.parse(localStorage.getItem('currentUser')); 
-        if(currentUser && currentUser.auth)
+        const currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
+        const expiredToken: boolean = currentUser ? new Date().valueOf()/1000 >= currentUser.expiresIn : false;
+        if(currentUser && currentUser.auth && !expiredToken)
         {
             this.loggedIn.next({ auth: true, ui: currentUser.ui });
         }
