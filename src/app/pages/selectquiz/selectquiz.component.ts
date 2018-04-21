@@ -34,11 +34,9 @@ export class SelectQuizComponent implements OnInit {
       this.quizApi.getCategories()
       .subscribe((response) => {
         this.quizes.push(response);
-        console.log("1",this.quizes);
         this.userQuizesApi.getAllQuizes()
         .subscribe((response) => {
           this.quizes.push(response);            
-          console.log("2", this.quizes);
           });
         })
       }
@@ -54,12 +52,10 @@ export class SelectQuizComponent implements OnInit {
         this.userQuizesApi.getAllQuizes()
         .subscribe((response) => {
           this.quizes.push(response);            
-          console.log("2", this.quizes);
           });
       }
     }
     retrieveQuiz(quiz) {
-      console.log(quiz)
       if(quiz.user) {
         this.router.navigate([`/quiz/users/${quiz._id}`]);
       } else {

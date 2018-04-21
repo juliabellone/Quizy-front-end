@@ -40,19 +40,19 @@ export class QuizComponent implements OnInit {
   }
 
   getQuestions(source, id) {
-    console.log(source, id)
     if (source == 'users') {
       this.userQuizesApi.getQuiz(id)
       .subscribe((response) => {
-        console.log(response);
+        this.allQuestions = response;
+        this.prepareQuestion();  
       })
       //llama a nuestra api
     } else if (source == 'categories') {
       this.quizApi.getQuestions(id)
       .subscribe((response) => {
-      this.allQuestions = response;
-      this.decodeJSON()
-      this.prepareQuestion();
+        this.allQuestions = response;
+        this.decodeJSON();
+        this.prepareQuestion();
     });
     }
   }  
@@ -72,14 +72,14 @@ export class QuizComponent implements OnInit {
   }
 
   prepareQuestion() {
-    console.log('endquiz', this.endQuiz())
-    if (!this.endQuiz()) {
+    if (this.endQuiz() == false) {
       this.question = (this.allQuestions[this.currentIndex]);
       this.title = this.question.question;
       this.correctAnswer = this.question.correct_answer;
       this.allAnswers = this.question.incorrect_answers;
       this.allAnswers.push(this.correctAnswer);
       this.allAnswers.sort();
+      console.log(this.currentIndex, this.question);
     } else {
       console.log('game has ended');
     }
@@ -87,24 +87,22 @@ export class QuizComponent implements OnInit {
 
   getResponse(response) {
     if(response == this.correctAnswer ){
-      console.log(response,'answer is correct');
+      //console.log(response,'answer is correct');
       this.totalCorrect++;
     } else {
-      console.log(response, 'answer is incorrect');
+      //console.log(response, 'answer is incorrect');
     }
     this.currentIndex++;
     this.prepareQuestion();
-    console.log('total correct',this.totalCorrect)
-    console.log('quiz length', this.allQuestions.length)
-
-    console.log('this turn', this.currentIndex)
   }
 
   endQuiz() {
+    console.log('prueba', this.currentIndex,this.allQuestions.length-1 )
     if(this.currentIndex > this.allQuestions.length-1){
-      return true;
+      console.log('end of game');
+      return true; //acaba el juego
     } else {
-      return false;
+      return false; //sigue jugando
     }
   }
 }
