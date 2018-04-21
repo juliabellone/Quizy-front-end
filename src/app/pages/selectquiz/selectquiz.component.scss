@@ -1,41 +1,15 @@
-.quiz-grid {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.quiz-selector {
-    width: 20%;
-    height: 200px;
-    background-color: black; 
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-content: center;
-    padding:10px;
-    margin:10px;
-
-    p {
-        font-size: 18px;
-        font-family: sans-serif;
-        color: white;
+.jumbotron {
+    .btn {
+        background-color: #7EAEAE;
+        color: #2D323E;
     }
 }
-
-.selector {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    padding: 10px;
-
-    button {
-        margin: 10px;
-        background-color: white;
-        border: 1px solid black;
+.card {
+    background-color: #5FB55E;
+    .card-body {
+        .btn {
+            background-color: #F5F3F5;
+            color: #2D323E;
+        }
     }
-    .active {
-        background-color: black;
-        color: white;
-    }
-
 }

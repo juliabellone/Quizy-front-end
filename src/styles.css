@@ -1,4 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: 'avenir', Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+a, h1, h2, h3, p {
+    color: #2D323E;
+}
 a {
     cursor: pointer;
 }
@@ -8,11 +17,12 @@ a {
 }
 
 .app-container {
-    background: rgb(72, 161, 37); 
+    background: #F5F3F5; 
     min-height: 800px;
 }
 
-body {
-  font-family: 'avenir', Arial, Helvetica, sans-serif;
-  font-size: 12px;
+/* Bootstrap modificactions */
+
+.jumbotron {
+    background-color: transparent; 
 }

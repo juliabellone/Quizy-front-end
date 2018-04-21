@@ -1,12 +1,29 @@
-<h1>Select a Quiz</h1>
-<div class="selector">
-    <button (click)="getQuizes('all')" [ngClass]="{active: isActive == 'all'}">All Quizes</button>
-    <button (click)="getQuizes('topics')" [ngClass]="{active: isActive == 'topics'}">Quizes by topics</button>
-    <button (click)="getQuizes('users')" [ngClass]="{active: isActive =='users'}">Quizes from users</button>    
-</div>
-<div class="quiz-grid" *ngFor="let quizarray of quizes">
-    <div class="quiz-selector" *ngFor="let quiz of quizarray">
-        <p>{{quiz.name}}</p>
-        <button (click)="retrieveQuiz(quiz)">Play</button>
-    </div>
-</div>
+<div class="container">
+    <section class="jumbotron text-center">
+        <div class="row">
+            <div class="col"> 
+                <h1>Select a Quiz</h1>
+            </div>    
+        </div>  
+        <div class="row">
+            <div class="col"> 
+                <button type="button" class="btn btn-primary" (click)="getQuizes('all')" [ngClass]="{active: isActive == 'all'}">All Quizes</button>
+                <button type="button" class="btn btn-primary" (click)="getQuizes('topics')" [ngClass]="{active: isActive == 'topics'}">Quizes by topics</button>
+                <button type="button" class="btn btn-primary" (click)="getQuizes('users')" [ngClass]="{active: isActive =='users'}">Quizes from users</button>    
+                
+            </div>
+        </div>
+    </section>
+    <div>
+        <div class="row" *ngFor="let quizarray of quizes">
+            <div class="col-md-4" *ngFor="let quiz of quizarray">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body text-center">
+                        <h6>{{quiz.name}}</h6>
+                        <button type="button" class="btn btn-raised btn-primary" (click)="retrieveQuiz(quiz)">Play</button>
+                    </div>    
+                </div>                
+            </div>
+        </div>    
+    </div>  
+</div>    
