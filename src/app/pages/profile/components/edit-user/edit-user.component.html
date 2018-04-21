@@ -1,0 +1,19 @@
+<div class="form-container">
+  <div class="form-row">
+    <label for="firs-name">First Name</label>
+    <input type="text" [(ngModel)]="user.firstName">
+  </div>
+  <div class="form-row">
+    <label for="last-name">Last Name</label>
+    <input type="text" [(ngModel)]="user.lastName">
+  </div>
+  <div class="form-row">
+    <label for="age">Age</label>
+    <input type="number" [(ngModel)]="user.age">
+  </div>
+  <div class="form-row">
+      <label for="email">Email</label>
+      <input type="text" [(ngModel)]="user.email">
+  </div>
+  <button class="edit-user-btn" (click)="editUser()">Edit</button>
+</div>

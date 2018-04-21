@@ -30,7 +30,7 @@ import { FileUploaderComponent } from './_components/file-uploader/file-uploader
 import { CreateQuizComponent } from './pages/createquiz/createquiz.component';
 import { CreateQuizFormComponent } from './_components/create-quiz-form/create-quiz-form.component';
 import { CreateQuestionFormComponent } from './_components/create-question-form/create-question-form.component';
-
+import { EditUserComponent } from './pages/profile/components/edit-user/edit-user.component';
 
 @NgModule({
     imports: [
@@ -55,6 +55,7 @@ import { CreateQuestionFormComponent } from './_components/create-question-form/
         FileUploaderComponent,
         CreateQuizFormComponent,
         CreateQuestionFormComponent,
+        EditUserComponent,
     ],
     providers: [
         RequireAnonGuard,

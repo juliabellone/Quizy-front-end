@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../_models';
 import { Observable } from 'rxjs/Observable';
 import { AuthenticationService } from '../../_services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'navbar',
@@ -12,7 +13,8 @@ export class NavbarComponent implements OnInit {
   isLoggedIn$: Observable<any>;
 
   constructor(
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -21,6 +23,7 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+    this.router.navigate([`/login`]);
   }
 
 }

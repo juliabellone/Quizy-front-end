@@ -24,8 +24,11 @@ export class UserService {
         return this.http.post('/api/user', user);
     }
 
-    update(user: User) {
-        return this.http.put('/api/user/' + user.id, user);
+    updateUser(id, user) {
+        return this.http.put(`${this.BASE_URL}/user/${id}`, user)
+            .map((user: any) => {
+                return user;
+            });
     }
 
     delete(id: number) {
