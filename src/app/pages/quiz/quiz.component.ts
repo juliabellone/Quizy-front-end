@@ -25,6 +25,7 @@ export class QuizComponent implements OnInit {
   public allAnswers:any[];
 
   public totalCorrect:number = 0;
+  public playing:Boolean; 
   
 
   constructor(
@@ -37,6 +38,7 @@ export class QuizComponent implements OnInit {
     this.route.params.subscribe((params) => this.id = (params['id']));
     this.route.params.subscribe((params) => this.source = String(params['source']));
     this.getQuestions(this.source, this.id);
+    this.playing = true;
   }
 
   getQuestions(source, id) {
@@ -45,6 +47,8 @@ export class QuizComponent implements OnInit {
       .subscribe((response) => {
         this.allQuestions = response;
         this.prepareQuestion();  
+        console.log(this.allQuestions)
+
       })
       //llama a nuestra api
     } else if (source == 'categories') {
@@ -53,6 +57,8 @@ export class QuizComponent implements OnInit {
         this.allQuestions = response;
         this.decodeJSON();
         this.prepareQuestion();
+        console.log(this.allQuestions)
+
     });
     }
   }  
@@ -72,16 +78,17 @@ export class QuizComponent implements OnInit {
   }
 
   prepareQuestion() {
-    if (this.endQuiz() == false) {
+    console.log(this.endQuiz())
+    if (this.endQuiz()) {
+      this.playing = false;
+      console.log('game has ended');
+    } else {
       this.question = (this.allQuestions[this.currentIndex]);
       this.title = this.question.question;
       this.correctAnswer = this.question.correct_answer;
       this.allAnswers = this.question.incorrect_answers;
       this.allAnswers.push(this.correctAnswer);
       this.allAnswers.sort();
-      console.log(this.currentIndex, this.question);
-    } else {
-      console.log('game has ended');
     }
   }
 
@@ -97,12 +104,12 @@ export class QuizComponent implements OnInit {
   }
 
   endQuiz() {
-    console.log('prueba', this.currentIndex,this.allQuestions.length-1 )
-    if(this.currentIndex > this.allQuestions.length-1){
+    if(this.currentIndex <= this.allQuestions.length-1){
+      return false; //sigues jugando
+    } else {
       console.log('end of game');
       return true; //acaba el juego
-    } else {
-      return false; //sigue jugando
     }
   }
+
 }
