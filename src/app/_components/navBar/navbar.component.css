@@ -1,4 +1,4 @@
-.topnav {
+/* .topnav {
   overflow: hidden;
   background-color:  transparent
 }
@@ -23,6 +23,10 @@
   display: none;
 }
 
+#logout {
+  float: right;
+}
+
 @media screen and (max-width: 600px) {
   .topnav.right a:not(:first-child) {display: none;}
   .topnav a.icon {
@@ -43,4 +47,4 @@
     display: block;
     text-align: left;
   }
-}
+} */
