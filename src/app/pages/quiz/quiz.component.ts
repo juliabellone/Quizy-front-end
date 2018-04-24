@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService, CreateQuizService } from '../../_services/';
+import { QuizService, CreateQuizService, AuthenticationService } from '../../_services/';
 import { Observable } from 'rxjs/Observable';
 import { isType } from '@angular/core/src/type';
 import 'rxjs/Rx'; 
 import { Promise } from 'q';
 import { decode } from '@angular/router/src/url_tree';
 import { ActivatedRoute } from '@angular/router';
+import { RankingService } from '../../_services/ranking.service';
 
 
 
@@ -17,22 +18,25 @@ import { ActivatedRoute } from '@angular/router';
 export class QuizComponent implements OnInit {
   public id;
   public source;
-  public allQuestions:any = {};
-  public currentIndex:number = 0;
-  public question:any = {};
-  public title:string = "";
-  public correctAnswer:string = "";
-  public allAnswers:any[];
+  public allQuestions: any = {};
+  public currentIndex: number = 0;
+  public question: any = {};
+  public title: string = "";
+  public correctAnswer: string = "";
+  public allAnswers: any[];
 
-  public totalCorrect:number = 0;
-  public playing:Boolean; 
-  
+  public totalCorrect: number = 0;
+  public playing: Boolean;
 
   constructor(
     private quizApi: QuizService,
     private userQuizesApi: CreateQuizService,
     private route: ActivatedRoute,
-  ) { }
+    private ranking: RankingService,
+    private authService: AuthenticationService,
+  ) { 
+    
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params) => this.id = (params['id']));
@@ -44,25 +48,25 @@ export class QuizComponent implements OnInit {
   getQuestions(source, id) {
     if (source == 'users') {
       this.userQuizesApi.getQuiz(id)
-      .subscribe((response) => {
-        this.allQuestions = response;
-        this.prepareQuestion();  
-        console.log(this.allQuestions)
+        .subscribe((response) => {
+          this.allQuestions = response;
+          this.prepareQuestion();
+          console.log(this.allQuestions)
 
-      })
+        })
       //llama a nuestra api
     } else if (source == 'categories') {
       this.quizApi.getQuestions(id)
-      .subscribe((response) => {
-        this.allQuestions = response;
-        this.decodeJSON();
-        this.prepareQuestion();
-        console.log(this.allQuestions)
+        .subscribe((response) => {
+          this.allQuestions = response;
+          this.decodeJSON();
+          this.prepareQuestion();
+          console.log(this.allQuestions)
 
-    });
+        });
     }
-  }  
-  
+  }
+
 
   decodeJSON() {
     this.allQuestions.forEach(element => {
@@ -78,10 +82,8 @@ export class QuizComponent implements OnInit {
   }
 
   prepareQuestion() {
-    console.log(this.endQuiz())
     if (this.endQuiz()) {
       this.playing = false;
-      console.log('game has ended');
     } else {
       this.question = (this.allQuestions[this.currentIndex]);
       this.title = this.question.question;
@@ -93,8 +95,7 @@ export class QuizComponent implements OnInit {
   }
 
   getResponse(response) {
-    if(response == this.correctAnswer ){
-      //console.log(response,'answer is correct');
+    if (response == this.correctAnswer) {
       this.totalCorrect++;
     } else {
       //console.log(response, 'answer is incorrect');
@@ -104,11 +105,11 @@ export class QuizComponent implements OnInit {
   }
 
   endQuiz() {
-    if(this.currentIndex <= this.allQuestions.length-1){
-      return false; //sigues jugando
+    if (this.currentIndex <= this.allQuestions.length - 1) {
+      return false;
     } else {
       console.log('end of game');
-      return true; //acaba el juego
+      return true;
     }
   }
 

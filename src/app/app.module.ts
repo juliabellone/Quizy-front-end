@@ -17,7 +17,8 @@ import {
     UserService, 
     QuizService,
     FileService,
-    CreateQuizService
+    CreateQuizService,
+    RankingService
 } from './_services/index';
 import { HomeComponent } from './pages/home/index';
 import { LoginComponent } from './pages/login/index';
@@ -65,6 +66,7 @@ import { EditUserComponent } from './pages/profile/components/edit-user/edit-use
         UserService,
         FileService,
         CreateQuizService,
+        RankingService,
         QuizService,
         {
             provide: HTTP_INTERCEPTORS,
