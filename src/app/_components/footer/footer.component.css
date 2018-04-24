@@ -1,9 +1,12 @@
 
-.main-footer {
+.footer {
     padding: 0 15px;
     line-height: 60px;
     width:100%;
     border-top: 1px solid #d1d1d1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
   }
 
 span {

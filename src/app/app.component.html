@@ -1,11 +1,21 @@
 ﻿<!-- main app container -->
-<div class="app-container">
-    <navbar></navbar>
-    <div>
-        <alert></alert>
-        <router-outlet></router-outlet>
+<div class="app-container container-fluid">
+    <div class="row">
+        <div class="col-md-12 colheader">
+            <navbar></navbar>
+        </div>
+    </div> 
+    <div class="row justify-content-center">
+            <div class="col-md-12">
+                <alert></alert>
+                <router-outlet></router-outlet>
+            </div>
     </div>
-    <app-footer></app-footer>
+    <div class="row">    
+        <div class="col-md-12 colheader">
+            <app-footer></app-footer>
+        </div>        
+    </div>
 </div>
 
 
