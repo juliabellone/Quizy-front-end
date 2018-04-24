@@ -1,28 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-
 body {
-  font-family: 'avenir', Arial, Helvetica, sans-serif;
-  font-size: 12px;
-}
+    font-family: 'Rubik', sans-serif;
 
-a, h1, h2, h3, p {
-    color: #2D323E;
-}
-a {
-    cursor: pointer;
-}
-
-.help-block {
-    font-size: 12px;
 }
 
 .app-container {
-    background: #F5F3F5; 
-    min-height: 800px;
+    margin-bottom: 70px;
 }
 
-/* Bootstrap modificactions */
 
-.jumbotron {
-    background-color: transparent; 
-}
