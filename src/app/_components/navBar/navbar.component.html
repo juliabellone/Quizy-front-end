@@ -4,26 +4,29 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="navbar-brand" [routerLinkActive]="['active']" [routerLink]="['']">Quizy</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['profile', isLoggedIn.ui]" *ngIf="isLoggedIn.auth">Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['login']" *ngIf="!isLoggedIn.auth">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['register']" *ngIf="!isLoggedIn.auth">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['selectquiz']" *ngIf="isLoggedIn.auth">Quiz</a>
-        </li>
+            <li class="nav-item">
+                <a class="navbar-brand" [routerLinkActive]="['active']" [routerLink]="['']">Quizy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['profile', isLoggedIn.ui]" *ngIf="isLoggedIn.auth">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['login']" *ngIf="!isLoggedIn.auth">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['register']" *ngIf="!isLoggedIn.auth">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['selectquiz']" *ngIf="isLoggedIn.auth">Play</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['quiz/new']" *ngIf="isLoggedIn.auth">Create Quiz</a>
+                </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link" (click)="onLogout()" *ngIf="isLoggedIn.auth" id="logout">Logout</a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="onLogout()" *ngIf="isLoggedIn.auth" id="logout">Logout</a>
+            </li>
         </ul>
     </div>
 </div>
