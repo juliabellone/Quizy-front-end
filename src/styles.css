@@ -1,28 +1,20 @@
-/* You can add global styles to this file, and also import other style files
-
-body {
-  font-family: 'avenir', Arial, Helvetica, sans-serif;
-  font-size: 12px;
+footer {
+    width: 100%;
 }
+footer {
+    width:100%;
+    padding: 0 15px;
+    line-height: 60px;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #d1d1d1;
+  }
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}  
 
-a, h1, h2, h3, p {
-    color: #2D323E;
+.footer-container > span {
+    margin: 0 15px;
 }
-a {
-    cursor: pointer;
-}
-
-.help-block {
-    font-size: 12px;
-}
-
-.app-container {
-    background: #F5F3F5; 
-    min-height: 800px;
-}
-
-/* Bootstrap modificactions 
-
-.jumbotron {
-    background-color: transparent; 
-} */
