@@ -1,0 +1,20 @@
+
+.main-footer {
+    padding: 0 15px;
+    line-height: 60px;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width:100%;
+    border-top: 1px solid #d1d1d1;
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}  
+
+.footer-container > span {
+    margin: 0 15px;
+}

@@ -18,6 +18,7 @@
         <div class="row" *ngFor="let quizarray of quizes">
             <div class="col-md-4" *ngFor="let quiz of quizarray">
                 <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src="/home/julia/Ironhack/QUIZY/Quizy-frontend/src/assets/images/pencils.png"> 
                     <div class="card-body text-center">
                         <h6>{{quiz.name}}</h6>
                         <button type="button" class="btn btn-raised btn-primary" (click)="retrieveQuiz(quiz)">Play</button>
