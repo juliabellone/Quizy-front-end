@@ -24,6 +24,14 @@ export class QuizComponent implements OnInit {
   public title: string = "";
   public correctAnswer: string = "";
   public allAnswers: any[];
+  public isLoggedIn: any;
+  public ranking: {
+    quizId: any,
+    userId: any,
+    category: string,
+    result: number,
+  };
+
 
   public totalCorrect: number = 0;
   public playing: Boolean;
@@ -32,15 +40,16 @@ export class QuizComponent implements OnInit {
     private quizApi: QuizService,
     private userQuizesApi: CreateQuizService,
     private route: ActivatedRoute,
-    private ranking: RankingService,
+    private rankingService: RankingService,
     private authService: AuthenticationService,
   ) { 
-    
+
   }
 
   ngOnInit() {
     this.route.params.subscribe((params) => this.id = (params['id']));
     this.route.params.subscribe((params) => this.source = String(params['source']));
+    this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
     this.getQuestions(this.source, this.id);
     this.playing = true;
   }
@@ -49,10 +58,14 @@ export class QuizComponent implements OnInit {
     if (source == 'users') {
       this.userQuizesApi.getQuiz(id)
         .subscribe((response) => {
-          this.allQuestions = response;
+          this.allQuestions = response.questions;
           this.prepareQuestion();
-          console.log(this.allQuestions)
-
+          this.ranking = {
+            userId: this.isLoggedIn.ui,
+            quizId: id,
+            category: response.category,
+            result: 0,
+          };
         })
       //llama a nuestra api
     } else if (source == 'categories') {
@@ -61,8 +74,13 @@ export class QuizComponent implements OnInit {
           this.allQuestions = response;
           this.decodeJSON();
           this.prepareQuestion();
-          console.log(this.allQuestions)
-
+          this.ranking = {
+            userId: this.isLoggedIn.ui,
+            quizId: null,
+            category: this.allQuestions[0].category,
+            result: 0,
+          };
+          console.log(this.ranking);
         });
     }
   }
@@ -84,6 +102,12 @@ export class QuizComponent implements OnInit {
   prepareQuestion() {
     if (this.endQuiz()) {
       this.playing = false;
+      this.ranking.result = this.totalCorrect * 10 / this.allQuestions.length;
+      this.rankingService.addRanking(this.ranking)
+        .subscribe(
+          data => {}
+          ,error => console.log(error)
+        );
     } else {
       this.question = (this.allQuestions[this.currentIndex]);
       this.title = this.question.question;

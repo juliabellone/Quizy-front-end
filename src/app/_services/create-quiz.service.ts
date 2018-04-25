@@ -18,7 +18,8 @@ export class CreateQuizService {
   }
   
   getQuiz(id) {
-    return this.http.get(`${this.BASE_URL}/quiz/${id}`);
+    return this.http.get(`${this.BASE_URL}/quiz/${id}`)
+      .map((quiz:any) => quiz);
   }
 
   getAllQuizes() {
