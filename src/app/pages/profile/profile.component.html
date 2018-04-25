@@ -1,43 +1,50 @@
-<div class="container">
-  <div class="profile-header">
-    <div class="profile-header-info">
+  <div class="row profile-header">
+    <div class="col-md-8 profile-header-info">
       <div class="profile-header-img">
           <img src="{{user.avatar.pic_path}}"/>    
       </div>
       <h2 class="user-label">{{user.username}}</h2>
       <h6>Points: 2.999.999</h6>
     </div>
-  </div>  
-</div>
+  </div> 
+  <div class="row">
+    <div class="col-md-8 editarea">
+      <!--Modal toggle -->
+      <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit profile</button>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#pictureModal">Change Picture</button>
 
-<!-- 
-<div class="profile-component-container">
-  <div class="profile-container">
-    <div class="profile-header-img">
-      <img class="avatar" src="{{user.avatar.pic_path}}" />
+      <!-- edit Modal -->
+      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Update your personal information</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <edit-user (onUpdateUser)="editUser($event)"></edit-user>
+                </div>
+              </div>
+            </div>    
+      </div>
+      <!-- picture Modal -->
+      <div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Change profile picture</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <file-uploader (onUpload)="uploadAvatar($event)"></file-uploader>
+                </div>
+              </div>
+            </div>    
+      </div>
+
     </div>
-    <div class="user-info-container">
-      <div class="user-label-container">
-        <i class="pencil fas fa-pencil-alt fa-lg"></i>
-        <span class="user-label">{{user.username}}</span>
-        <i class="edit fas fa-pencil-alt fa-lg" (click)="editAvatar = true"></i>
-      </div>
-      <div class="user-name">
-        {{user.name}}
-      </div>
-      <div class="friends">
-        <div class="friends-value">{{user.friends.length}}</div>
-        <label class="friends-label">Friends</label>
-      </div>
-    </div>
-  </div>
-  <div class="profile-stats"> 
-    Aquí debería haber estadisticas molonas
-  </div>
-</div>
-<div *ngIf="editAvatar">
-  <i class="fas fa-times fa-lg" (click)="editAvatar = false"></i>
-  <file-uploader (onUpload)="uploadAvatar($event)"></file-uploader>
-  <edit-user (onUpdateUser)="editUser($event)"></edit-user>
-</div>
- -->
+  </div> 

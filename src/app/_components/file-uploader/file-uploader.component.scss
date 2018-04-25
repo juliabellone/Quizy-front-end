@@ -1,0 +1,43 @@
+
+
+.upload-box {
+    width: 100%; 
+
+    div, button {
+    margin: 10px 0px;      
+    }
+}
+
+.my-drop-zone {
+    border: 1px dotted lightgray;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  /* Default class applied to drop zones on over */
+
+  .invalid-drag {
+    border: dotted 3px red;
+  }
+
+  .valid-drag {
+    border: dotted 3px green;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  .previewIcon {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .inline-block {
+    display: inline-block;
+    margin: .2em;
+  }

@@ -1,14 +1,22 @@
-body {
-    font-family: 'Rubik', sans-serif;
-
+html{
+    min-height:100%;
+    width:100%;
+    background: #fff;
+    position:relative;
+ }
+body{
+   position:absolute;
+   min-height:100%;
+   width:100% ;
+   height:100%;
+   font-family: 'Rubik', sans-serif;
 }
 
-.app-container {
+.content {
+    min-height: 100vh;
     margin-bottom: 70px;
 }
 
-
-.colheader {
-    padding:0;
+.fullwidth2 {
+    padding: 0;
 }
-
