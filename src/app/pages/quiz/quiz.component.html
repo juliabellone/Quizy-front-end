@@ -1,13 +1,28 @@
 <div *ngIf="playing" class="question">
-  <p>{{title}}</p>
-  <div class="all-answers">
-    <button *ngFor="let answer of allAnswers" (click)="getResponse(answer)">{{answer}}</button>  
+  <div class="row quiz-header justify-content-md-center">
+    <div class="col-md-8 text-center"> 
+      <h3>{{title}}</h3>
+    </div>      
   </div>
+  <div class="row justify-content-md-center">
+      <div class="col-md-8 text-center"> 
+        <div class="all-answers">
+          <button *ngFor="let answer of allAnswers" (click)="getResponse(answer)" class="btn btn-outline-primary quiz-btn">{{answer}}</button>  
+        </div>
+      </div>
+  </div>      
 </div>
-
 <div *ngIf="!playing" class="endGame">
-  <p>THE QUIZ HAS ENDED</p>
-  <p>Your score was: {{totalCorrect}}/{{allQuestions.length}}</p>
-  <p>Correct answers: {{totalCorrect}}</p>
-  <p>Total questions: {{allQuestions.length}}</p>
+  <div class="row quiz-header justify-content-md-center">
+      <div class="col-md-8 text-center"> 
+        <h3>The quiz has ended</h3>
+      </div>      
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-8 text-center"> 
+          <p>Your score was: {{totalCorrect}}/{{allQuestions.length}}</p>
+          <p>Correct answers: {{totalCorrect}}</p>
+          <p>Total questions: {{allQuestions.length}}</p>
+      </div>      
+    </div>
 </div>

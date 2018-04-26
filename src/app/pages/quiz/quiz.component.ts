@@ -13,7 +13,7 @@ import { RankingService } from '../../_services/ranking.service';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.css']
+  styleUrls: ['./quiz.component.scss']
 })
 export class QuizComponent implements OnInit {
   public id;
