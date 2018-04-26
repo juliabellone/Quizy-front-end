@@ -30,7 +30,6 @@ export class SelectQuizComponent implements OnInit {
         this.quizes = response;
         this.createQuizService.getAllQuizes()
         .subscribe((response) => {
-          console.log('respuest',response)
           this.quizes.push(response);
         })
       })
