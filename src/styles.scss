@@ -1,9 +1,11 @@
+@import "~angular-star-rating/assets/scss/star-rating";
+
 html{
     min-height:100%;
     width:100%;
     background: #fff;
     position:relative;
- }
+}
 body{
    position:absolute;
    min-height:100%;
@@ -11,7 +13,6 @@ body{
    height:100%;
    font-family: 'Rubik', sans-serif;
 }
-
 .content {
     min-height: 100vh;
     margin-bottom: 70px;
