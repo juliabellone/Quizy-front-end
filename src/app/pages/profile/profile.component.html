@@ -8,7 +8,7 @@
     </div>
   </div> 
   <div class="row justify-content-md-center">
-    <div class="col-md-8 editarea">
+    <div *ngIf="isLoggedUser" class="col-md-8 editarea">
       <!--Modal toggle -->
       <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editModal">Edit profile</button>
       <button class="btn btn-outline-primary" data-toggle="modal" data-target="#pictureModal">Change Picture</button>
