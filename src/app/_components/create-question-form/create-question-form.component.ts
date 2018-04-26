@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'create-question-form',
   templateUrl: './create-question-form.component.html',
-  styleUrls: ['./create-question-form.component.css']
+  styleUrls: ['./create-question-form.component.scss']
 })
 export class CreateQuestionFormComponent implements OnInit {
 
