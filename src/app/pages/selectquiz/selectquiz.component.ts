@@ -21,27 +21,16 @@ export class SelectQuizComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isActive = 'topics';
-    this.getQuizes('topics');
+    this.isActive = 'category';
+    this.getQuizes('category');
   }
 
   //no mostrar todos los quizes. Hacer ngIf para mostrar los temticos o los dellos users
 
   getQuizes(source) {
     this.quizes = [];
-      if (source == 'all') {
-      this.isActive = 'all';
-      this.quizApi.getCategories()
-      .subscribe((response) => {
-        this.quizes.push(response);
-        this.userQuizesApi.getAllQuizes()
-        .subscribe((response) => {
-          this.quizes.push(response);            
-          });
-        })
-      }
-      else if (source == 'topics') {
-        this.isActive = 'topics';
+      if (source == 'category') {
+        this.isActive = 'category';
         this.quizApi.getCategories()
         .subscribe((response) => {
           this.quizes.push(response);            
@@ -54,6 +43,8 @@ export class SelectQuizComponent implements OnInit {
           this.quizes.push(response);            
           });
       }
+      console.log(this.quizes)
+      console.log(this.isActive)
     }
     retrieveQuiz(quiz) {
       if(quiz.user) {

@@ -2,8 +2,7 @@
     <div class="col-md-8 text-center"> 
         <h1>Select a Quiz</h1>
         <div>
-            <button type="button" class="btn btn-outline-primary" (click)="getQuizes('all')" [ngClass]="{'active': isActive == 'all'}">All Quizes</button>
-            <button type="button" class="btn btn-outline-primary" (click)="getQuizes('topics')" [ngClass]="{'active': isActive == 'topics'}">Quizes by topics</button>
+            <button type="button" class="btn btn-outline-primary" (click)="getQuizes('category')" [ngClass]="{'active': isActive == 'category'}">Quizes by category</button>
             <button type="button" class="btn btn-outline-primary" (click)="getQuizes('users')" [ngClass]="{'active': isActive =='users'}">Quizes from users</button>  
         </div>      
     </div>
@@ -14,7 +13,15 @@
         <div class="quiz-deck" *ngFor="let quizarray of quizes">
             <div class ="quiz-card" *ngFor="let quiz of quizarray">
                 <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="assets/images/pencils.png"> 
+                    <img *ngIf="isActive=='users'" class="card-img-top" src="assets/images/pencils.png"> 
+                    <img *ngIf="isActive=='category'" class="card-img-top" src="assets/images/{{quiz.id}}.jpg">
+
+                    <!-- <div *ngIf="isActive=='category'">
+                        <img class="card-img-top" src=`assets/images/{{quiz.id}}.jpg`>
+                    </div>
+                    <div *ngIf="isActive=='users'">
+                        <img class="card-img-top" src=`assets/images/pencils.png`> 
+                    </div> -->
                     <div class="card-body text-center">
                         <h4>{{quiz.name}}</h4>
                         <button type="button" class="btn btn-fill btn-info" (click)="retrieveQuiz(quiz)">Play</button>
