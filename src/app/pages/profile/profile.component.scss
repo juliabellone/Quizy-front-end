@@ -1,6 +1,6 @@
-.profile-header {
+.quiz-header {
     background: linear-gradient(rgb(100, 223, 216), #60CAE1);
-    padding: 20px;
+    padding: 30px 20px;
     color: white;
 
     .profile-header-info {
@@ -33,3 +33,10 @@
     height: auto;
 }
 
+.editarea {
+    padding: 5px 30px; 
+    button {
+        margin-right: 5px; 
+        margin-left: 5px;
+    }
+}

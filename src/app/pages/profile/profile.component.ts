@@ -62,6 +62,7 @@ export class ProfileComponent implements OnInit {
         error => {
           this.alertService.error(error.error);
         });
+        console.log(this.user)
   }
   uploadAvatar(files) {
     this.fileService.uploadAvatar(files[0], this.isLoggedIn.ui)
