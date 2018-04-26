@@ -1,8 +1,22 @@
-<h1>Create your own quiz!</h1>
+<div class="row quiz-header justify-content-md-center">
+    <div class="col-md-8 text-center"> 
+        <h1>Create your own quiz!</h1>
+    </div>
+</div>
+<div class="row justify-content-md-center">
+    <div class="col-md-8">
+        <div *ngIf="!quizCreated">
+            <app-create-quiz-form (onCreate)="changeStatus($event)"></app-create-quiz-form>
+        </div>
+        <div *ngIf="quizCreated">
+            <create-question-form [theQuiz]="quizCreated"></create-question-form>
+        </div>
+    </div>
+</div>
 
-<div *ngIf="!quizCreated">
-    <app-create-quiz-form (onCreate)="changeStatus($event)"></app-create-quiz-form>
-</div>
-<div *ngIf="quizCreated">
-    <create-question-form [theQuiz]="quizCreated"></create-question-form>
-</div>
+
+
+
+
+
+
