@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
     }
   };
   userId: string;
+  isLoggedUser:Boolean;
   isLoggedIn: any;
 
   constructor(
@@ -42,10 +43,15 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
+
     this.route.params.subscribe(params => {
       this.getUserProfile(params['id'])
+      this.userId = params.id;      
+        if( this.userId === this.isLoggedIn.ui) {
+          this.isLoggedUser = true;
+        }
     });
-    this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
   }
 
   getUserProfile(id) {
@@ -62,7 +68,6 @@ export class ProfileComponent implements OnInit {
         error => {
           this.alertService.error(error.error);
         });
-        console.log(this.user)
   }
   uploadAvatar(files) {
     this.fileService.uploadAvatar(files[0], this.isLoggedIn.ui)
