@@ -5,3 +5,4 @@ export * from './file.service';
 export * from './create-quiz.service';
 export * from './quiz.service';
 export * from './ranking.service';
+export * from './rating.service';

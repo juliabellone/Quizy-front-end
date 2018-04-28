@@ -19,15 +19,15 @@
         width: 140px;
         max-height: 140px;
         overflow: hidden;
-        border-radius: 50%;
+        border-radius: 100%;
         border: 2px solid white;
         margin-bottom: 20px;
     }
 }
 
 .profile-header-img > img {
-    width: 140px;
-    height: auto;
+    height: 140px;
+    width: auto;
 }
 
 .editarea {

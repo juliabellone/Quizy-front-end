@@ -5,3 +5,7 @@
     border: 1px solid black;
     color: black; 
    }
+
+.start-rating-custom:focus {
+    outline: 10px solid red;
+}

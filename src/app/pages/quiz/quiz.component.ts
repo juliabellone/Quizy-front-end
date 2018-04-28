@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService, CreateQuizService, AuthenticationService } from '../../_services/';
+import { QuizService, CreateQuizService, AuthenticationService, RatingService } from '../../_services/';
 import { Observable } from 'rxjs/Observable';
 import { isType } from '@angular/core/src/type';
 import 'rxjs/Rx'; 
@@ -7,6 +7,8 @@ import { Promise } from 'q';
 import { decode } from '@angular/router/src/url_tree';
 import { ActivatedRoute } from '@angular/router';
 import { RankingService } from '../../_services/ranking.service';
+import { OnClickEvent, OnHoverRatingChangeEvent, OnRatingChangeEven } from 'angular-star-rating';
+
 
 
 
@@ -31,7 +33,12 @@ export class QuizComponent implements OnInit {
     category: string,
     result: number,
   };
-
+  public rating: {
+    quizId: any,
+    userId: any,
+    category: string,
+    rate: number,
+  };
 
   public totalCorrect: number = 0;
   public playing: Boolean;
@@ -42,6 +49,7 @@ export class QuizComponent implements OnInit {
     private route: ActivatedRoute,
     private rankingService: RankingService,
     private authService: AuthenticationService,
+    private ratingService: RatingService,
   ) { 
 
   }
@@ -66,6 +74,12 @@ export class QuizComponent implements OnInit {
             category: response.category,
             result: 0,
           };
+          this.rating = {
+            userId: this.isLoggedIn.ui,
+            quizId: id,
+            category: response.category,
+            rate: 0,
+          };
         })
       //llama a nuestra api
     } else if (source == 'categories') {
@@ -80,7 +94,12 @@ export class QuizComponent implements OnInit {
             category: this.allQuestions[0].category,
             result: 0,
           };
-          console.log(this.ranking);
+          this.rating = {
+            userId: this.isLoggedIn.ui,
+            quizId: id,
+            category: this.allQuestions[0].category,
+            rate: 0,
+          };
         });
     }
   }
@@ -137,4 +156,13 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  onClick = ($event: OnClickEvent) => {
+    this.rating.rate = $event.rating;
+    console.log(this.rating);
+    this.ratingService.addRating(this.rating)
+      .subscribe(
+        data => { },
+        error => console.log(error)
+      );
+  };
 }

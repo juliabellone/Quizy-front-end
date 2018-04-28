@@ -4,6 +4,7 @@ import { FormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ngfModule } from "angular-file"
+import { StarRatingModule } from 'angular-star-rating';
 
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
@@ -18,7 +19,8 @@ import {
     QuizService,
     FileService,
     CreateQuizService,
-    RankingService
+    RankingService,
+    RatingService
 } from './_services/index';
 import { HomeComponent } from './pages/home/index';
 import { LoginComponent } from './pages/login/index';
@@ -40,7 +42,8 @@ import { FooterComponent } from './_components/footer/footer.component';
         FormsModule,
         HttpClientModule,
         routing,
-        ngfModule
+        ngfModule,
+        StarRatingModule.forRoot()
     ],
     declarations: [
         AppComponent,
@@ -70,6 +73,7 @@ import { FooterComponent } from './_components/footer/footer.component';
         CreateQuizService,
         RankingService,
         QuizService,
+        RatingService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
