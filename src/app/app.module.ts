@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ngfModule } from "angular-file"
 import { StarRatingModule } from 'angular-star-rating';
+import { ImageCropperModule } from 'ng2-img-cropper';
 
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
@@ -44,7 +45,8 @@ import { QuizresultComponent } from './components/quizresult/quizresult.componen
         HttpClientModule,
         routing,
         ngfModule,
-        StarRatingModule.forRoot()
+        StarRatingModule.forRoot(),
+        ImageCropperModule
     ],
     declarations: [
         AppComponent,

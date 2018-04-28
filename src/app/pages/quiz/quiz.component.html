@@ -23,7 +23,14 @@
           <p>Your score was: {{totalCorrect}}/{{allQuestions.length}}</p>
           <p>Correct answers: {{totalCorrect}}</p>
           <p>Total questions: {{allQuestions.length}}</p>
-          <star-rating-comp class="start-rating-custom" [starType]="'svg'" [hoverEnabled]="true" (onClick)="onClick($event)"></star-rating-comp>
+          <star-rating-comp 
+            class="start-rating-custom" 
+            size="large"
+            [starType]="'svg'" 
+            [hoverEnabled]="true" 
+            (onClick)="onClick($event)"
+          >
+          </star-rating-comp>
       </div>      
     </div>
 </div>

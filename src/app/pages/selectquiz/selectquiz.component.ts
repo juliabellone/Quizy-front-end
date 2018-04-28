@@ -13,7 +13,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SelectQuizComponent implements OnInit {
   public isActive:string;
   public quizes:any[];
-
+  public offset:number = 0;
+  public pages: number[] = [];
   constructor(
     private quizApi: QuizService,
     private userQuizesApi: CreateQuizService,
@@ -29,7 +30,9 @@ export class SelectQuizComponent implements OnInit {
 
   getQuizes(source) {
     this.quizes = [];
+    this.pages = [];
       if (source == 'category') {
+        this.offset = 0;
         this.isActive = 'category';
         this.quizApi.getCategories()
         .subscribe((response) => {
@@ -38,13 +41,12 @@ export class SelectQuizComponent implements OnInit {
       }
       else if (source == 'users') {
         this.isActive = 'users';
-        this.userQuizesApi.getAllQuizes()
-        .subscribe((response) => {
-          this.quizes.push(response);            
+        this.userQuizesApi.getAllQuizes(this.offset)
+        .subscribe((response: any) => {
+          this.quizes.push(response.quizes);  
+          this.getPages(response);     
           });
       }
-      console.log(this.quizes)
-      console.log(this.isActive)
     }
     retrieveQuiz(quiz) {
       if(quiz.user) {
@@ -53,5 +55,15 @@ export class SelectQuizComponent implements OnInit {
         this.router.navigate([`quiz/categories/${quiz.id}`]);  
       }
     }
-    
+    getPages(res) {
+      const pages = Math.floor(res.count / res.limit);
+      for(let i = 1; i<=pages; i++) {
+        this.pages.push(i);
+      }
+      return pages;
+    }
+    getNextPage(page) {
+      this.offset = page-1;
+      this.getQuizes('users');
+    }
 }

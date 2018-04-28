@@ -15,6 +15,7 @@ export class CreateQuestionFormComponent implements OnInit {
   private question: any = {
     incorrect_answers: [],
   }
+  private numOfQuestions: number = 0;
 
   constructor(
     private createQuizApi: CreateQuizService, 
@@ -41,6 +42,7 @@ export class CreateQuestionFormComponent implements OnInit {
         this.question = {
           incorrect_answers: [],
         }
+        this.numOfQuestions ++;
         console.log(data);
       },
       error => {

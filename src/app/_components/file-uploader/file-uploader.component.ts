@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./file-uploader.component.scss']
 })
 export class FileUploaderComponent implements OnInit {
+  @Input() buttonLiteral: string;
   @Output() onUpload = new EventEmitter<File>();
   
   constructor() { }

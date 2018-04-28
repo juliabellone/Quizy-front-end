@@ -13,16 +13,20 @@
         <div class="quiz-deck" *ngFor="let quizarray of quizes">
             <div class ="quiz-card" *ngFor="let quiz of quizarray">
                 <div class="card mb-4 box-shadow">
-                    <img *ngIf="isActive=='users'" class="card-img-top" src="assets/images/pencils.png"> 
-                    <img *ngIf="isActive=='category'" class="card-img-top" src="assets/images/{{quiz.id}}.jpg">
-
-                    <!-- <div *ngIf="isActive=='category'">
-                        <img class="card-img-top" src=`assets/images/{{quiz.id}}.jpg`>
+                    <div class="card-img-top-container">
+                        <img *ngIf="isActive=='users'" class="card-img-top" src="{{quiz.picture ? quiz.picture.pic_path : 'assets/images/pencils.png'}}" onerror="this.src='assets/images/pencils.png'"> 
+                        <img *ngIf="isActive=='category'" class="card-img-top" src="assets/images/{{quiz.id}}.jpg" onerror="this.src='Default.jpg'">
                     </div>
-                    <div *ngIf="isActive=='users'">
-                        <img class="card-img-top" src=`assets/images/pencils.png`> 
-                    </div> -->
                     <div class="card-body text-center">
+                        <star-rating-comp 
+                            *ngIf="quiz.rating" 
+                            labelText="{{quiz.rating}}"  
+                            labelPosition="right" 
+                            size="medium"
+                            [readOnly]="true"
+                            [starType]="'svg'" 
+                            [rating]="quiz.rating">
+                        </star-rating-comp>
                         <h4>{{quiz.name}}</h4>
                         <button type="button" class="btn btn-fill btn-info" (click)="retrieveQuiz(quiz)">Play</button>
                     </div>    
@@ -30,4 +34,10 @@
             </div>
         </div>    
     </div>    
-</div> 
+</div>
+
+<div *ngIf="pages && pages.length > 1" class="row justify-content-md-center">
+    <div *ngFor="let page of pages">
+        <button type="button" class="btn btn-outline-primary" (click)="getNextPage(page)" [ngClass]="{'active': page-1 === offset}">{{page}}</button>
+    </div>
+</div>

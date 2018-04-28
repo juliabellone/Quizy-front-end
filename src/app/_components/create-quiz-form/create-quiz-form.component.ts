@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { QuizService, CreateQuizService } from '../../_services';
+import { QuizService, CreateQuizService, FileService, AuthenticationService } from '../../_services';
 import { Observable } from 'rxjs/Observable';
 import { AlertService } from '../../_services/index';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,6 +15,8 @@ export class CreateQuizFormComponent implements OnInit {
 
   public categories:any[];
   public quiz:any = {};
+  public isLoggedIn:any;
+  public files: File[];
 
   constructor(
     private quizApi: QuizService,
@@ -22,10 +24,14 @@ export class CreateQuizFormComponent implements OnInit {
     private alertService: AlertService,
     private route: ActivatedRoute,
     private router: Router,
+    private fileService: FileService,
+    private authService: AuthenticationService,
   ) { }
 
   ngOnInit() {
     this.getCategories();
+    this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
+
   }
 
   getCategories() {
@@ -34,13 +40,25 @@ export class CreateQuizFormComponent implements OnInit {
       this.categories = response;
     })
   }
-
+  uploadQuizImage(files) {
+    this.files = files;
+  }
   submitQuiz() {
     this.createQuizApi.createQuiz(this.quiz)
     .subscribe(
-      data => {
-
-        this.onCreate.emit(data);
+      (data: any) => {
+        if (this.files) {
+          this.fileService.uploadQuizImage(this.files[0], data._id)
+            .subscribe(
+              image => {
+                this.onCreate.emit(data);
+              },
+              err => {
+                console.log(err);
+              });
+        } else {
+          this.onCreate.emit(data);
+        }
       }, 
       error => {
         //por ahora no hay error en el servidor

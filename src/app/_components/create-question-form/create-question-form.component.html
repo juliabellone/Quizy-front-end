@@ -2,7 +2,7 @@
 <h3>Add some questions, and press Finish Quiz when you are done</h3>
 <div class="row justify-content-md-center">
     <div class="col-md-6 text-center">
-            <button [routerLink]="['']" class="btn btn-outline-success">Finish Quiz</button>
+            <button *ngIf="numOfQuestions > 0" [routerLink]="['']" class="btn btn-outline-success">Finish Quiz</button>
     </div>
 </div>    
 <div class="row">

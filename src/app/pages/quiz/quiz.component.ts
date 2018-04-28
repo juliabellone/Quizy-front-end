@@ -81,7 +81,6 @@ export class QuizComponent implements OnInit {
             rate: 0,
           };
         })
-      //llama a nuestra api
     } else if (source == 'categories') {
       this.quizApi.getQuestions(id)
         .subscribe((response) => {
@@ -96,7 +95,7 @@ export class QuizComponent implements OnInit {
           };
           this.rating = {
             userId: this.isLoggedIn.ui,
-            quizId: id,
+            quizId: null,
             category: this.allQuestions[0].category,
             rate: 0,
           };

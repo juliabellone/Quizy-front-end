@@ -16,4 +16,14 @@ export class FileService {
         return file;
         });
   };
+
+  uploadQuizImage(newFile: File, userId) {
+    const formData: FormData = new FormData();
+
+    formData.append('file', newFile, newFile.name);
+    return this.http.put<FormData>(`${this.BASE_URL}/quiz/${userId}/picture`, formData)
+      .map((file: any) => {
+        return file;
+      });
+  };
 }

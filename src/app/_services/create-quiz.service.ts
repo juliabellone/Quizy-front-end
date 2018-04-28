@@ -22,8 +22,8 @@ export class CreateQuizService {
       .map((quiz:any) => quiz);
   }
 
-  getAllQuizes() {
-    return this.http.get(`${this.BASE_URL}/quiz/`);
+  getAllQuizes(offset) {
+    return this.http.get(`${this.BASE_URL}/quiz?offset=${offset}`);
   }
   
 }
