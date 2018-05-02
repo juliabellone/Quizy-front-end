@@ -1,0 +1,27 @@
+<div *ngIf="source==='users'" class="row quiz-header justify-content-md-center">
+  <div class="col-md-8 profile-header-info">
+      <div class="profile-header-img">
+          <img src="{{quiz.picture.pic_path}}"/>    
+      </div>
+      <h2 class="user-label">{{quiz.name}}</h2>
+      <h6>{{quiz.category}}</h6>
+      <h6>{{quiz.rating}}</h6>
+  </div>     
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-md-8 text-center"> 
+  </div>
+</div>      
+
+
+<div *ngIf="source==='categories'" class="row quiz-header justify-content-md-center">
+    <div class="col-md-8 text-center"> 
+      <h3>titulo</h3>
+    </div>      
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-8 text-center"> 
+    </div>
+</div> 
+
+  

@@ -37,6 +37,7 @@ import { CreateQuestionFormComponent } from './_components/create-question-form/
 import { EditUserComponent } from './pages/profile/components/edit-user/edit-user.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { QuizresultComponent } from './components/quizresult/quizresult.component';
+import { QuizdetailsComponent } from './pages/quizdetails/quizdetails.component';
 
 @NgModule({
     imports: [
@@ -66,6 +67,8 @@ import { QuizresultComponent } from './components/quizresult/quizresult.componen
         EditUserComponent,
         FooterComponent,
         QuizresultComponent,
+        QuizdetailsComponent,
+
     ],
     providers: [
         RequireAnonGuard,
