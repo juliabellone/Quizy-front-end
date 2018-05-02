@@ -21,7 +21,6 @@ export class QuizdetailsComponent implements OnInit {
   public isLoggedIn: any;
   public quiz;
 
-
   constructor(
     private route: ActivatedRoute,
     private quizApi: QuizService,
@@ -30,7 +29,6 @@ export class QuizdetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
     this.route.params.subscribe((params) => this.id = (params['id']));
     this.route.params.subscribe((params) => this.source = String(params['source']));
     this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
@@ -42,7 +40,7 @@ export class QuizdetailsComponent implements OnInit {
       this.userQuizesApi.getQuiz(id)
         .subscribe((response) => {
           this.quiz = response;
-          console.log(response)
+          console.log(this.quiz)
           //que hacemos?
         })
     } else if (source == 'categories') {
