@@ -39,6 +39,8 @@ export class QuizComponent implements OnInit {
     category: string,
     rate: number,
   };
+  public timer: any;
+  public timerCounter:number = 0;
 
   public totalCorrect: number = 0;
   public playing: Boolean;
@@ -67,6 +69,7 @@ export class QuizComponent implements OnInit {
       this.userQuizesApi.getQuiz(id)
         .subscribe((response) => {
           this.allQuestions = response.questions;
+          this.timerCounter = this.allQuestions.length * 5;
           this.prepareQuestion();
           this.ranking = {
             userId: this.isLoggedIn.ui,
@@ -85,6 +88,7 @@ export class QuizComponent implements OnInit {
       this.quizApi.getQuestions(id)
         .subscribe((response) => {
           this.allQuestions = response;
+          this.timerCounter = this.allQuestions.length * 5;
           this.decodeJSON();
           this.prepareQuestion();
           this.ranking = {
@@ -101,6 +105,12 @@ export class QuizComponent implements OnInit {
           };
         });
     }
+    this.timer = setInterval(() => {
+      this.timerCounter--;
+      if (this.timerCounter === 0) {
+        this.timeFinished();
+      }
+    }, 1000);
   }
 
 
@@ -119,13 +129,7 @@ export class QuizComponent implements OnInit {
 
   prepareQuestion() {
     if (this.endQuiz()) {
-      this.playing = false;
-      this.ranking.result = this.totalCorrect * 10 / this.allQuestions.length;
-      this.rankingService.addRanking(this.ranking)
-        .subscribe(
-          data => {}
-          ,error => console.log(error)
-        );
+      this.timeFinished();
     } else {
       this.question = (this.allQuestions[this.currentIndex]);
       this.title = this.question.question;
@@ -153,6 +157,17 @@ export class QuizComponent implements OnInit {
       console.log('end of game');
       return true;
     }
+  }
+
+  timeFinished() {
+    clearInterval(this.timer);
+    this.playing = false;
+    this.ranking.result = this.totalCorrect * 10 / this.allQuestions.length;
+    this.rankingService.addRanking(this.ranking)
+      .subscribe(
+        data => { }
+        , error => console.log(error)
+      );
   }
 
   onClick = ($event: OnClickEvent) => {

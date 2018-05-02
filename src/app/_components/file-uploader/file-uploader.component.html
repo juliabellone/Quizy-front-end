@@ -12,7 +12,7 @@
           <div class="col-md-12 upload-box">
             <div ngfDrop selectable="1" [(validDrag)]="validComboDrag" [(files)]="files" accept="image/*"
             [(dragFiles)]="dragFiles" class="well my-drop-zone" [class.invalid-drag]="validComboDrag===false"
-            [class.valid-drag]="validComboDrag" (filesChange)="fileChangeListener($event)">
+            [class.valid-drag]="validComboDrag">
               <span *ngIf="!files">Select or drop an image</span>
               <div *ngIf="files">
                 <div *ngFor="let item of files;let i=index">

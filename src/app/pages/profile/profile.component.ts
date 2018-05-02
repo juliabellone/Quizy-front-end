@@ -17,7 +17,9 @@ export class ProfileComponent implements OnInit {
     age: number,
     avatar: {
       pic_path: string,
-    }
+    },
+    userPoints: number,
+    markAvg: number,
   };
   userId: string;
   isLoggedUser:Boolean;
@@ -38,7 +40,9 @@ export class ProfileComponent implements OnInit {
       age: 0,
       avatar: {
         pic_path: ''
-      }
+      },
+      userPoints: 0,
+      markAvg: 0,
     }
   }
 
@@ -64,6 +68,8 @@ export class ProfileComponent implements OnInit {
           this.user.email = data.email;
           this.user.friends = data.friends;
           this.user.avatar.pic_path = data.avatar.pic_path;
+          this.user.userPoints = data.userPoints;
+          this.user.markAvg = data.markAvg;
         },
         error => {
           this.alertService.error(error.error);
