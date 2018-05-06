@@ -36,6 +36,10 @@ export class QuizdetailsComponent implements OnInit {
     this.getQuizDetails(this.source, this.id);
   }
 
+  getBackgroundImage() {
+    return `url(${this.quiz.picture.pic_path})`;
+  }
+
   getQuizDetails(source, id) {
     if (source == 'users') {
       this.userQuizesApi.getQuiz(id)

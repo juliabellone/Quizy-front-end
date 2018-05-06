@@ -1,61 +1,65 @@
 <div *ngIf="quiz">
-  <div *ngIf="source==='users'" class="row quiz-header justify-content-md-center">
-  <div class="col-md-8 profile-header-info">
-      <div class="profile-header-img">
-          <img src="{{quiz.picture.pic_path}}"/>    
+  <div *ngIf="source==='users'">   
+        <!-- <div  class="row quiz-header justify-content-md-center" style="background-image: url(assets/images/pencils.png); background-size:cover; filter: blur(2px); opacity: 0.5" onerror="this.src='assets/images/pencils.png'"> -->
+
+    <div  class="row quiz-header justify-content-md-center" [ngStyle]="{'background-image':getBackgroundImage()}" style="background-size:cover; filter: blur(2px); opacity: 0.5" onerror="this.src='assets/images/pencils.png'">
+      <div class="col-md-8 profile-header-info">
+        <div class="profile-header-img">
+            <img src="{{quiz.picture.pic_path}}"/>    
+        </div>
+        <h2 class="user-label">{{quiz.name}}</h2>
+        <star-rating-comp 
+          *ngIf="quiz.rating" 
+          labelText="{{quiz.rating}}"  
+          labelPosition="right" 
+          size="medium"
+          [readOnly]="true"
+          [starType]="'svg'" 
+          [rating]="quiz.rating">
+        </star-rating-comp>
+    </div>     
+  </div>
+  <div class="row justify-content-md-center">
+      <div class="col-md-4 info-quiz"> 
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4>Characteristics</h4>
+          </div>
+          <div class="card-body">
+            <h6><span>Category:</span> {{quiz.category}}</h6>
+            <h6><span>Number of questions:</span> {{quiz.questions.length}}</h6>
+          </div>   
+        </div>
       </div>
-      <h2 class="user-label">{{quiz.name}}</h2>
-      <star-rating-comp 
-        *ngIf="quiz.rating" 
-        labelText="{{quiz.rating}}"  
-        labelPosition="right" 
-        size="medium"
-        [readOnly]="true"
-        [starType]="'svg'" 
-        [rating]="quiz.rating">
-      </star-rating-comp>
-  </div>     
-</div>
-<div class="row justify-content-md-center">
-    <div class="col-md-4 info-quiz"> 
+    <div class="col-md-4 info-ranking"> 
       <div class="card mb-4 box-shadow">
         <div class="card-header">
-          <h4>Characteristics</h4>
+          <h4>Ranking</h4>
         </div>
         <div class="card-body">
-          <h6><span>Category:</span> {{quiz.category}}</h6>
-          <h6><span>Number of questions:</span> {{quiz.questions.length}}</h6>
+          <div *ngFor="let quiz of ranking" class="ranking-row">
+            <div class="info-user">
+              <div class="ranking-img">
+                <img src="{{quiz.userId.avatar.pic_path}}">
+              </div>
+              <span>{{quiz.userId.username}}</span>
+            </div>
+            <span>{{quiz.result}} points</span>
+          </div>
         </div>   
       </div>
     </div>
-  <div class="col-md-4 info-ranking"> 
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4>Ranking</h4>
-      </div>
-      <div class="card-body">
-        <div *ngFor="let quiz of ranking" class="ranking-row">
-          <div class="info-user">
-            <div class="ranking-img">
-              <img src="{{quiz.userId.avatar.pic_path}}">
-            </div>
-            <span>{{quiz.userId.username}}</span>
-          </div>
-          <span>{{quiz.result}} points</span>
-        </div>
-      </div>   
-    </div>
-  </div>
+  </div>  
 </div>      
 
 <div *ngIf="source==='categories'" class="row quiz-header justify-content-md-center">
     <div class="col-md-8 text-center"> 
       <h3>titulo</h3>
     </div>      
-  </div>
   <div class="row justify-content-md-center">
     <div class="col-md-8 text-center"> 
+
     </div>
-</div> 
+  </div> 
 </div>
   
