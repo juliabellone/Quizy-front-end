@@ -48,7 +48,7 @@ export class QuizdetailsComponent implements OnInit {
           this.rankingService.getRanking(id)
           .subscribe((response) => {
             this.ranking = response;
-            console.log(this.ranking)
+            console.log(this.quiz)
           })
         })
     } else if (source == 'categories') {
