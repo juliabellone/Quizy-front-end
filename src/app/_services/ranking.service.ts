@@ -13,4 +13,19 @@ export class RankingService {
         return result;
       });
   };
+
+<<<<<<< HEAD
+  getRanking(quizId: any) {
+    return this.http.get(`${this.BASE_URL}/ranking?quizId=${quizId}`)
+      .map((result:any)=> {
+        return result;
+      })
+  }
+=======
+  // getRanking(ranking: any) {
+
+  // }
+
+>>>>>>> dev
+
 }
