@@ -34,12 +34,14 @@ export class QuizComponent implements OnInit {
     userId: any,
     category: string,
     result: number,
+    date: Date,
   };
   public rating: {
     quizId: any,
     userId: any,
     category: string,
     rate: number,
+    date: Date,
   };
   public timer: any;
   public timerCounter:number = 0;
@@ -78,12 +80,14 @@ export class QuizComponent implements OnInit {
             quizId: id,
             category: response.category,
             result: 0,
+            date: new Date(),
           };
           this.rating = {
             userId: this.isLoggedIn.ui,
             quizId: id,
             category: response.category,
             rate: 0,
+            date: new Date(),
           };
         })
     } else if (source == 'categories') {
@@ -98,12 +102,14 @@ export class QuizComponent implements OnInit {
             quizId: null,
             category: this.allQuestions[0].category,
             result: 0,
+            date: new Date(),
           };
           this.rating = {
             userId: this.isLoggedIn.ui,
             quizId: null,
             category: this.allQuestions[0].category,
             rate: 0,
+            date: new Date(),
           };
         });
     }
@@ -171,6 +177,7 @@ export class QuizComponent implements OnInit {
     clearInterval(this.timer);
     this.playing = false;
     this.ranking.result = this.totalCorrect * 10 / this.allQuestions.length;
+    this.ranking.date = new Date();
     this.rankingService.addRanking(this.ranking)
       .subscribe(
         data => { }
@@ -180,6 +187,7 @@ export class QuizComponent implements OnInit {
 
   onClick = ($event: OnClickEvent) => {
     this.rating.rate = $event.rating;
+    this.rating.date = new Date();
     console.log(this.rating);
     this.ratingService.addRating(this.rating)
       .subscribe(

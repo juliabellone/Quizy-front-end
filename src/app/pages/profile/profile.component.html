@@ -5,15 +5,28 @@
       </div>
       <h2 class="user-label">{{user.username}}</h2>
       <h6>Points: {{user.userPoints}}</h6>
+      <div *ngIf="isLoggedUser" class="row justify-content-md-center">
+        <!--Modal toggle -->
+        <div class="col-md-3">
+          <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editModal">Edit profile</button>
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-outline-primary" data-toggle="modal" data-target="#pictureModal">Change Picture</button>
+        </div>
+      </div>
     </div>
-  </div> 
+  </div>
   <search-users></search-users>
   <div class="row justify-content-md-center">
+      <div class="col-md-4">
+        <user-stats [stats]="user.categoryPoints" [userPoints]="user.userPoints"></user-stats>
+      </div>
+      <div class="col-md-4">
+          <last-quizes [lastQuizes]="lastQuizesPlayed"></last-quizes>
+      </div>
+  </div> 
+  <div class="row justify-content-md-center">
     <div *ngIf="isLoggedUser" class="col-md-8 editarea">
-      <!--Modal toggle -->
-      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editModal">Edit profile</button>
-      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#pictureModal">Change Picture</button>
-
       <!-- edit Modal -->
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <edit-user (onUpdateUser)="editUser($event)"></edit-user> 
@@ -22,6 +35,5 @@
       <div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <file-uploader [buttonLiteral]="'Upload'" (onUpload)="uploadAvatar($event)"></file-uploader>
       </div>
-
     </div>
   </div> 

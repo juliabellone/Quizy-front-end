@@ -1,0 +1,16 @@
+<div class="info-ranking">
+  <div class="card box-shadow">
+    <div class="card-header">
+      <h4>Category Stats</h4>
+    </div>
+    <div class="card-body">
+      <dl>
+        <dd *ngFor="let stat of stats" class="percentage" [ngClass]="computeClass(stat.count*stat.markAvg)">
+          <span class="text">
+            {{stat._id}}
+          </span>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>

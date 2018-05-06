@@ -29,4 +29,11 @@ export class UserService {
                 return user;
             });
     }
+
+    getLastQuizesPlayed(userId) {
+        return this.http.get(`${this.BASE_URL}/user/${userId}/lastQuizes`)
+            .map((lastQuizes: any) => {
+                return lastQuizes;
+            });
+    }
 }
