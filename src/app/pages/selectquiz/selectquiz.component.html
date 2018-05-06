@@ -14,15 +14,10 @@
             <div class ="quiz-card" *ngFor="let quiz of quizarray">
                 <div class="card mb-4 box-shadow">
                     <div class="card-img-top-container">
-<<<<<<< HEAD
-                        <img *ngIf="isActive=='users'" class="card-img-top" src="{{quiz.picture ? quiz.picture.pic_path : 'assets/images/pencils.png'}}" onerror="this.src='assets/images/pencils.png'"> 
-                        <img *ngIf="isActive=='category'" class="card-img-top" src="assets/images/{{quiz.id}}.jpg" onerror="this.src='assets/images/Default.jpg'">
-=======
                         <a (click)="retrieveQuizDetails(quiz)">
                             <img *ngIf="isActive=='users'" class="card-img-top" src="{{quiz.picture ? quiz.picture.pic_path : 'assets/images/pencils.png'}}" onerror="this.src='assets/images/pencils.png'"> 
-                            <img *ngIf="isActive=='category'" class="card-img-top" src="assets/images/{{quiz.id}}.jpg" onerror="this.src='Default.jpg'">
+                            <img *ngIf="isActive=='category'" class="card-img-top" src="assets/images/{{quiz.id}}.jpg" onerror="this.src='assets/images/Default.jpg'">
                         </a>    
->>>>>>> d1e9f85b07ee26d2926cab46bc47d2224e45ee97
                     </div>
                     <div class="card-body text-center">
                         <star-rating-comp 
