@@ -1,0 +1,13 @@
+.profile-header-img {
+    width: 70px;
+    max-height: 70px;
+    overflow: hidden;
+    border-radius: 100%;
+    border: 2px solid white;
+    background-color: #487b71;
+}
+
+.profile-header-img > img {
+    height: 70px;
+    width: auto;
+}

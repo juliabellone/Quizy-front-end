@@ -11,6 +11,8 @@ import { OnClickEvent, OnHoverRatingChangeEvent, OnRatingChangeEven } from 'angu
 
 
 
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-quiz',
@@ -69,7 +71,7 @@ export class QuizComponent implements OnInit {
       this.userQuizesApi.getQuiz(id)
         .subscribe((response) => {
           this.allQuestions = response.questions;
-          this.timerCounter = this.allQuestions.length * 5;
+          this.timerCounter = this.allQuestions.length * 45;
           this.prepareQuestion();
           this.ranking = {
             userId: this.isLoggedIn.ui,
@@ -106,6 +108,12 @@ export class QuizComponent implements OnInit {
         });
     }
     this.timer = setInterval(() => {
+      $('#countdown').css('visibility', 'visible');
+
+      var clock = $('#countdown').FlipClock(this.timerCounter, {
+        clockFace: 'MinuteCounter',
+      });
+      //clock.setTime(this.timerCounter);
       this.timerCounter--;
       if (this.timerCounter === 0) {
         this.timeFinished();

@@ -9,19 +9,11 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-    getAll() {
-        return this.http.get('/api/user');
-    }
-
     getUserById(id) {
         return this.http.get(`${this.BASE_URL}/user/${id}`)
             .map((user: any) => {
                 return user;
             });
-    }
-
-    create(user: User) {
-        return this.http.post('/api/user', user);
     }
 
     updateUser(id, user) {
@@ -31,7 +23,10 @@ export class UserService {
             });
     }
 
-    delete(id: number) {
-        return this.http.delete('/api/user/' + id);
+    searchUser(searchInput: number) {
+        return this.http.get(`${this.BASE_URL}/user?username=${searchInput}`)
+            .map((user: any) => {
+                return user;
+            });
     }
 }

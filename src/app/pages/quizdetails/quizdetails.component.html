@@ -17,21 +17,36 @@
   </div>     
 </div>
 <div class="row justify-content-md-center">
-  <div class="col-md-4 info-characteristics"> 
-    <div class="">
-      <h2>Characteristics</h2>
-          <h6>Category: {{quiz.category}}</h6>
-          <h6>Number of questions: {{quiz.questions.length}}</h6>
+    <div class="col-md-4 info-quiz"> 
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          <h4>Characteristics</h4>
+        </div>
+        <div class="card-body">
+          <h6><span>Category:</span> {{quiz.category}}</h6>
+          <h6><span>Number of questions:</span> {{quiz.questions.length}}</h6>
+        </div>   
+      </div>
     </div>
-  </div>
   <div class="col-md-4 info-ranking"> 
-    <div class="">
-      <h2>Ranking</h2>
-      askjdbsahbdjsab
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4>Ranking</h4>
+      </div>
+      <div class="card-body">
+        <div *ngFor="let quiz of ranking" class="ranking-row">
+          <div class="info-user">
+            <div class="ranking-img">
+              <img src="{{quiz.userId.avatar.pic_path}}">
+            </div>
+            <span>{{quiz.userId.username}}</span>
+          </div>
+          <span>{{quiz.result}} points</span>
+        </div>
+      </div>   
     </div>
   </div>
 </div>      
-
 
 <div *ngIf="source==='categories'" class="row quiz-header justify-content-md-center">
     <div class="col-md-8 text-center"> 

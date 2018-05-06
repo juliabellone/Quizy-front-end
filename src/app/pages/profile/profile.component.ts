@@ -67,7 +67,7 @@ export class ProfileComponent implements OnInit {
           this.user.age = data.age;
           this.user.email = data.email;
           this.user.friends = data.friends;
-          this.user.avatar.pic_path = data.avatar.pic_path;
+          this.user.avatar.pic_path = data.avatar && data.avatar.pic_path ? data.avatar.pic_path : 'assets/images/default-avatar.png';
           this.user.userPoints = data.userPoints;
           this.user.markAvg = data.markAvg;
         },

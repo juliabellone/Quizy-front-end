@@ -48,6 +48,7 @@ export class QuizdetailsComponent implements OnInit {
           })
         })
     } else if (source == 'categories') {
+      console.log('categories')
       // this.quizApi.getQuizInfo(id)
       //   .subscribe((response) => {
       //     //que hacemos?
