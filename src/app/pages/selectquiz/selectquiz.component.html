@@ -16,7 +16,7 @@
                     <div class="card-img-top-container">
                         <a (click)="retrieveQuizDetails(quiz)">
                             <img *ngIf="isActive=='users'" class="card-img-top" src="{{quiz.picture ? quiz.picture.pic_path : 'assets/images/pencils.png'}}" onerror="this.src='assets/images/pencils.png'"> 
-                            <img *ngIf="isActive=='category'" class="card-img-top" src="assets/images/{{quiz.id}}.jpg" onerror="this.src='Default.jpg'">
+                            <img *ngIf="isActive=='category'" class="card-img-top" src="assets/images/{{quiz.id}}.jpg" onerror="this.src='assets/images/Default.jpg'">
                         </a>    
                     </div>
                     <div class="card-body text-center">
