@@ -50,11 +50,21 @@ export class SelectQuizComponent implements OnInit {
     }
     retrieveQuiz(quiz) {
       if(quiz.user) {
+        this.router.navigate([`/quiz/users/${quiz._id}/play`]);
+      } else {
+        this.router.navigate([`quiz/categories/${quiz.id}/play`]);  
+      }
+    }
+
+    retrieveQuizDetails(quiz) {
+      if(quiz.user) {
         this.router.navigate([`/quiz/users/${quiz._id}`]);
       } else {
         this.router.navigate([`quiz/categories/${quiz.id}`]);  
       }
     }
+
+
     getPages(res) {
       const pages = Math.floor(res.count / res.limit);
       for(let i = 1; i<=pages; i++) {

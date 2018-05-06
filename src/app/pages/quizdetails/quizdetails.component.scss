@@ -1,0 +1,32 @@
+.quiz-header {
+
+    .profile-header-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+            h2 {
+                font-weight: 600;
+            }
+
+            h6 {
+                font-weight: 300;
+            }
+    }
+
+    .profile-header-img {
+        width: 140px;
+        max-height: 140px;
+        overflow: hidden;
+        border-radius: 100%;
+        border: 2px solid white;
+        margin-bottom: 20px;
+        background-color: #487b71;
+    }
+}
+
+.profile-header-img > img {
+    height: 140px;
+    width: auto;
+}

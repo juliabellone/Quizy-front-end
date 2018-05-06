@@ -25,5 +25,10 @@ export class CreateQuizService {
   getAllQuizes(offset) {
     return this.http.get(`${this.BASE_URL}/quiz?offset=${offset}`);
   }
+
+  // getQuizDetails(id) {
+  //   return this.http.get(`${this.BASE_URL}/quiz/`)
+
+  // }
   
 }

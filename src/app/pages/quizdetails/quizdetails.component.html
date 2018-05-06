@@ -1,0 +1,46 @@
+<div *ngIf="quiz">
+  <div *ngIf="source==='users'" class="row quiz-header justify-content-md-center">
+  <div class="col-md-8 profile-header-info">
+      <div class="profile-header-img">
+          <img src="{{quiz.picture.pic_path}}"/>    
+      </div>
+      <h2 class="user-label">{{quiz.name}}</h2>
+      <star-rating-comp 
+        *ngIf="quiz.rating" 
+        labelText="{{quiz.rating}}"  
+        labelPosition="right" 
+        size="medium"
+        [readOnly]="true"
+        [starType]="'svg'" 
+        [rating]="quiz.rating">
+      </star-rating-comp>
+  </div>     
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-md-4 info-characteristics"> 
+    <div class="">
+      <h2>Characteristics</h2>
+          <h6>Category: {{quiz.category}}</h6>
+          <h6>Number of questions: {{quiz.questions.length}}</h6>
+    </div>
+  </div>
+  <div class="col-md-4 info-ranking"> 
+    <div class="">
+      <h2>Ranking</h2>
+      askjdbsahbdjsab
+    </div>
+  </div>
+</div>      
+
+
+<div *ngIf="source==='categories'" class="row quiz-header justify-content-md-center">
+    <div class="col-md-8 text-center"> 
+      <h3>titulo</h3>
+    </div>      
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-8 text-center"> 
+    </div>
+</div> 
+</div>
+  
