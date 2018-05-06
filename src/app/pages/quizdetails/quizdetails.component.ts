@@ -19,7 +19,7 @@ export class QuizdetailsComponent implements OnInit {
   public id;
   public source;
   public isLoggedIn: any;
-  public quiz;
+  public quiz:object;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,6 +44,7 @@ export class QuizdetailsComponent implements OnInit {
           //que hacemos?
         })
     } else if (source == 'categories') {
+      console.log('categories')
       // this.quizApi.getQuizInfo(id)
       //   .subscribe((response) => {
       //     //que hacemos?

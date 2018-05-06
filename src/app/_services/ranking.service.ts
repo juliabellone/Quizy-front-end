@@ -13,4 +13,10 @@ export class RankingService {
         return result;
       });
   };
+
+  // getRanking(ranking: any) {
+
+  // }
+
+
 }
