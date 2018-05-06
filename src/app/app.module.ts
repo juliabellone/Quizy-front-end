@@ -39,13 +39,10 @@ import { CreateQuestionFormComponent } from './_components/create-question-form/
 import { EditUserComponent } from './pages/profile/components/edit-user/edit-user.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { QuizresultComponent } from './components/quizresult/quizresult.component';
-<<<<<<< HEAD
 import { ChallengeComponent } from './_components/challenge/challenge.component';
 import { SearchUsersComponent } from './_components/search-users/search-users.component';
 import { UnauthorizedInterceptor } from './_helpers/unauthorized.interceptor';
-=======
 import { QuizdetailsComponent } from './pages/quizdetails/quizdetails.component';
->>>>>>> d1e9f85b07ee26d2926cab46bc47d2224e45ee97
 
 @NgModule({
     imports: [
@@ -80,13 +77,10 @@ import { QuizdetailsComponent } from './pages/quizdetails/quizdetails.component'
         EditUserComponent,
         FooterComponent,
         QuizresultComponent,
-<<<<<<< HEAD
         ChallengeComponent,
         SearchUsersComponent,
-=======
         QuizdetailsComponent,
 
->>>>>>> d1e9f85b07ee26d2926cab46bc47d2224e45ee97
     ],
     providers: [
         RequireAnonGuard,
