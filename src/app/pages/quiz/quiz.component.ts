@@ -104,6 +104,8 @@ export class QuizComponent implements OnInit {
             result: 0,
             date: new Date(),
           };
+          console.log(this.allQuestions)
+
           this.rating = {
             userId: this.isLoggedIn.ui,
             quizId: null,

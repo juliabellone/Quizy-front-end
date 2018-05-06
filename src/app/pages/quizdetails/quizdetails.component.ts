@@ -36,7 +36,7 @@ export class QuizdetailsComponent implements OnInit {
     this.getQuizDetails(this.source, this.id);
   }
 
-  getBackgroundImage() {
+  get getBackgroundImage() {
     return `url(${this.quiz.picture.pic_path})`;
   }
 

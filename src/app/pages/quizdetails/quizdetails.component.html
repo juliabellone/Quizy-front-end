@@ -2,7 +2,7 @@
   <div *ngIf="source==='users'">   
         <!-- <div  class="row quiz-header justify-content-md-center" style="background-image: url(assets/images/pencils.png); background-size:cover; filter: blur(2px); opacity: 0.5" onerror="this.src='assets/images/pencils.png'"> -->
 
-    <div  class="row quiz-header justify-content-md-center" [ngStyle]="{'background-image':getBackgroundImage()}" style="background-size:cover; filter: blur(2px); opacity: 0.5" onerror="this.src='assets/images/pencils.png'">
+    <div  class="row quiz-header justify-content-md-center" [ngStyle]="{'background-image':getBackgroundImage}" style="background-size:cover; filter: blur(2px); opacity: 0.5" onerror="this.src='assets/images/pencils.png'">
       <div class="col-md-8 profile-header-info">
         <div class="profile-header-img">
             <img src="{{quiz.picture.pic_path}}"/>    
