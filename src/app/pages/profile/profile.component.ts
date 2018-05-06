@@ -20,7 +20,9 @@ export class ProfileComponent implements OnInit {
     },
     userPoints: number,
     markAvg: number,
+    categoryPoints: any[];
   };
+  lastQuizesPlayed: any;
   userId: string;
   isLoggedUser:Boolean;
   isLoggedIn: any;
@@ -43,14 +45,17 @@ export class ProfileComponent implements OnInit {
       },
       userPoints: 0,
       markAvg: 0,
-    }
+      categoryPoints: [],
+    };
+    this.lastQuizesPlayed = [];
   }
 
   ngOnInit() {
     this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
 
     this.route.params.subscribe(params => {
-      this.getUserProfile(params['id'])
+      this.getUserProfile(params['id']);
+      this.getLastQuizesPlayed(params['id']);
       this.userId = params.id;      
         if( this.userId === this.isLoggedIn.ui) {
           this.isLoggedUser = true;
@@ -70,11 +75,24 @@ export class ProfileComponent implements OnInit {
           this.user.avatar.pic_path = data.avatar && data.avatar.pic_path ? data.avatar.pic_path : 'assets/images/default-avatar.png';
           this.user.userPoints = data.userPoints;
           this.user.markAvg = data.markAvg;
+          this.user.categoryPoints = data.categoryPoints;
         },
         error => {
           this.alertService.error(error.error);
         });
   }
+
+  getLastQuizesPlayed(id) {
+    this.userService.getLastQuizesPlayed(id)
+      .subscribe(
+        data => {
+          this.lastQuizesPlayed = data;
+        },
+        error => {
+          this.alertService.error(error.error);
+        });
+  }
+
   uploadAvatar(files) {
     this.fileService.uploadAvatar(files[0], this.isLoggedIn.ui)
       .subscribe(

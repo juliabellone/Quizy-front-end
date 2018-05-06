@@ -43,6 +43,8 @@ import { ChallengeComponent } from './_components/challenge/challenge.component'
 import { SearchUsersComponent } from './_components/search-users/search-users.component';
 import { UnauthorizedInterceptor } from './_helpers/unauthorized.interceptor';
 import { QuizdetailsComponent } from './pages/quizdetails/quizdetails.component';
+import { LastQuizesComponent } from './pages/profile/components/last-quizes/last-quizes.component';
+import { UserStatsComponent } from './pages/profile/components/user-stats/user-stats.component';
 
 @NgModule({
     imports: [
@@ -80,6 +82,8 @@ import { QuizdetailsComponent } from './pages/quizdetails/quizdetails.component'
         ChallengeComponent,
         SearchUsersComponent,
         QuizdetailsComponent,
+        LastQuizesComponent,
+        UserStatsComponent,
 
     ],
     providers: [

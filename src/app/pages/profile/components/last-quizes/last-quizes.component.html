@@ -1,0 +1,17 @@
+<div class="info-ranking">
+  <div class="card box-shadow">
+    <div class="card-header">
+      <h4>Last quizes played</h4>
+    </div>
+    <div class="card-body">
+      <div *ngFor="let quiz of lastQuizes" class="ranking-row">
+        <div class="info-user">
+          <div class="ranking-img">
+            <img src="{{quiz.quizId && quiz.quizId.picture ? quiz.quizId.picture.pic_path : 'assets/images/pencils.png'}}" onerror="this.src='assets/images/pencils.png'">
+          </div>
+          <span>{{quiz.quizId && quiz.quizId.name ? quiz.quizId.name : quiz.category}}</span>
+        </div>
+        <span>{{quiz.result}} points</span>
+      </div>
+    </div>
+  </div>
