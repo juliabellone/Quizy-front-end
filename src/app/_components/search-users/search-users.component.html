@@ -1,0 +1,14 @@
+<form class="example-form">
+  <div class="form-group">
+    <label>Search Users</label>
+    <input class="form-control" type="text" placeholder="username" [formControl]="searchTerm">
+  </div>
+    <div *ngFor="let item of searchResult" class="row">
+      <div class="profile-header-img">
+        <img src="{{item.avatar ? item.avatar.pic_path :''}}" onerror="this.src='assets/images/default-avatar.png'" />
+      </div>
+      <div>
+        <span>{{ item.username }}</span>
+      </div>
+    </div>
+</form>

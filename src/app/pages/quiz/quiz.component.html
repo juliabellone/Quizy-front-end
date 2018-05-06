@@ -1,7 +1,8 @@
 <div *ngIf="playing" class="question">
   <div class="row quiz-header justify-content-md-center">
     <div *ngIf="timerCounter>0" class="col-md-8 text-center timer">
-      <h3>{{timerCounter}} s</h3>
+      <h3>{{timerCounter}}</h3>
+      <div id="countdown"></div>
     </div>
     <div class="col-md-8 text-center"> 
       <h3>{{title}}</h3>

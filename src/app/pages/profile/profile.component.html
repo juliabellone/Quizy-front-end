@@ -1,12 +1,13 @@
   <div class="row quiz-header  justify-content-md-center">
     <div class="col-md-8 profile-header-info">
       <div class="profile-header-img">
-          <img src="{{user.avatar.pic_path}}"/>    
+          <img src="{{user.avatar.pic_path}}" onerror="this.src='assets/images/default-avatar.png'"/>    
       </div>
       <h2 class="user-label">{{user.username}}</h2>
       <h6>Points: {{user.userPoints}}</h6>
     </div>
   </div> 
+  <search-users></search-users>
   <div class="row justify-content-md-center">
     <div *ngIf="isLoggedUser" class="col-md-8 editarea">
       <!--Modal toggle -->

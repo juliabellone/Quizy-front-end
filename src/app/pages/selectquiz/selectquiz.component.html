@@ -15,7 +15,7 @@
                 <div class="card mb-4 box-shadow">
                     <div class="card-img-top-container">
                         <img *ngIf="isActive=='users'" class="card-img-top" src="{{quiz.picture ? quiz.picture.pic_path : 'assets/images/pencils.png'}}" onerror="this.src='assets/images/pencils.png'"> 
-                        <img *ngIf="isActive=='category'" class="card-img-top" src="assets/images/{{quiz.id}}.jpg" onerror="this.src='Default.jpg'">
+                        <img *ngIf="isActive=='category'" class="card-img-top" src="assets/images/{{quiz.id}}.jpg" onerror="this.src='assets/images/Default.jpg'">
                     </div>
                     <div class="card-body text-center">
                         <star-rating-comp 

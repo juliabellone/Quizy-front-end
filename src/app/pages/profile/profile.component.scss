@@ -24,12 +24,13 @@
         margin-bottom: 20px;
         background-color: #487b71;
     }
+    
+    .profile-header-img > img {
+        height: 140px;
+        width: auto;
+    }
 }
 
-.profile-header-img > img {
-    height: 140px;
-    width: auto;
-}
 
 .editarea {
     padding: 5px 30px; 

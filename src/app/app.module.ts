@@ -1,7 +1,9 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 
 import { ngfModule } from "angular-file"
 import { StarRatingModule } from 'angular-star-rating';
@@ -37,6 +39,9 @@ import { CreateQuestionFormComponent } from './_components/create-question-form/
 import { EditUserComponent } from './pages/profile/components/edit-user/edit-user.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { QuizresultComponent } from './components/quizresult/quizresult.component';
+import { ChallengeComponent } from './_components/challenge/challenge.component';
+import { SearchUsersComponent } from './_components/search-users/search-users.component';
+import { UnauthorizedInterceptor } from './_helpers/unauthorized.interceptor';
 
 @NgModule({
     imports: [
@@ -46,7 +51,12 @@ import { QuizresultComponent } from './components/quizresult/quizresult.componen
         routing,
         ngfModule,
         StarRatingModule.forRoot(),
-        ImageCropperModule
+        ImageCropperModule,
+        BrowserModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        BrowserAnimationsModule,
     ],
     declarations: [
         AppComponent,
@@ -66,6 +76,8 @@ import { QuizresultComponent } from './components/quizresult/quizresult.componen
         EditUserComponent,
         FooterComponent,
         QuizresultComponent,
+        ChallengeComponent,
+        SearchUsersComponent,
     ],
     providers: [
         RequireAnonGuard,
@@ -81,6 +93,11 @@ import { QuizresultComponent } from './components/quizresult/quizresult.componen
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: UnauthorizedInterceptor,
             multi: true
         },
     ],
