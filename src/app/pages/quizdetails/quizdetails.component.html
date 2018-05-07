@@ -13,7 +13,7 @@
         [starType]="'svg'" 
         [rating]="quiz.rating">
       </star-rating-comp>
-      <button class="btn btn-raised btn-info">Play</button>
+      <button class="btn btn-raised btn-info" (click)="retrieveQuiz(quiz)">Play</button>
 
     </div>
     <div class="row justify-content-md-center">
@@ -58,6 +58,10 @@
 
   <div *ngIf="source==='categories'">
     <div  class="row quiz-header justify-content-md-center" [ngStyle]="{'background-image':getBackgroundImage}" style="background-size:cover; filter: blur(2px); opacity: 0.5" onerror="this.src='assets/images/pencils.png'">
+    </div>
+    <div class="content-test">
+      <h2 class="user-label">{{categoryName}}</h2>
+      <button class="btn btn-raised btn-info" (click)="retrieveQuiz()">Play</button>
     </div>
   </div>  
 

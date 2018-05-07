@@ -5,8 +5,9 @@ import { isType } from '@angular/core/src/type';
 import 'rxjs/Rx'; 
 import { Promise } from 'q';
 import { decode } from '@angular/router/src/url_tree';
-import { ActivatedRoute } from '@angular/router';
 import { OnClickEvent, OnHoverRatingChangeEvent, OnRatingChangeEven } from 'angular-star-rating';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -18,12 +19,14 @@ export class QuizdetailsComponent implements OnInit {
   public id;
   public source;
   public categories;
+  public categoryName;
   public isLoggedIn: any;
   public quiz;
   public ranking; 
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private quizApi: QuizService,
     private userQuizesApi: CreateQuizService,
     private authService: AuthenticationService,
@@ -43,7 +46,14 @@ export class QuizdetailsComponent implements OnInit {
     } else if (this.source == 'categories') {
       return `url(assets/images/${this.id}.jpg)`
     }
+  }
 
+  getCategoryName() {
+    this.categories.forEach(element => {
+      if(element.id == this.id) {
+        this.categoryName = element.name;
+      }
+    });
   }
 
   getQuizDetails(source, id) {
@@ -61,13 +71,23 @@ export class QuizdetailsComponent implements OnInit {
       console.log('categories')
       this.quizApi.getCategories()
         .subscribe((response) => {
-          this.categories = response;            
+          console.log(response);
+          this.categories = response; 
+          this.getCategoryName();           
         })
       this.quizApi.getQuestions(this.id)
       .subscribe((response) => {
         this.quiz = response;  
         console.log (this.quiz)          
       })
+    }
+  }
+
+  retrieveQuiz() {
+    if(this.source == 'users') {
+      this.router.navigate([`/quiz/users/${this.id}/play`]);
+    } else if (this.source == 'categories') {
+      this.router.navigate([`quiz/categories/${this.id}/play`]);  
     }
   }
 
