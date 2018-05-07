@@ -93,6 +93,11 @@
 
 }
 
+.info-quiz {
+    .card-body > *{
+        margin: 5px 0px;
+    }
+}
 .quiz-owner {
 
     display: flex;

@@ -7,7 +7,7 @@
         <star-rating-comp 
         *ngIf="quiz.rating" 
         labelText="{{quiz.rating}}"  
-        labelPosition="right" 
+        labelPosition="bottom" 
         size="medium"
         [readOnly]="true"
         [starType]="'svg'" 
@@ -24,12 +24,14 @@
             </div>
             <div class="card-body">
               <h6><span>Owner:</span></h6>
-              <div class="quiz-owner">
-                <div class="owner-img">
-                  <img src="{{quiz.user.avatar.pic_path}}">
+              <a [routerLink]="['/profile', quiz.user._id]">
+                <div class="quiz-owner">
+                  <div class="owner-img">
+                    <img src="{{quiz.user.avatar.pic_path}}">
+                  </div>
+                  <span>{{quiz.user.username}}</span>
                 </div>
-                <span>{{quiz.user.username}}</span>
-              </div>
+              </a>  
               <h6><span>Category:</span> {{quiz.category}}</h6>
               <h6><span>Number of questions:</span> {{quiz.questions.length}}</h6>
             </div>   
@@ -41,14 +43,16 @@
             <h4>Ranking</h4>
           </div>
           <div class="card-body">
-            <div *ngFor="let quiz of ranking" class="ranking-row">
-              <div class="info-user">
-                <div class="ranking-img">
-                  <img src="{{quiz.userId.avatar.pic_path}}">
-                </div>
-                <span>{{quiz.userId.username}}</span>
-              </div>
-              <span>{{quiz.result}} points</span>
+            <div *ngFor="let quizRanking of ranking" class="ranking-row">
+              <a [routerLink]="['/profile', quizRanking.userId._id]">
+                  <div class="info-user">
+                    <div class="ranking-img">
+                      <img src="{{quizRanking.userId.avatar.pic_path}}"/>
+                    </div>
+                    <span>{{quizRanking.userId.username}}</span>
+                  </div>
+              </a>  
+              <span>{{quizRanking.result}} points</span>
             </div>
           </div>   
         </div>
