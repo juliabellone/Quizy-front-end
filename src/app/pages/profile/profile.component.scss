@@ -32,6 +32,13 @@
         height: 140px;
         width: auto;
     }
+
+    .edit-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 }
 
 

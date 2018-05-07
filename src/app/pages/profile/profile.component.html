@@ -5,7 +5,7 @@
       </div>
       <h2 class="user-label">{{user.username}}</h2>
       <h6>Points: {{user.userPoints}}</h6>
-      <div *ngIf="isLoggedUser" class="row justify-content-md-center">
+      <div *ngIf="isLoggedUser" class="edit-buttons">
           <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editModal">Edit profile</button>
           <button class="btn btn-outline-primary" data-toggle="modal" data-target="#pictureModal">Change Picture</button>
       </div>
