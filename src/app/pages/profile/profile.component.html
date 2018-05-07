@@ -5,18 +5,14 @@
       </div>
       <h2 class="user-label">{{user.username}}</h2>
       <h6>Points: {{user.userPoints}}</h6>
-      <div *ngIf="isLoggedUser" class="row justify-content-md-center">
-        <!--Modal toggle -->
-        <div class="col-md-6">
+      <div *ngIf="isLoggedUser" class="edit-buttons">
           <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editModal">Edit profile</button>
-        </div>
-        <div class="col-md-6">
           <button class="btn btn-outline-primary" data-toggle="modal" data-target="#pictureModal">Change Picture</button>
-        </div>
+          <button class="btn btn-outline-primary" data-toggle="modal" data-target="#friendsModal">Add Friend</button>
       </div>
     </div>
   </div>
-  <search-users></search-users>
+  
   <div class="row justify-content-md-center">
       <div class="col-md-5">
           <user-stats [stats]="user.categoryPoints" [userPoints]="user.userPoints"></user-stats> 
@@ -34,6 +30,10 @@
       <!-- picture Modal -->
       <div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <file-uploader [buttonLiteral]="'Upload'" (onUpload)="uploadAvatar($event)"></file-uploader>
+      </div>
+      <!-- friends Modal -->
+      <div class="modal fade" id="friendsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <search-users [friends]='user.friends' (onSelectUser)="addFriend($event)"></search-users>
       </div>
     </div>
   </div> 

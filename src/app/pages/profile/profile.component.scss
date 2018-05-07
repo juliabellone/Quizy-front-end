@@ -13,6 +13,9 @@
             h6 {
                 font-weight: 300;
             }
+            button {
+                margin: 5px;
+            }
     }
 
     .profile-header-img {
@@ -28,6 +31,13 @@
     .profile-header-img > img {
         height: 140px;
         width: auto;
+    }
+
+    .edit-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
     }
 }
 

@@ -120,4 +120,13 @@ export class ProfileComponent implements OnInit {
         });
   }
 
+  addFriend(user) {
+    console.log(user);
+    this.userService.addFriend(this.isLoggedIn.ui, { friend: user._id })
+      .subscribe(
+        data => console.log(data)
+        ,err => console.log(err)
+      )
+  }
+
 }

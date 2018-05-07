@@ -3,10 +3,12 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarsExample04">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto ul-logo">
             <li class="nav-item">
-                <a class="navbar-brand" [routerLinkActive]="['active']" [routerLink]="['']">Quizy</a>
+                <a class="navbar-brand" [routerLinkActive]="['active']" [routerLink]="['']"><img src="assets/images/q-logo-small.png"></a>
             </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['profile', isLoggedIn.ui]" *ngIf="isLoggedIn.auth">Profile</a>
             </li>

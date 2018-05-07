@@ -23,8 +23,30 @@ export class UserService {
             });
     }
 
-    searchUser(searchInput: number) {
+    searchUser(searchInput: string) {
         return this.http.get(`${this.BASE_URL}/user?username=${searchInput}`)
+            .map((user: any) => {
+                return user;
+            });
+    }
+
+    addFriend(userId, idFriend) {
+        console.log(userId, idFriend);
+        return this.http.put(`${this.BASE_URL}/user/${userId}/friends`, idFriend)
+            .map((user: any) => {
+                return user;
+            });
+    }
+
+    deleteFriend(userId, idFriend) {
+        return this.http.delete(`${this.BASE_URL}/user/${userId}/friends`, idFriend)
+            .map((user: any) => {
+                return user;
+            });
+    }
+
+    searchUserFriends(userId, searchInput: string ) {
+        return this.http.get(`${this.BASE_URL}/user/${userId}/friends?username=${searchInput}`)
             .map((user: any) => {
                 return user;
             });

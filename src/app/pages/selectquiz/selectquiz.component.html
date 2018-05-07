@@ -2,8 +2,8 @@
     <div class="col-md-8 text-center"> 
         <h1>Select a Quiz</h1>
         <div>
-            <button type="button" class="btn btn-outline-primary" (click)="getQuizes('category')" [ngClass]="{'active': isActive == 'category'}">Quizes by category</button>
-            <button type="button" class="btn btn-outline-primary" (click)="getQuizes('users')" [ngClass]="{'active': isActive =='users'}">Quizes from users</button>  
+            <button type="button" class="btn btn-outline btn-primary" (click)="getQuizes('category')" [ngClass]="{'active': isActive == 'category'}">Quizes by category</button>
+            <button type="button" class="btn btn-outline btn-primary" (click)="getQuizes('users')" [ngClass]="{'active': isActive =='users'}">Quizes from users</button>  
         </div>      
     </div>
 </div>
@@ -30,7 +30,7 @@
                             [rating]="quiz.rating">
                         </star-rating-comp>
                         <a (click)="retrieveQuizDetails(quiz)"><h4>{{quiz.name}}</h4></a>
-                        <button type="button" class="btn btn-fill btn-info" (click)="retrieveQuiz(quiz)">Play</button>
+                        <button type="button" class="btn btn-raised btn-info" (click)="retrieveQuiz(quiz)">Play</button>
                     </div>    
                 </div>                
             </div>

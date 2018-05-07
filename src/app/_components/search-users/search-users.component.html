@@ -1,14 +1,32 @@
-<form class="example-form">
-  <div class="form-group">
-    <label>Search Users</label>
-    <input class="form-control" type="text" placeholder="username" [formControl]="searchTerm">
-  </div>
-    <div *ngFor="let item of searchResult" class="row">
-      <div class="profile-header-img">
-        <img src="{{item.avatar ? item.avatar.pic_path :''}}" onerror="this.src='assets/images/default-avatar.png'" />
-      </div>
-      <div>
-        <span>{{ item.username }}</span>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Add Friend</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 upload-box">
+            <form class="example-form">
+              <div class="form-group">
+                <label>Search Users</label>
+                <input class="form-control" type="text" placeholder="username" [formControl]="searchTerm">
+              </div>
+                <div *ngFor="let item of searchResult" class="row">
+                  <div class="profile-header-img" (click)="selectUser(item)">
+                    <img src="{{item.avatar ? item.avatar.pic_path :''}}" onerror="this.src='assets/images/default-avatar.png'" />
+                  </div>
+                  <div>
+                    <span>{{ item.username }}</span>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-</form>
+  </div>
+</div> 

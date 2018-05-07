@@ -49,6 +49,7 @@ export class SelectQuizComponent implements OnInit {
       }
     }
     retrieveQuiz(quiz) {
+      console.log(quiz)
       if(quiz.user) {
         this.router.navigate([`/quiz/users/${quiz._id}/play`]);
       } else {
@@ -57,6 +58,7 @@ export class SelectQuizComponent implements OnInit {
     }
 
     retrieveQuizDetails(quiz) {
+      console.log(quiz)
       if(quiz.user) {
         this.router.navigate([`/quiz/users/${quiz._id}`]);
       } else {
