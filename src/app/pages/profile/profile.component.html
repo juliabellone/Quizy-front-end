@@ -7,10 +7,10 @@
       <h6>Points: {{user.userPoints}}</h6>
       <div *ngIf="isLoggedUser" class="row justify-content-md-center">
         <!--Modal toggle -->
-        <div class="col-md-3">
+        <div class="col-md-6">
           <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editModal">Edit profile</button>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
           <button class="btn btn-outline-primary" data-toggle="modal" data-target="#pictureModal">Change Picture</button>
         </div>
       </div>
@@ -18,10 +18,10 @@
   </div>
   <search-users></search-users>
   <div class="row justify-content-md-center">
-      <div class="col-md-4">
-        <user-stats [stats]="user.categoryPoints" [userPoints]="user.userPoints"></user-stats>
+      <div class="col-md-5">
+          <user-stats [stats]="user.categoryPoints" [userPoints]="user.userPoints"></user-stats> 
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
           <last-quizes [lastQuizes]="lastQuizesPlayed"></last-quizes>
       </div>
   </div> 
