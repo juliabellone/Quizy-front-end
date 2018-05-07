@@ -17,6 +17,7 @@ import { OnClickEvent, OnHoverRatingChangeEvent, OnRatingChangeEven } from 'angu
 export class QuizdetailsComponent implements OnInit {
   public id;
   public source;
+  public categories;
   public isLoggedIn: any;
   public quiz;
   public ranking; 
@@ -37,7 +38,12 @@ export class QuizdetailsComponent implements OnInit {
   }
 
   get getBackgroundImage() {
-    return `url(${this.quiz.picture.pic_path})`;
+    if (this.source == 'users') {
+      return `url(${this.quiz.picture.pic_path})`;
+    } else if (this.source == 'categories') {
+      return `url(assets/images/${this.id}.jpg)`
+    }
+
   }
 
   getQuizDetails(source, id) {
@@ -53,10 +59,15 @@ export class QuizdetailsComponent implements OnInit {
         })
     } else if (source == 'categories') {
       console.log('categories')
-      // this.quizApi.getQuizInfo(id)
-      //   .subscribe((response) => {
-      //     //que hacemos?
-      //   });
+      this.quizApi.getCategories()
+        .subscribe((response) => {
+          this.categories = response;            
+        })
+      this.quizApi.getQuestions(this.id)
+      .subscribe((response) => {
+        this.quiz = response;  
+        console.log (this.quiz)          
+      })
     }
   }
 

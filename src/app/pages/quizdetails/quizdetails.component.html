@@ -2,68 +2,64 @@
   <div *ngIf="source==='users'">   
     <div  class="row quiz-header justify-content-md-center" [ngStyle]="{'background-image':getBackgroundImage}" style="background-size:cover; filter: blur(2px); opacity: 0.5" onerror="this.src='assets/images/pencils.png'">
     </div>
-  <div class="content-test">
-      <h2 class="user-label">{{quiz.name}}</h2>
-      <star-rating-comp 
-      *ngIf="quiz.rating" 
-      labelText="{{quiz.rating}}"  
-      labelPosition="right" 
-      size="medium"
-      [readOnly]="true"
-      [starType]="'svg'" 
-      [rating]="quiz.rating">
-    </star-rating-comp>
-    <button class="btn btn-raised btn-info">Play</button>
+    <div class="content-test">
+        <h2 class="user-label">{{quiz.name}}</h2>
+        <star-rating-comp 
+        *ngIf="quiz.rating" 
+        labelText="{{quiz.rating}}"  
+        labelPosition="right" 
+        size="medium"
+        [readOnly]="true"
+        [starType]="'svg'" 
+        [rating]="quiz.rating">
+      </star-rating-comp>
+      <button class="btn btn-raised btn-info">Play</button>
 
-  </div>
-  <div class="row justify-content-md-center">
-      <div class="col-md-4 info-quiz"> 
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4 info-quiz"> 
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4>Characteristics</h4>
+            </div>
+            <div class="card-body">
+              <h6><span>Owner:</span></h6>
+              <div class="quiz-owner">
+                <div class="owner-img">
+                  <img src="{{quiz.user.avatar.pic_path}}">
+                </div>
+                <span>{{quiz.user.username}}</span>
+              </div>
+              <h6><span>Category:</span> {{quiz.category}}</h6>
+              <h6><span>Number of questions:</span> {{quiz.questions.length}}</h6>
+            </div>   
+          </div>
+        </div>
+      <div class="col-md-4 info-ranking"> 
         <div class="card mb-4 box-shadow">
           <div class="card-header">
-            <h4>Characteristics</h4>
+            <h4>Ranking</h4>
           </div>
           <div class="card-body">
-            <h6><span>Owner:</span></h6>
-            <div class="quiz-owner">
-              <div class="owner-img">
-                <img src="{{quiz.user.avatar.pic_path}}">
+            <div *ngFor="let quiz of ranking" class="ranking-row">
+              <div class="info-user">
+                <div class="ranking-img">
+                  <img src="{{quiz.userId.avatar.pic_path}}">
+                </div>
+                <span>{{quiz.userId.username}}</span>
               </div>
-              <span>{{quiz.user.username}}</span>
+              <span>{{quiz.result}} points</span>
             </div>
-            <h6><span>Category:</span> {{quiz.category}}</h6>
-            <h6><span>Number of questions:</span> {{quiz.questions.length}}</h6>
           </div>   
         </div>
       </div>
-    <div class="col-md-4 info-ranking"> 
-      <div class="card mb-4 box-shadow">
-        <div class="card-header">
-          <h4>Ranking</h4>
-        </div>
-        <div class="card-body">
-          <div *ngFor="let quiz of ranking" class="ranking-row">
-            <div class="info-user">
-              <div class="ranking-img">
-                <img src="{{quiz.userId.avatar.pic_path}}">
-              </div>
-              <span>{{quiz.userId.username}}</span>
-            </div>
-            <span>{{quiz.result}} points</span>
-          </div>
-        </div>   
-      </div>
+    </div>  
+  </div>      
+
+  <div *ngIf="source==='categories'">
+    <div  class="row quiz-header justify-content-md-center" [ngStyle]="{'background-image':getBackgroundImage}" style="background-size:cover; filter: blur(2px); opacity: 0.5" onerror="this.src='assets/images/pencils.png'">
     </div>
   </div>  
-</div>      
 
-<div *ngIf="source==='categories'" class="row quiz-header justify-content-md-center">
-    <div class="col-md-8 text-center"> 
-      <h3>titulo</h3>
-    </div>      
-  <div class="row justify-content-md-center">
-    <div class="col-md-8 text-center"> 
-
-    </div>
-  </div> 
-</div>
+</div> 
   
