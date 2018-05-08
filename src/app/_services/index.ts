@@ -6,3 +6,4 @@ export * from './create-quiz.service';
 export * from './quiz.service';
 export * from './ranking.service';
 export * from './rating.service';
+export * from './notifications.service';

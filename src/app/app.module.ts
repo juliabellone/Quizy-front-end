@@ -23,7 +23,8 @@ import {
     FileService,
     CreateQuizService,
     RankingService,
-    RatingService
+    RatingService,
+    NotificationsService
 } from './_services/index';
 import { HomeComponent } from './pages/home/index';
 import { LoginComponent } from './pages/login/index';
@@ -45,6 +46,7 @@ import { UnauthorizedInterceptor } from './_helpers/unauthorized.interceptor';
 import { QuizdetailsComponent } from './pages/quizdetails/quizdetails.component';
 import { LastQuizesComponent } from './pages/profile/components/last-quizes/last-quizes.component';
 import { UserStatsComponent } from './pages/profile/components/user-stats/user-stats.component';
+import { NotificationsComponent } from './pages/profile/notifications/notifications.component';
 
 @NgModule({
     imports: [
@@ -84,6 +86,7 @@ import { UserStatsComponent } from './pages/profile/components/user-stats/user-s
         QuizdetailsComponent,
         LastQuizesComponent,
         UserStatsComponent,
+        NotificationsComponent,
 
     ],
     providers: [
@@ -97,6 +100,7 @@ import { UserStatsComponent } from './pages/profile/components/user-stats/user-s
         RankingService,
         QuizService,
         RatingService,
+        NotificationsService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
