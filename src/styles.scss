@@ -43,3 +43,17 @@ body{
         align-items: center;
     }
 }
+
+
+.quizy-title {
+    position: relative;
+    bottom: 500px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #fff;
+    
+    h1 {
+        font-size: 5em;
+    }
+}

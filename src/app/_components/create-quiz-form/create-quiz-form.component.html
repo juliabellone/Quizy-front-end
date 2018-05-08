@@ -1,6 +1,4 @@
 <h3>First, let's fill some basic info about your quiz!</h3>
-<div class="row">
-    <div class="col-md-4">
         <form>
             <div class="form-group">
                 <label>Quiz Name</label>
@@ -13,10 +11,8 @@
                 </select>
             </div>
             <button class="btn btn-outline-primary" data-toggle="modal" data-target="#pictureModal">Add Picture</button>
-            <button (click)="submitQuiz()" class="btn btn-outline-primary">Create New Quiz!</button>
-        </form> 
-    </div>  
-</div>              
+            <button (click)="submitQuiz()" class="btn btn-outline-primary btn-block active">Create New Quiz!</button>
+        </form>              
 <div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <file-uploader [buttonLiteral]="'Add Image'" (onUpload)="uploadQuizImage($event)"></file-uploader>
 </div>
