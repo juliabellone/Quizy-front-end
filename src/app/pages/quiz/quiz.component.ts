@@ -68,6 +68,8 @@ export class QuizComponent implements OnInit {
     this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
     this.getQuestions(this.source, this.id);
     this.playing = true;
+    this.correctAnswerStyle = false;
+    this.wrongAnswerStyle = false;
   }
 
   getQuestions(source, id) {

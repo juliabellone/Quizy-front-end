@@ -1,5 +1,5 @@
 <div *ngIf="playing" class="question">
-  <div class="row quiz-header justify-content-md-center">
+  <div class="row quiz-header justify-content-md-center" [ngClass]="{'isCorrect': correctAnswerStyle, 'isIncorrect': wrongAnswerStyle }">
     <div *ngIf="timerCounter>0" class="col-md-8 text-center timer">
       <div id="countdown" style="width: unset"></div>
     </div>
@@ -9,8 +9,8 @@
   </div>
   <div class="row justify-content-md-center">
       <div class="col-md-8 text-center"> 
-        <div class="all-answers" *ngFor="let answer of allAnswers">
-            <button (click)="getResponse(answer)" class="btn btn-outline-primary quiz-btn" [class.isCorrect]="answer == correctAnswerStyle" [ngClass]="{'correct-answer': correctAnswerStyle, 'wrong-answer': wrongAnswerStyle }">{{answer}}</button>  
+        <div class="all-answers" >
+            <button *ngFor="let answer of allAnswers" (click)="getResponse(answer)" class="btn btn-outline-primary quiz-btn">{{answer}}</button>  
           </div>
       </div>
   </div>      
