@@ -3,6 +3,7 @@ import { User } from '../../_models';
 import { Observable } from 'rxjs/Observable';
 import { AuthenticationService, NotificationsService } from '../../_services';
 import { Router } from '@angular/router';
+import { not } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'navbar',
@@ -29,6 +30,7 @@ export class NavbarComponent implements OnInit {
       }
       this.notifications = this.notificationsService.getNotificationsObservable()
         .subscribe(notifications => {
+          console.log(notifications);
           this.notificationsNumber = notifications.length;
         });
     })
