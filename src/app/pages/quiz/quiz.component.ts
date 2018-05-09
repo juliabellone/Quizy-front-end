@@ -8,6 +8,7 @@ import { decode } from '@angular/router/src/url_tree';
 import { ActivatedRoute } from '@angular/router';
 import { RankingService } from '../../_services/ranking.service';
 import { OnClickEvent, OnHoverRatingChangeEvent, OnRatingChangeEven } from 'angular-star-rating';
+import { ViewChild } from '@angular/core/src/metadata/di';
 
 
 
@@ -20,6 +21,7 @@ declare var $: any;
   styleUrls: ['./quiz.component.scss']
 })
 export class QuizComponent implements OnInit {
+
   public id;
   public source;
   public allQuestions: any = {};
@@ -160,16 +162,19 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  getResponse(response) {
-    console.log(response)
+  getResponse(response, index) {
+    let button = document.getElementById(index);    
     if (response == this.correctAnswer) {
       this.totalCorrect++;
       this.correctAnswerStyle = true;
+
+      console.log(button);
+      button.className += ' isCorrect';
       
     } else {
       this.wrongAnswerStyle = true;
+      button.className += ' isIncorrect';
 
-      //animar en rojo
     }
     setTimeout(() => {
       this.correctAnswerStyle = false;

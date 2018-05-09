@@ -17,17 +17,17 @@
 }
 
 .isCorrect {
-    transition: background-color 0.8s;
-    transition-timing-function: ease-in-out;
-    background-image: none;
-    background-color: green;
+    transition: background-color 0.8s !important;
+    transition-timing-function: ease-in-out !important;
+    background-image: none !important;
+    background-color: green !important;
 }
 
 .isIncorrect {
-    transition: background-color 0.8s;
-    transition-timing-function: ease-in-out;
-    background-image: none;
-    background-color: red;
+    transition: background-color 0.8s !important;
+    transition-timing-function: ease-in-out !important;
+    background-image: none !important;
+    background-color: red !important;
 }
 
 @media (max-width: 364px) {
