@@ -16,6 +16,13 @@
     }
 }
 
+.isCorrect {
+    background-color: green;
+}
+
+.isIncorrect {
+    background-color: red;
+}
 
 @media (max-width: 364px) {
     .all-answers {
@@ -25,5 +32,6 @@
         }
     }  
 } 
+
 
 

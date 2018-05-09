@@ -27,6 +27,8 @@ export class QuizComponent implements OnInit {
   public question: any = {};
   public title: string = "";
   public correctAnswer: string = "";
+  public correctAnswerStyle: Boolean;
+  public wrongAnswerStyle: Boolean;
   public allAnswers: any[];
   public isLoggedIn: any;
   public ranking: {
@@ -157,11 +159,24 @@ export class QuizComponent implements OnInit {
   }
 
   getResponse(response) {
+    console.log(response)
     if (response == this.correctAnswer) {
       this.totalCorrect++;
+      this.correctAnswerStyle = true;
+      
     } else {
-      //console.log(response, 'answer is incorrect');
+      this.wrongAnswerStyle = true;
+
+      //animar en rojo
     }
+    setTimeout(() => {
+      this.correctAnswerStyle = false;
+      this.wrongAnswerStyle = false;
+      this.printNextQuestion()
+    }, 800);
+  }
+
+  printNextQuestion() {
     this.currentIndex++;
     this.prepareQuestion();
   }

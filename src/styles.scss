@@ -20,16 +20,15 @@ body{
 }
 .content {
     min-height: 100vh;
-    padding-bottom: 70px;
 }
-
-.app-container {
-    min-width: 300px;
-}
-
 .fullwidth2 {
-    padding: 0;
+    padding: 0px;
+    margin: 0px;
 }
+// .app-container {
+//     min-width: 300px;
+// }
+
 .quiz-header {
     background: linear-gradient(rgb(100, 223, 216), #60CAE1);
     padding: 20px;
@@ -56,4 +55,15 @@ body{
     h1 {
         font-size: 5em;
     }
+}
+.carousel {
+    width: 100%;
+}
+
+.login-box {
+    padding-top: 110px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
 }
