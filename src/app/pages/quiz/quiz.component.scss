@@ -20,14 +20,14 @@
     transition: background-color 0.8s !important;
     transition-timing-function: ease-in-out !important;
     background-image: none !important;
-    background-color: green !important;
+    background-color: #00B742 !important;
 }
 
 .isIncorrect {
     transition: background-color 0.8s !important;
     transition-timing-function: ease-in-out !important;
     background-image: none !important;
-    background-color: red !important;
+    background-color: #E00040 !important;
 }
 
 @media (max-width: 364px) {
