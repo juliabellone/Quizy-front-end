@@ -1,0 +1,13 @@
+<div class="info-ranking">
+  <div class="card box-shadow">
+    <div class="card-header">
+      <h4>Notifications</h4>
+    </div>
+    <div class="card-body">
+      <div *ngFor="let notification of notifications" class="ranking-row">
+
+        {{notification.notificationType}}
+        {{notification.fromUser}}
+      </div>
+    </div>
+  </div>

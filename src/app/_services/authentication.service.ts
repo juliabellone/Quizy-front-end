@@ -28,8 +28,8 @@ export class AuthenticationService {
         return this.http.post<any>(`${this.BASE_URL}/signup`, newUser)
             .map(user => {
                 if (user && user.token) {
-                    this.loggedIn.next({ auth: true, ui: user.ui });
                     localStorage.setItem('currentUser', JSON.stringify(user));
+                    this.loggedIn.next({ auth: true, ui: user.ui });
                 }
             })
     }
@@ -38,8 +38,8 @@ export class AuthenticationService {
         return this.http.post<any>(`${this.BASE_URL}/login`, { username: username, password: password })
             .map(user => {
                 if (user && user.token) {
-                    this.loggedIn.next({ auth: true, ui: user.ui });
                     localStorage.setItem('currentUser', JSON.stringify(user));
+                    this.loggedIn.next({ auth: true, ui: user.ui });
                 }
                 return user;
             });
