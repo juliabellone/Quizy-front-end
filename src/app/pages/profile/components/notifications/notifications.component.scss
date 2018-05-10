@@ -1,0 +1,27 @@
+.ranking-row {
+    padding: 5px 0px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    .info-user {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        span {
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+    .ranking-img {
+        width: 50px;
+        max-height: 50px;
+        overflow: hidden;
+        border-radius: 100%;
+        background-color: #487b71;
+        margin-right: 10px; 
+    }
+    .ranking-img > img {
+        height: 50px;
+        width: auto;
+    }
+}
