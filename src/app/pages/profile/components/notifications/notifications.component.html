@@ -5,9 +5,15 @@
     </div>
     <div class="card-body">
       <div *ngFor="let notification of notifications" class="ranking-row">
-
-        {{notification.notificationType}}
-        {{notification.fromUser}}
+        <div *ngIf="notification.notificationType === 'new friend' && notification.fromUser">
+          <div (click)="goToUser(notification.fromUser._id)" class="ranking-img">
+            <img src="{{notification.fromUser && notification.fromUser.avatar ? v : 'assets/images/default-avatar.png'}}" onerror="this.src='assets/images/default-avatar.png'">
+          </div>
+          <span>
+            {{notification.fromUser._id}}
+             {{notification.fromUser ? notification.fromUser.username : 'tiritiritiri'}} added you as friend 
+          </span>
+        </div>
       </div>
     </div>
   </div>

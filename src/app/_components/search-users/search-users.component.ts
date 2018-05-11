@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { UserService, AuthenticationService } from '../../_services';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'search-users',
@@ -18,7 +19,11 @@ export class SearchUsersComponent {
   searchResult = [];
   isLoggedIn: any;
 
-  constructor(private userService: UserService, private authService: AuthenticationService,) {
+  constructor(
+    private userService: UserService, 
+    private authService: AuthenticationService,
+    private router: Router
+  ) {
     this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
     this.searchTerm.valueChanges
       .debounceTime(400)
@@ -42,5 +47,9 @@ export class SearchUsersComponent {
 
   selectUser(user: any) {
     this.onSelectUser.emit(user);
+  }
+
+  goToUser(userId) {
+    this.router.navigate([`/profile/${userId}`])
   }
 }

@@ -1,6 +1,6 @@
 <div *ngIf="quiz">
   <div *ngIf="source==='users'">   
-    <div  class="row quiz-header justify-content-md-center" [ngStyle]="{'background-image':getBackgroundImage}" style="background-size:cover; filter: blur(2px); opacity: 0.5" onerror="this.src='assets/images/pencils.png'">
+    <div  class="row quiz-header justify-content-md-center" [ngStyle]="{'background-image':getBackgroundImage}" style="background-size:cover; filter: blur(2px); opacity: 0.5">
     </div>
     <div class="content-test">
         <h2 class="user-label">{{quiz.name}}</h2>
@@ -14,7 +14,7 @@
         [rating]="quiz.rating">
       </star-rating-comp>
       <button class="btn btn-raised btn-info" (click)="retrieveQuiz(quiz)">Play</button>
-
+      <!--<button class="btn btn-raised btn-info" data-toggle="modal" data-target="#friendsModal">Beat Friend</button>-->
     </div>
     <div class="row justify-content-md-center">
         <div class="col-md-4 info-quiz"> 
@@ -27,7 +27,7 @@
               <a [routerLink]="['/profile', quiz.user._id]">
                 <div class="quiz-owner">
                   <div class="owner-img">
-                    <img src="{{quiz.user.avatar.pic_path}}">
+                    <img src="{{quiz.user && quiz.user.avatar ? quiz.user.avatar.pic_path : 'assets/images/default-avatar.png'}}" onerror="this.src='assets/images/default-avatar.png'">
                   </div>
                   <span>{{quiz.user.username}}</span>
                 </div>
@@ -47,7 +47,7 @@
               <a [routerLink]="['/profile', quizRanking.userId._id]">
                   <div class="info-user">
                     <div class="ranking-img">
-                      <img src="{{quizRanking.userId.avatar.pic_path}}"/>
+                      <img src="{{quiz.user && quiz.user.avatar ? quiz.user.avatar.pic_path : 'assets/images/default-avatar.png'}}" onerror="this.src='assets/images/default-avatar.png'">
                     </div>
                     <span>{{quizRanking.userId.username}}</span>
                   </div>
@@ -70,4 +70,8 @@
   </div>  
 
 </div> 
-  
+<div class="row justify-content-md-center">
+  <div class="modal fade" id="friendsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <search-users [searchType]="'friends'" (onSelectUser)="beatFriend($event)"></search-users>
+  </div>
+</div>

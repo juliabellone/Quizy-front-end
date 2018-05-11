@@ -1,0 +1,5 @@
+<div class="row justify-content-md-center">
+  <div *ngFor="let friend of friends" class="ranking-img">
+    <img src="{{friend.avatar ? friend.avatar.pic_path : 'assets/images/default-avatar.png'}}" onerror="this.src='assets/images/default-avatar.png'">
+  </div>
+</div>

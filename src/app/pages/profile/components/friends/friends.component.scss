@@ -1,0 +1,12 @@
+.ranking-img {
+        width: 50px;
+        max-height: 50px;
+        overflow: hidden;
+        border-radius: 100%;
+        background-color: #487b71;
+        margin-right: 10px; 
+    }
+    .ranking-img > img {
+        height: 50px;
+        width: auto;
+    }

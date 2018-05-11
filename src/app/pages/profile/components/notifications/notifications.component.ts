@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationsService } from '../../../../_services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'notifications',
@@ -12,6 +13,7 @@ export class NotificationsComponent implements OnInit {
 
   constructor(
     private notificationsService: NotificationsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -21,4 +23,7 @@ export class NotificationsComponent implements OnInit {
       });
   }
 
+  goToUser(userId) {
+    this.router.navigate([`/profile/${userId}`])
+  }
 }

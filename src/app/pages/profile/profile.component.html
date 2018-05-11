@@ -12,13 +12,13 @@
       </div>
     </div>
   </div>
-  
+  <friends [friends]='user.friends'></friends>
   <div class="row justify-content-md-center">
       <div class="col-md-5">
           <user-stats [stats]="user.categoryPoints" [userPoints]="user.userPoints"></user-stats> 
       </div>
       <div class="col-md-5">
-          <notifications class="mb-3"></notifications>
+          <notifications *ngIf="isLoggedUser" class="mb-3"></notifications>
           <last-quizes [lastQuizes]="lastQuizesPlayed"></last-quizes>
       </div>
   </div> 
