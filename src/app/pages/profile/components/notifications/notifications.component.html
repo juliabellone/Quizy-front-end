@@ -1,11 +1,11 @@
-<div *ngIf="notifications.length > 0" class="row mb-3">
+<div class="row mb-3">
   <div class="col-md-12 info-ranking">
     <div class="info-ranking">
       <div class="card box-shadow">
         <div class="card-header">
           <h4>Notifications</h4>
         </div>
-        <div class="card-body">
+        <div *ngIf="notifications.length > 0" class="card-body">
           <div *ngFor="let notification of notifications" class="ranking-row">
             <div *ngIf="notification.notificationType === 'new friend' && notification.fromUser" class="info-user">
               <div (click)="goToUser(notification.fromUser._id)" class="ranking-img">
@@ -15,6 +15,13 @@
             </div>
           </div>
         </div>
+        <div class="card-body" *ngIf="notifications.length === 0">
+            <div class="row mb-3">
+                <div class="col-md-12 info-ranking">
+                  <span>There is no notifications</span>
+                </div>
+              </div>
+          </div>
       </div>
     </div>
   </div>

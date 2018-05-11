@@ -1,0 +1,49 @@
+dl {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.text {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 130px;
+  padding-right: 10px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  justify-content: flex-start;
+}
+
+.percentage {
+  line-height: 1;
+  height: 40px;
+  margin-left: 130px;
+  
+  &:after {
+    content: "";
+    display: block;
+    background-color: #52a323;
+    width: 50px;
+    margin-bottom: 10px;
+    height: 90%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color .3s ease;
+    cursor: pointer;
+  }
+}
+
+@for $i from 1 through 100 {
+  .percentage-#{$i} {
+    &:after {
+      $value: ($i * 1%);
+      width: $value;
+    }
+  }
+}

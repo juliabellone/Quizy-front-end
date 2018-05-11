@@ -49,3 +49,18 @@
         margin-left: 5px;
     }
 }
+
+.profile-flex {
+    display: flex;
+    justify-content: center;
+    align-items: baseline; 
+    align-content: flex-start;
+    flex-wrap: wrap;
+
+    * {
+        width: 45%;
+        margin: 10px 5px;
+        min-width: 527px;
+    }
+
+}

@@ -1,12 +1,12 @@
-<div *ngIf="lastQuizes.length > 0" class="row mb-3">
+<div class="row mb-3">
   <div class="col-md-12 info-ranking">
     <div class="info-ranking">
       <div class="card box-shadow">
         <div class="card-header">
           <h4>Last quizes played</h4>
         </div>
-        <div class="card-body">
-          <div *ngFor="let quiz of lastQuizes" class="ranking-row">
+        <div *ngIf="lastQuizes.length > 0" class="card-body">
+          <div  *ngFor="let quiz of lastQuizes" class="ranking-row">
             <div class="info-user">
               <div class="ranking-img">
                 <img src="{{quiz.quizId && quiz.quizId.picture ? quiz.quizId.picture.pic_path : 'assets/images/pencils.png'}}" onerror="this.src='assets/images/pencils.png'">
@@ -15,6 +15,13 @@
             </div>
             <span>{{quiz.result}} points</span>
           </div>
+        </div>
+        <div *ngIf="lastQuizes.length === 0" class="card-body"> 
+          <div class="row mb-3">
+              <div class="col-md-12 info-ranking">
+                <span>You haven't played anything yet, you bastard!</span>
+              </div>
+            </div>
         </div>
       </div>
     </div>
