@@ -32,6 +32,7 @@ export class NavbarComponent implements OnInit {
         .subscribe(notifications => {
           console.log(notifications);
           this.notificationsNumber = notifications.length;
+          console.log(notifications)
         });
     })
   }
