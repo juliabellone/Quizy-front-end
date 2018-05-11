@@ -8,6 +8,7 @@ import { decode } from '@angular/router/src/url_tree';
 import { ActivatedRoute } from '@angular/router';
 import { RankingService } from '../../_services/ranking.service';
 import { OnClickEvent, OnHoverRatingChangeEvent, OnRatingChangeEven } from 'angular-star-rating';
+import { ViewChild } from '@angular/core/src/metadata/di';
 
 
 
@@ -20,6 +21,7 @@ declare var $: any;
   styleUrls: ['./quiz.component.scss']
 })
 export class QuizComponent implements OnInit {
+
   public id;
   public source;
   public allQuestions: any = {};
@@ -27,6 +29,8 @@ export class QuizComponent implements OnInit {
   public question: any = {};
   public title: string = "";
   public correctAnswer: string = "";
+  public correctAnswerStyle: Boolean;
+  public wrongAnswerStyle: Boolean;
   public allAnswers: any[];
   public isLoggedIn: any;
   public ranking: {
@@ -66,6 +70,8 @@ export class QuizComponent implements OnInit {
     this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
     this.getQuestions(this.source, this.id);
     this.playing = true;
+    this.correctAnswerStyle = false;
+    this.wrongAnswerStyle = false;
   }
 
   getQuestions(source, id) {
@@ -156,12 +162,28 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  getResponse(response) {
+  getResponse(response, index) {
+    let button = document.getElementById(index);    
     if (response == this.correctAnswer) {
       this.totalCorrect++;
+      this.correctAnswerStyle = true;
+
+      console.log(button);
+      button.className += ' isCorrect';
+      
     } else {
-      //console.log(response, 'answer is incorrect');
+      this.wrongAnswerStyle = true;
+      button.className += ' isIncorrect';
+
     }
+    setTimeout(() => {
+      this.correctAnswerStyle = false;
+      this.wrongAnswerStyle = false;
+      this.printNextQuestion()
+    }, 800);
+  }
+
+  printNextQuestion() {
     this.currentIndex++;
     this.prepareQuestion();
   }

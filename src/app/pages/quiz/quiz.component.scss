@@ -10,12 +10,27 @@
     
     .quiz-btn {
         margin: 5px;
+        padding: 5px;
         width: 150px;
         height: 150px;
         white-space: normal;
+        word-wrap: break-word;
     }
 }
 
+.isCorrect {
+    transition: background-color 0.8s !important;
+    transition-timing-function: ease-in-out !important;
+    background-image: none !important;
+    background-color: #00B742 !important;
+}
+
+.isIncorrect {
+    transition: background-color 0.8s !important;
+    transition-timing-function: ease-in-out !important;
+    background-image: none !important;
+    background-color: #E00040 !important;
+}
 
 @media (max-width: 364px) {
     .all-answers {
@@ -25,5 +40,6 @@
         }
     }  
 } 
+
 
 
