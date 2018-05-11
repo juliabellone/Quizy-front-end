@@ -25,14 +25,12 @@ export class CreateQuestionFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('esto es thequiz', this.theQuiz)
+
   }
 
 
   //peticion al endpoint
   createQuestion() {
-    console.log('prueba',this.question)
-    console.log('prueba',this.theQuiz._id, this.theQuiz.id)
 
     this.createQuizApi.createQuestion(this.question, this.theQuiz._id)
     .subscribe(
@@ -43,10 +41,8 @@ export class CreateQuestionFormComponent implements OnInit {
           incorrect_answers: [],
         }
         this.numOfQuestions ++;
-        console.log(data);
       },
       error => {
-        console.log('ha habido un error')
         // Por ahora no hay error en el servidor
         this.alertService.error(error.error.m);
       }

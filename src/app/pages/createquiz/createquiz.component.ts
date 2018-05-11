@@ -16,7 +16,6 @@ export class CreateQuizComponent implements OnInit {
   ngOnInit() {  }
 
   changeStatus(quiz) {
-    console.log('prueba', quiz);
     this.quizCreated = quiz;
   }  
 }

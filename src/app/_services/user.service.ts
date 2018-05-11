@@ -31,7 +31,6 @@ export class UserService {
     }
 
     addFriend(userId, idFriend) {
-        console.log(userId, idFriend);
         return this.http.put(`${this.BASE_URL}/user/${userId}/friends`, idFriend)
             .map((user: any) => {
                 return user;

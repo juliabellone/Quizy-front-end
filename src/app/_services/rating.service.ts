@@ -13,4 +13,10 @@ export class RatingService {
         return result;
       });
   };
+  getCategoryRate() {
+    return this.http.get(`${this.BASE_URL}/rate/category`)
+      .map((result: any) => {
+        return result;
+      });
+  };
 }

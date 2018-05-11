@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService, UserService, CreateQuizService } from '../../_services';
+import { QuizService, UserService, CreateQuizService, RatingService } from '../../_services';
 import { Observable } from 'rxjs/Observable';
 import { resetFakeAsyncZone } from '@angular/core/testing';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -18,6 +18,7 @@ export class SelectQuizComponent implements OnInit {
   constructor(
     private quizApi: QuizService,
     private userQuizesApi: CreateQuizService,
+    private rateApi: RatingService,
     private router: Router,
   ) { }
 
@@ -36,8 +37,20 @@ export class SelectQuizComponent implements OnInit {
         this.isActive = 'category';
         this.quizApi.getCategories()
         .subscribe((response) => {
-          this.quizes.push(response);            
+          //this.quizes.push(response);   
+          this.rateApi.getCategoryRate() 
+            .subscribe((res)=> {
+            const quizWithRate = response.map( (quiz) => {
+              quiz.rating = res.reduce(rate => {
+                if(rate._id === quiz.name){
+                  return parseFloat(rate.rateAvg.toFixed(1));
+                }});
+              return quiz;
+            })
+            this.quizes.push(quizWithRate);
+          });         
         })
+        
       }
       else if (source == 'users') {
         this.isActive = 'users';
@@ -49,7 +62,6 @@ export class SelectQuizComponent implements OnInit {
       }
     }
     retrieveQuiz(quiz) {
-      console.log(quiz)
       if(quiz.user) {
         this.router.navigate([`/quiz/users/${quiz._id}/play`]);
       } else {
@@ -58,11 +70,10 @@ export class SelectQuizComponent implements OnInit {
     }
 
     retrieveQuizDetails(quiz) {
-      console.log(quiz)
       if(quiz.user) {
         this.router.navigate([`/quiz/users/${quiz._id}`]);
       } else {
-        this.router.navigate([`quiz/categories/${quiz.id}`]);  
+        this.router.navigate([`quiz/categories/${quiz.id}`], { queryParams: { rating: quiz.rating } });  
       }
     }
 
