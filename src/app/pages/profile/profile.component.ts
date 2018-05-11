@@ -106,7 +106,6 @@ export class ProfileComponent implements OnInit {
         });
   }
   editUser(user) {
-    console.log("hola",user)
     this.userService.updateUser(this.isLoggedIn.ui, user)
       .subscribe(
         data => {
@@ -123,7 +122,6 @@ export class ProfileComponent implements OnInit {
   }
 
   addFriend(user) {
-    console.log(user);
     this.userService.addFriend(this.isLoggedIn.ui, { friend: user._id })
       .subscribe(
         data => console.log(data)

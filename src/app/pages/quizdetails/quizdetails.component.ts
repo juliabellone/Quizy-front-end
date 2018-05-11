@@ -23,6 +23,7 @@ export class QuizdetailsComponent implements OnInit {
   public isLoggedIn: any;
   public quiz;
   public ranking; 
+  public categoryRating;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +37,7 @@ export class QuizdetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => this.id = (params['id']));
     this.route.params.subscribe((params) => this.source = String(params['source']));
+    this.route.queryParams.subscribe(params => this.categoryRating = params['rating']);
     this.authService.isLoggedIn.subscribe((loggedIn) => this.isLoggedIn = loggedIn);
     this.getQuizDetails(this.source, this.id);
   }
@@ -61,17 +63,20 @@ export class QuizdetailsComponent implements OnInit {
       this.userQuizesApi.getQuiz(id)
         .subscribe((response) => {
           this.quiz = response;
-          this.rankingService.getRanking(id)
+          this.rankingService.getRanking(id, null)
           .subscribe((response) => {
-            this.ranking = response;
-            console.log (response);          
+            this.ranking = response;         
           })
         })
     } else if (source == 'categories') {
       this.quizApi.getCategories()
         .subscribe((response) => {
           this.categories = response; 
-          this.getCategoryName();           
+          this.getCategoryName();
+          this.rankingService.getRanking(null, this.categoryName)  
+            .subscribe((response) => {
+              this.ranking = response;
+            })       
         })
       this.quizApi.getQuestions(this.id)
       .subscribe((response) => {

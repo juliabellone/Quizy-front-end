@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { QuizService, CreateQuizService, AuthenticationService, RatingService } from '../../_services/';
 import { Observable } from 'rxjs/Observable';
 import { isType } from '@angular/core/src/type';
 import 'rxjs/Rx'; 
 import { Promise } from 'q';
 import { decode } from '@angular/router/src/url_tree';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RankingService } from '../../_services/ranking.service';
 import { OnClickEvent, OnHoverRatingChangeEvent, OnRatingChangeEven } from 'angular-star-rating';
 import { ViewChild } from '@angular/core/src/metadata/di';
-
 
 
 declare var jquery: any;
@@ -57,6 +56,7 @@ export class QuizComponent implements OnInit {
     private quizApi: QuizService,
     private userQuizesApi: CreateQuizService,
     private route: ActivatedRoute,
+    private router: Router,
     private rankingService: RankingService,
     private authService: AuthenticationService,
     private ratingService: RatingService,
@@ -74,6 +74,9 @@ export class QuizComponent implements OnInit {
     this.wrongAnswerStyle = false;
   }
 
+  OnDestroy() {
+    clearInterval(this.timer);
+  }
   getQuestions(source, id) {
     if (source == 'users') {
       this.userQuizesApi.getQuiz(id)
@@ -110,8 +113,6 @@ export class QuizComponent implements OnInit {
             result: 0,
             date: new Date(),
           };
-          console.log(this.allQuestions)
-
           this.rating = {
             userId: this.isLoggedIn.ui,
             quizId: null,
@@ -127,7 +128,6 @@ export class QuizComponent implements OnInit {
       var clock = $('#countdown').FlipClock(this.timerCounter, {
         clockFace: 'MinuteCounter',
       });
-      //clock.setTime(this.timerCounter);
       this.timerCounter--;
       if (this.timerCounter === 0) {
         this.timeFinished();
@@ -167,8 +167,6 @@ export class QuizComponent implements OnInit {
     if (response == this.correctAnswer) {
       this.totalCorrect++;
       this.correctAnswerStyle = true;
-
-      console.log(button);
       button.className += ' isCorrect';
       
     } else {
@@ -212,11 +210,15 @@ export class QuizComponent implements OnInit {
   onClick = ($event: OnClickEvent) => {
     this.rating.rate = $event.rating;
     this.rating.date = new Date();
-    console.log(this.rating);
     this.ratingService.addRating(this.rating)
       .subscribe(
-        data => { },
+        data => { 
+        },
         error => console.log(error)
       );
   };
+
+  goBack = () => {
+    this.router.navigate(['/selectquiz']);
+  }
 }

@@ -65,7 +65,37 @@
     </div>
     <div class="content-test">
       <h2 class="user-label">{{categoryName}}</h2>
+      <star-rating-comp *ngIf="categoryRating" 
+        labelText="{{categoryRating}}" 
+        labelPosition="bottom" 
+        size="medium" 
+        [readOnly]="true"
+        [starType]="'svg'" 
+        [rating]="categoryRating">
+      </star-rating-comp>
       <button class="btn btn-raised btn-info" (click)="retrieveQuiz()">Play</button>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-4 info-ranking">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4>Ranking</h4>
+          </div>
+          <div class="card-body">
+            <div *ngFor="let quizRanking of ranking" class="ranking-row">
+              <a [routerLink]="['/profile', quizRanking.userId._id]">
+                <div class="info-user">
+                  <div class="ranking-img">
+                    <img src="{{quiz.user && quiz.user.avatar ? quiz.user.avatar.pic_path : 'assets/images/default-avatar.png'}}" onerror="this.src='assets/images/default-avatar.png'">
+                  </div>
+                  <span>{{quizRanking.userId.username}}</span>
+                </div>
+              </a>
+              <span>{{quizRanking.result}} points</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>  
 

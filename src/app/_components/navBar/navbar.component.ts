@@ -25,15 +25,13 @@ export class NavbarComponent implements OnInit {
     this.isLoggedIn$ = this.authService.isLoggedIn;
     this.isLoggedIn$.subscribe(isloggedin => {
       if (isloggedin.auth) {
-        console.log('start notifications from navbar');
         this.notificationsService.startGetNotifications();
-      }
-      this.notifications = this.notificationsService.getNotificationsObservable()
+        this.notifications = this.notificationsService.getNotificationsObservable()
         .subscribe(notifications => {
-          console.log(notifications);
           this.notificationsNumber = notifications.length;
           console.log(notifications)
         });
+      }
     })
   }
 

@@ -8,7 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LastQuizesComponent implements OnInit {
   @Input() lastQuizes: any;
   constructor() { 
-    console.log(this.lastQuizes);
   }
   ngOnInit() {
   }
