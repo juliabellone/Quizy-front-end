@@ -22,14 +22,14 @@
     transition: background-color 0.8s !important;
     transition-timing-function: ease-in-out !important;
     background-image: none !important;
-    background-color: #00B742 !important;
+    background-color: rgba(66, 173, 33, 0.678) !important;
 }
 
 .isIncorrect {
     transition: background-color 0.8s !important;
     transition-timing-function: ease-in-out !important;
     background-image: none !important;
-    background-color: #E00040 !important;
+    background-color: rgba(228, 44, 44, 0.719) !important;
 }
 
 @media (max-width: 364px) {
