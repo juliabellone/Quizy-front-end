@@ -1,40 +1,46 @@
-  <div class="row quiz-header  justify-content-md-center">
-    <div class="col-md-8 profile-header-info">
-      <div class="profile-header-img">
-          <img src="{{user.avatar.pic_path}}" onerror="this.src='assets/images/default-avatar.png'"/>    
-      </div>
-      <h2 class="user-label">{{user.username}}</h2>
-      <h6>Points: {{user.userPoints}}</h6>
-      <div *ngIf="isLoggedUser" class="edit-buttons">
-          <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editModal">Edit profile</button>
-          <button class="btn btn-outline-primary" data-toggle="modal" data-target="#pictureModal">Change Picture</button>
-          <button class="btn btn-outline-primary" data-toggle="modal" data-target="#friendsModal">Add Friend</button>
-      </div>
+<div class="row quiz-header  justify-content-md-center">
+  <div class="col-md-8 profile-header-info">
+    <div class="profile-header-img">
+      <img src="{{user.avatar.pic_path}}" onerror="this.src='assets/images/default-avatar.png'" />
+    </div>
+    <h2 class="user-label">{{user.username}}</h2>
+    <h6>Points: {{user.userPoints}}</h6>
+    <div *ngIf="isLoggedUser" class="edit-buttons">
+      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#editModal">Edit profile</button>
+      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#pictureModal">Change Picture</button>
+      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#friendsModal">Add Friend</button>
     </div>
   </div>
-  <friends [friends]='user.friends'></friends>
-  <div class="row justify-content-md-center">
-      <div class="col-md-5">
-          <user-stats [stats]="user.categoryPoints" [userPoints]="user.userPoints"></user-stats> 
-      </div>
-      <div class="col-md-5">
-          <notifications *ngIf="isLoggedUser" class="mb-3"></notifications>
-          <last-quizes [lastQuizes]="lastQuizesPlayed"></last-quizes>
-      </div>
-  </div> 
-  <div class="row justify-content-md-center">
-    <div *ngIf="isLoggedUser" class="col-md-8 editarea">
-      <!-- edit Modal -->
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <edit-user (onUpdateUser)="editUser($event)"></edit-user> 
-      </div>
-      <!-- picture Modal -->
-      <div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <file-uploader [buttonLiteral]="'Upload'" (onUpload)="uploadAvatar($event)"></file-uploader>
-      </div>
-      <!-- friends Modal -->
-      <div class="modal fade" id="friendsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <search-users [friends]='user.friends' (onSelectUser)="addFriend($event)"></search-users>
-      </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <friends [friends]='user.friends'></friends>
     </div>
-  </div> 
+    <div class="col-md-5">
+      <user-stats [stats]="user.categoryPoints" [userPoints]="user.userPoints"></user-stats>
+    </div>
+    <div class="col-md-5">
+      <notifications *ngIf="isLoggedUser" class="mb-3"></notifications>
+    </div>
+    <div class="col-md-5">
+      <last-quizes [lastQuizes]="lastQuizesPlayed"></last-quizes>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-md-center">
+  <div *ngIf="isLoggedUser" class="col-md-8 editarea">
+    <!-- edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <edit-user (onUpdateUser)="editUser($event)"></edit-user>
+    </div>
+    <!-- picture Modal -->
+    <div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <file-uploader [buttonLiteral]="'Upload'" (onUpload)="uploadAvatar($event)"></file-uploader>
+    </div>
+    <!-- friends Modal -->
+    <div class="modal fade" id="friendsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <search-users [friends]='user.friends' (onSelectUser)="addFriend($event)"></search-users>
+    </div>
+  </div>
+</div>

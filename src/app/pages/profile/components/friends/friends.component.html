@@ -1,5 +1,30 @@
-<div class="row justify-content-md-center">
+<!-- <div class="row justify-content-md-center">
   <div *ngFor="let friend of friends" class="ranking-img">
     <img src="{{friend.avatar ? friend.avatar.pic_path : 'assets/images/default-avatar.png'}}" onerror="this.src='assets/images/default-avatar.png'">
+  </div>
+</div> -->
+
+
+<div *ngIf="friends.length > 0" class="row mb-3">
+  <div class="col-md-12 info-ranking">
+    <div class="info-ranking">
+      <div class="card box-shadow">
+        <div class="card-header">
+          <h4>Friends</h4>
+        </div>
+        <div class="card-body">
+          <div *ngFor="let friend of friends" class="ranking-row">
+              <a [routerLink]="['/profile', friend._id]">
+                <div class="info-user">
+              <div class="ranking-img">
+                <img src="{{friend.avatar ? friend.avatar.pic_path : 'assets/images/default-avatar.png'}}" onerror="this.src='assets/images/default-avatar.png'">
+              </div>
+              <span>{{friend.username}}</span>
+            </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
