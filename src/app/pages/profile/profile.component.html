@@ -13,7 +13,7 @@
   </div>
 </div>
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" style="max-height: 1800px">
     <!-- <div class="col-md-5">
       <friends [friends]='user.friends'></friends>
     </div>
@@ -28,9 +28,9 @@
     </div> -->
     <div class="col-md-12 profile-flex">
       <notifications *ngIf="isLoggedUser" class="mb-3"></notifications>
-      <friends [friends]='user.friends'></friends>
       <user-stats [stats]="user.categoryPoints" [userPoints]="user.userPoints"></user-stats>
       <user-stats2 [stats]="user.categoryPoints" [userPoints]="user.userPoints"></user-stats2>
+      <friends [friends]='user.friends'></friends>
       <last-quizes [lastQuizes]="lastQuizesPlayed"></last-quizes>
       <div></div>
     </div>  

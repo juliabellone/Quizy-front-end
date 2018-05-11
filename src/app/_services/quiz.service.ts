@@ -18,7 +18,7 @@ export class QuizService {
   }  
   
   getQuestions(categoryId) {
-    return this.http.get(`https://opentdb.com/api.php?amount=2&category=${categoryId}&encode=base64`)
+    return this.http.get(`https://opentdb.com/api.php?amount=10&category=${categoryId}&encode=base64`)
     .map((res:any) => res.results);
   }
 }

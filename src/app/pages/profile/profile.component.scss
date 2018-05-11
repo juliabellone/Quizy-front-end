@@ -52,9 +52,8 @@
 
 .profile-flex {
     display: flex;
-    justify-content: center;
-    align-items: baseline; 
-    align-content: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
     * {

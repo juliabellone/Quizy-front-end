@@ -41,10 +41,10 @@ export class SelectQuizComponent implements OnInit {
           this.rateApi.getCategoryRate() 
             .subscribe((res)=> {
             const quizWithRate = response.map( (quiz) => {
-              quiz.rating = res.reduce(rate => {
+              quiz.rating = res.length = 0 ? res.reduce(rate => {
                 if(rate._id === quiz.name){
                   return parseFloat(rate.rateAvg.toFixed(1));
-                }});
+                }}) : null;
               return quiz;
             })
             this.quizes.push(quizWithRate);

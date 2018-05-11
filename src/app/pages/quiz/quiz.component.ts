@@ -82,7 +82,7 @@ export class QuizComponent implements OnInit {
       this.userQuizesApi.getQuiz(id)
         .subscribe((response) => {
           this.allQuestions = response.questions;
-          this.timerCounter = this.allQuestions.length * 45;
+          this.timerCounter = this.allQuestions.length * 10;
           this.prepareQuestion();
           this.ranking = {
             userId: this.isLoggedIn.ui,
@@ -103,7 +103,7 @@ export class QuizComponent implements OnInit {
       this.quizApi.getQuestions(id)
         .subscribe((response) => {
           this.allQuestions = response;
-          this.timerCounter = this.allQuestions.length * 5;
+          this.timerCounter = this.allQuestions.length * 10;
           this.decodeJSON();
           this.prepareQuestion();
           this.ranking = {
