@@ -42,7 +42,7 @@ export class QuizdetailsComponent implements OnInit {
 
   get getBackgroundImage() {
     if (this.source == 'users') {
-      return `url(${this.quiz.picture.pic_path})`;
+      return this.quiz.picture && this.quiz.picture.pic_path ? `url(${this.quiz.picture.pic_path})` : `url(assets/images/pencils.jpg)`;
     } else if (this.source == 'categories') {
       return `url(assets/images/${this.id}.jpg)`
     }

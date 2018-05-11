@@ -47,6 +47,7 @@ import { QuizdetailsComponent } from './pages/quizdetails/quizdetails.component'
 import { LastQuizesComponent } from './pages/profile/components/last-quizes/last-quizes.component';
 import { UserStatsComponent } from './pages/profile/components/user-stats/user-stats.component';
 import { NotificationsComponent } from './pages/profile/components/notifications/notifications.component';
+import { FriendsComponent } from './pages/profile/components/friends/friends.component';
 
 @NgModule({
     imports: [
@@ -87,6 +88,7 @@ import { NotificationsComponent } from './pages/profile/components/notifications
         LastQuizesComponent,
         UserStatsComponent,
         NotificationsComponent,
+        FriendsComponent,
 
     ],
     providers: [

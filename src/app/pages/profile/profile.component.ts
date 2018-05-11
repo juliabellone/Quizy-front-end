@@ -59,6 +59,8 @@ export class ProfileComponent implements OnInit {
       this.userId = params.id;      
         if( this.userId === this.isLoggedIn.ui) {
           this.isLoggedUser = true;
+        } else {
+          this.isLoggedUser = false;
         }
     });
   }

@@ -16,11 +16,17 @@
                 <input class="form-control" type="text" placeholder="username" [formControl]="searchTerm">
               </div>
                 <div *ngFor="let item of searchResult" class="row">
-                  <div class="profile-header-img" (click)="selectUser(item)">
-                    <img src="{{item.avatar ? item.avatar.pic_path :''}}" onerror="this.src='assets/images/default-avatar.png'" />
+                  <div class="col-md-2 vcenter">
+                    <div class="profile-header-img" (click)="goToUser(item._id)" data-dismiss="modal">
+                      <img src="{{item.avatar ? item.avatar.pic_path :''}}" onerror="this.src='assets/images/default-avatar.png'" />
+                    </div>
                   </div>
-                  <div>
+                  <div class="col-md-6 vcenter username">
                     <span>{{ item.username }}</span>
+                  </div>
+                  <div class="col-md-1 vcenter mt-3">
+                    <button *ngIf="searchType === 'friends'" type="button" class="btn btn-raised btn-info" (click)="selectUser(item)" data-dismiss="modal">Challenge a Friend</button>
+                    <button *ngIf="searchType !== 'friends'" type="button" class="btn btn-raised btn-info" (click)="selectUser(item)" data-dismiss="modal">Add Friend</button>
                   </div>
                 </div>
             </form>

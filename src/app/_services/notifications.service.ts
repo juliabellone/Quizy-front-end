@@ -24,23 +24,27 @@ export class NotificationsService{
   }
 
   stopGetNotifications() {
-    console.log('stop get notification')
     clearInterval(this.notificationInterval);
   }
 
   startGetNotifications() {
     if (this.isLoggedIn.auth) {
-      console.log('start get notifications');
       this.getNotifications(this.isLoggedIn.ui).subscribe();
       this.notificationInterval = setInterval(() => this.getNotifications(this.isLoggedIn.ui).subscribe(), 120000);
     }
   }
 
   getNotifications(idUser: any) {
-    console.log('get notifications');
     return this.http.get(`${this.BASE_URL}/notifications/${idUser}`)
       .map(notifications => {
           this.notifications.next(notifications);
+      });
+  }
+
+  notificationReaded(idNotification: any) {
+    return this.http.put(`${this.BASE_URL}/notifications/${idNotification}`, "readed")
+      .map(notifications => {
+        this.notifications.next(notifications);
       });
   }
 
